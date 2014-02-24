@@ -86,20 +86,64 @@ public class GetSongInfoFromXiami {
         // 专辑图片
         Document albumDoc;
         try {
-            albumDoc = Jsoup.connect(albumLink).get();
-            Elements coverels = albumDoc.select(".cdCDcover185");
-            if (coverels.size() > 0) {
-                Element img = coverels.get(0);
-                String src = img.attr("src");
-                if (StringUtils.isNotBlank(src))
-                    song.setCoverImg(src);
-            }
-            Elements albuminfo = albumDoc.select("#albums_info");
-            albuminfo.select("div");
-            
-            
+            albumDoc = Jsoup.connect(songLink).get();
+
         } catch (IOException e) {
             e.printStackTrace();
+            return;
+        }
+        Elements coverels = albumDoc.select(".cdCDcover185");
+        if (coverels.size() > 0) {
+            Element img = coverels.get(0);
+            String src = img.attr("src");
+            if (StringUtils.isNotBlank(src))
+                song.setXiamiCoverImg(src);
+        }
+        //
+        Elements albuminfo = albumDoc.select("#albums_info");
+        Elements albumels = albuminfo.select(".item");
+        if (albumels.size() > 0) {
+            for (Element item : albumels) {
+                String key = item.text();
+                String value = null;
+                String link = null;
+                Element valueEl = item.nextElementSibling();
+                if (valueEl != null) {
+                    try {
+                        Element div = valueEl.child(0);
+                        if (div.children().size() > 0) {
+                            Element a = div.child(0);
+                            value = a.text();
+                            link = a.attr("href");
+                        } else {
+                            value = div.text();
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+                    }
+                }
+                if (StringUtils.isNotBlank(key) && StringUtils.isNotBlank(value)) {
+                    if (key.contains("专辑")) {
+                        song.setXiamiAlbum(value);
+                        song.setXiamiAlbumLink(link);
+                    } else if (key.contains("演唱")) {
+                        song.setXiamiArtist(value);
+                        song.setXiamiArtistLink(link);
+                    } else if (key.contains("词")) {
+                        song.setXiamiLyricist(value);
+                    } else if (key.contains("作曲")) {
+                        song.setXiamiComposer(value);
+                    }
+                }
+            }
+        }
+        //
+        Elements lrcs = albumDoc.select(".lrc_main");
+        if (lrcs.size() > 0) {
+            Element lrc = lrcs.get(0);
+            String lrcstr = lrc.html();
+            if (StringUtils.isNotBlank(lrcstr)) {
+                song.setXiamiLyric(lrcstr);
+            }
         }
     }
 

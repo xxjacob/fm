@@ -24,6 +24,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                 <result property="xiamiArtistLink" column="xiami_artist_link" />
                                                     <result property="xiamiAlbum" column="xiami_album" />
                                 <result property="xiamiCoverImg" column="xiami_cover_img" />
+                                <result property="xiamiComposer" column="xiami_composer" />
+                                <result property="xiamiLyricist" column="xiami_lyricist" />
                                 <result property="listenNum" column="listen_num" />
                                 <result property="shareNum" column="share_num" />
                                 <result property="commentNum" column="comment_num" />
@@ -53,6 +55,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     <result property="xiamiLyric" column="xiami_lyric" />
                     <result property="xiamiAlbum" column="xiami_album" />
                     <result property="xiamiCoverImg" column="xiami_cover_img" />
+                    <result property="xiamiComposer" column="xiami_composer" />
+                    <result property="xiamiLyricist" column="xiami_lyricist" />
                     <result property="listenNum" column="listen_num" />
                     <result property="shareNum" column="share_num" />
                     <result property="commentNum" column="comment_num" />
@@ -65,15 +69,15 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
             </resultMap>
     <!-- Select SQL -->
     <sql id="songXiami.selector">
-        SELECT id,name,breif,album,artist,feat_artist,lyricist,composer,duration,cover_img,xiami_album_link,xiami_song_name,xiami_song_link,xiami_artist,xiami_artist_link,xiami_album,xiami_cover_img,listen_num,share_num,comment_num,modify_time,create_time,year,isvbr,bitrate,album_artist FROM song_xiami
+        SELECT id,name,breif,album,artist,feat_artist,lyricist,composer,duration,cover_img,xiami_album_link,xiami_song_name,xiami_song_link,xiami_artist,xiami_artist_link,xiami_album,xiami_cover_img,xiami_composer,xiami_lyricist,listen_num,share_num,comment_num,modify_time,create_time,year,isvbr,bitrate,album_artist FROM song_xiami
     </sql>
     <!--包含TEXT 等大数据-->
     <sql id="songXiami.selectorall">
-        SELECT id,name,breif,album,artist,feat_artist,lyricist,composer,duration,cover_img,xiami_album_link,xiami_song_name,xiami_song_link,xiami_artist,xiami_artist_link,xiami_lyric,xiami_album,xiami_cover_img,listen_num,share_num,comment_num,modify_time,create_time,year,isvbr,bitrate,album_artist FROM song_xiami
+        SELECT id,name,breif,album,artist,feat_artist,lyricist,composer,duration,cover_img,xiami_album_link,xiami_song_name,xiami_song_link,xiami_artist,xiami_artist_link,xiami_lyric,xiami_album,xiami_cover_img,xiami_composer,xiami_lyricist,listen_num,share_num,comment_num,modify_time,create_time,year,isvbr,bitrate,album_artist FROM song_xiami
     </sql>
     <sql id="songXiamiList.where">
 		<dynamic prepend=" WHERE ">
-            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="breif" prepend=" AND ">breif=#breif#</isNotNull><isNotNull property="album" prepend=" AND ">album=#album#</isNotNull><isNotNull property="artist" prepend=" AND ">artist=#artist#</isNotNull><isNotNull property="featArtist" prepend=" AND ">feat_artist=#featArtist#</isNotNull><isNotNull property="lyricist" prepend=" AND ">lyricist=#lyricist#</isNotNull><isNotNull property="composer" prepend=" AND ">composer=#composer#</isNotNull><isNotNull property="duration" prepend=" AND ">duration=#duration#</isNotNull><isNotNull property="coverImg" prepend=" AND ">cover_img=#coverImg#</isNotNull><isNotNull property="xiamiAlbumLink" prepend=" AND ">xiami_album_link=#xiamiAlbumLink#</isNotNull><isNotNull property="xiamiSongName" prepend=" AND ">xiami_song_name=#xiamiSongName#</isNotNull><isNotNull property="xiamiSongLink" prepend=" AND ">xiami_song_link=#xiamiSongLink#</isNotNull><isNotNull property="xiamiArtist" prepend=" AND ">xiami_artist=#xiamiArtist#</isNotNull><isNotNull property="xiamiArtistLink" prepend=" AND ">xiami_artist_link=#xiamiArtistLink#</isNotNull><isNotNull property="xiamiLyric" prepend=" AND ">xiami_lyric=#xiamiLyric#</isNotNull><isNotNull property="xiamiAlbum" prepend=" AND ">xiami_album=#xiamiAlbum#</isNotNull><isNotNull property="xiamiCoverImg" prepend=" AND ">xiami_cover_img=#xiamiCoverImg#</isNotNull><isNotNull property="listenNum" prepend=" AND ">listen_num=#listenNum#</isNotNull><isNotNull property="shareNum" prepend=" AND ">share_num=#shareNum#</isNotNull><isNotNull property="commentNum" prepend=" AND ">comment_num=#commentNum#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="year" prepend=" AND ">year=#year#</isNotNull><isNotNull property="isvbr" prepend=" AND ">isvbr=#isvbr#</isNotNull><isNotNull property="bitrate" prepend=" AND ">bitrate=#bitrate#</isNotNull><isNotNull property="albumArtist" prepend=" AND ">album_artist=#albumArtist#</isNotNull>        </dynamic>
+            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="breif" prepend=" AND ">breif=#breif#</isNotNull><isNotNull property="album" prepend=" AND ">album=#album#</isNotNull><isNotNull property="artist" prepend=" AND ">artist=#artist#</isNotNull><isNotNull property="featArtist" prepend=" AND ">feat_artist=#featArtist#</isNotNull><isNotNull property="lyricist" prepend=" AND ">lyricist=#lyricist#</isNotNull><isNotNull property="composer" prepend=" AND ">composer=#composer#</isNotNull><isNotNull property="duration" prepend=" AND ">duration=#duration#</isNotNull><isNotNull property="coverImg" prepend=" AND ">cover_img=#coverImg#</isNotNull><isNotNull property="xiamiAlbumLink" prepend=" AND ">xiami_album_link=#xiamiAlbumLink#</isNotNull><isNotNull property="xiamiSongName" prepend=" AND ">xiami_song_name=#xiamiSongName#</isNotNull><isNotNull property="xiamiSongLink" prepend=" AND ">xiami_song_link=#xiamiSongLink#</isNotNull><isNotNull property="xiamiArtist" prepend=" AND ">xiami_artist=#xiamiArtist#</isNotNull><isNotNull property="xiamiArtistLink" prepend=" AND ">xiami_artist_link=#xiamiArtistLink#</isNotNull><isNotNull property="xiamiLyric" prepend=" AND ">xiami_lyric=#xiamiLyric#</isNotNull><isNotNull property="xiamiAlbum" prepend=" AND ">xiami_album=#xiamiAlbum#</isNotNull><isNotNull property="xiamiCoverImg" prepend=" AND ">xiami_cover_img=#xiamiCoverImg#</isNotNull><isNotNull property="xiamiComposer" prepend=" AND ">xiami_composer=#xiamiComposer#</isNotNull><isNotNull property="xiamiLyricist" prepend=" AND ">xiami_lyricist=#xiamiLyricist#</isNotNull><isNotNull property="listenNum" prepend=" AND ">listen_num=#listenNum#</isNotNull><isNotNull property="shareNum" prepend=" AND ">share_num=#shareNum#</isNotNull><isNotNull property="commentNum" prepend=" AND ">comment_num=#commentNum#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="year" prepend=" AND ">year=#year#</isNotNull><isNotNull property="isvbr" prepend=" AND ">isvbr=#isvbr#</isNotNull><isNotNull property="bitrate" prepend=" AND ">bitrate=#bitrate#</isNotNull><isNotNull property="albumArtist" prepend=" AND ">album_artist=#albumArtist#</isNotNull>        </dynamic>
     </sql>
     <sql id="songXiamiList.order">
         <dynamic prepend=" ORDER BY ">
@@ -162,6 +166,12 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="xiamiCoverImg">
                         xiami_cover_img = #xiamiCoverImg#
                     </isNotNull>
+                                                                <isNotNull prepend="," property="xiamiComposer">
+                        xiami_composer = #xiamiComposer#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="xiamiLyricist">
+                        xiami_lyricist = #xiamiLyricist#
+                    </isNotNull>
                                                                 <isNotNull prepend="," property="listenNum">
                         listen_num = #listenNum#
                     </isNotNull>
@@ -248,6 +258,12 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="xiamiCoverImg">
                         xiami_cover_img = #xiamiCoverImg#
                     </isNotNull>
+                                                                <isNotNull prepend="," property="xiamiComposer">
+                        xiami_composer = #xiamiComposer#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="xiamiLyricist">
+                        xiami_lyricist = #xiamiLyricist#
+                    </isNotNull>
                                                                 <isNotNull prepend="," property="listenNum">
                         listen_num = #listenNum#
                     </isNotNull>
@@ -312,6 +328,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                 xiami_lyric,
                 xiami_album,
                 xiami_cover_img,
+                xiami_composer,
+                xiami_lyricist,
                 listen_num,
                 share_num,
                 comment_num,
@@ -320,7 +338,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                 bitrate,
                 album_artist,
             create_time    ,modify_time)
-    VALUES(#name#,#breif#,#album#,#artist#,#featArtist#,#lyricist#,#composer#,#duration#,#coverImg#,#xiamiAlbumLink#,#xiamiSongName#,#xiamiSongLink#,#xiamiArtist#,#xiamiArtistLink#,#xiamiLyric#,#xiamiAlbum#,#xiamiCoverImg#,#listenNum#,#shareNum#,#commentNum#,#year#,#isvbr#,#bitrate#,#albumArtist#,    now(),now())
+    VALUES(#name#,#breif#,#album#,#artist#,#featArtist#,#lyricist#,#composer#,#duration#,#coverImg#,#xiamiAlbumLink#,#xiamiSongName#,#xiamiSongLink#,#xiamiArtist#,#xiamiArtistLink#,#xiamiLyric#,#xiamiAlbum#,#xiamiCoverImg#,#xiamiComposer#,#xiamiLyricist#,#listenNum#,#shareNum#,#commentNum#,#year#,#isvbr#,#bitrate#,#albumArtist#,    now(),now())
     <selectKey resultClass="long" type="post" keyProperty="id">
     SELECT last_insert_id() AS id
     </selectKey>
@@ -346,6 +364,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotEmpty prepend="," property="xiamiLyric">xiami_lyric</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="xiamiAlbum">xiami_album</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="xiamiCoverImg">xiami_cover_img</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="xiamiComposer">xiami_composer</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="xiamiLyricist">xiami_lyricist</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="listenNum">listen_num</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="shareNum">share_num</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="commentNum">comment_num</isNotEmpty>
@@ -375,6 +395,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                                                             <isNotEmpty  prepend="," property="xiamiLyric">#xiamiLyric#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="xiamiAlbum">#xiamiAlbum#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="xiamiCoverImg">#xiamiCoverImg#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="xiamiComposer">#xiamiComposer#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="xiamiLyricist">#xiamiLyricist#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="listenNum">#listenNum#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="shareNum">#shareNum#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="commentNum">#commentNum#</isNotEmpty>

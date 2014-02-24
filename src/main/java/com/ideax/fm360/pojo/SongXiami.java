@@ -48,6 +48,10 @@ public class SongXiami implements Serializable{
     private String xiamiAlbum;
 	/** xiami_cover_img **/
     private String xiamiCoverImg;
+	/** xiami_composer **/
+    private String xiamiComposer;
+	/** xiami_lyricist **/
+    private String xiamiLyricist;
 	/** listen_num **/
     private Integer listenNum;
 	/** share_num **/
@@ -372,6 +376,40 @@ public class SongXiami implements Serializable{
     */
    public void setXiamiCoverImg(String xiamiCoverImg) {
        this.xiamiCoverImg = xiamiCoverImg;
+   }
+	
+   /**
+    * 获取属性:xiamiComposer
+    * xiami_composer
+    * @return xiamiComposer
+    */
+   public String getXiamiComposer() {
+       return xiamiComposer;
+   }
+   /**
+    * 设置属性:xiamiComposer
+    * xiami_composer
+    * @param xiamiComposer
+    */
+   public void setXiamiComposer(String xiamiComposer) {
+       this.xiamiComposer = xiamiComposer;
+   }
+	
+   /**
+    * 获取属性:xiamiLyricist
+    * xiami_lyricist
+    * @return xiamiLyricist
+    */
+   public String getXiamiLyricist() {
+       return xiamiLyricist;
+   }
+   /**
+    * 设置属性:xiamiLyricist
+    * xiami_lyricist
+    * @param xiamiLyricist
+    */
+   public void setXiamiLyricist(String xiamiLyricist) {
+       this.xiamiLyricist = xiamiLyricist;
    }
 	
    /**

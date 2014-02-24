@@ -354,6 +354,44 @@ public class SongXiamiQuery extends BaseQuery {
     	this.xiamiCoverImg = xiamiCoverImg;
     	return this;
     }
+	/** xiami_composer **/
+    private String xiamiComposer;
+	/**
+    * 获取属性:xiamiComposer
+    * xiami_composer
+    * @return xiamiComposer
+    */
+	public String getXiamiComposer () {
+    	return xiamiComposer;
+   	}
+   	/**
+     * 设置属性:xiamiComposer
+     * xiami_composer
+     * @param xiamiComposer
+     */
+    public SongXiamiQuery setXiamiComposer(String xiamiComposer) {
+    	this.xiamiComposer = xiamiComposer;
+    	return this;
+    }
+	/** xiami_lyricist **/
+    private String xiamiLyricist;
+	/**
+    * 获取属性:xiamiLyricist
+    * xiami_lyricist
+    * @return xiamiLyricist
+    */
+	public String getXiamiLyricist () {
+    	return xiamiLyricist;
+   	}
+   	/**
+     * 设置属性:xiamiLyricist
+     * xiami_lyricist
+     * @param xiamiLyricist
+     */
+    public SongXiamiQuery setXiamiLyricist(String xiamiLyricist) {
+    	this.xiamiLyricist = xiamiLyricist;
+    	return this;
+    }
 	/** listen_num **/
     private Integer listenNum;
 	/**
@@ -695,6 +733,22 @@ public class SongXiamiQuery extends BaseQuery {
 	 */	
 	public SongXiamiQuery orderbyXiamiCoverImg(boolean isAsc){
 		orderFields.add(new OrderField("xiami_cover_img",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：xiami_composer
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongXiamiQuery orderbyXiamiComposer(boolean isAsc){
+		orderFields.add(new OrderField("xiami_composer",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：xiami_lyricist
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongXiamiQuery orderbyXiamiLyricist(boolean isAsc){
+		orderFields.add(new OrderField("xiami_lyricist",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**
