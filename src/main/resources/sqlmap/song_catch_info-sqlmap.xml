@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SongCatchInfo">
+    <!-- Alias Map Defined -->
+    <typeAlias alias="SongCatchInfoQuery" type="com.ideax.fm360.query.SongCatchInfoQuery" />
+    <typeAlias alias="SongCatchInfo" type="com.ideax.fm360.pojo.SongCatchInfo" />
+    <resultMap id="songCatchInfo" class="SongCatchInfo">
+                    <result property="id" column="id" />
+                                <result property="name" column="name" />
+                                <result property="breif" column="breif" />
+                                <result property="album" column="album" />
+                                <result property="albumId" column="album_id" />
+                                <result property="artist" column="artist" />
+                                <result property="artistId" column="artist_id" />
+                                <result property="featArtist" column="feat_artist" />
+                                <result property="duration" column="duration" />
+                                <result property="lyricist" column="lyricist" />
+                                <result property="lyricistId" column="lyricist_id" />
+                                <result property="composer" column="composer" />
+                                <result property="composerId" column="composer_id" />
+                                <result property="streamUrl" column="stream_url" />
+                                <result property="listenNum" column="listen_num" />
+                                <result property="shareNum" column="share_num" />
+                                <result property="commentNum" column="comment_num" />
+                                                    <result property="modifyTime" column="modify_time" />
+                                <result property="createTime" column="create_time" />
+                        </resultMap>
+    <resultMap id="songCatchInfoall" class="SongCatchInfo">
+                    <result property="id" column="id" />
+                    <result property="name" column="name" />
+                    <result property="breif" column="breif" />
+                    <result property="album" column="album" />
+                    <result property="albumId" column="album_id" />
+                    <result property="artist" column="artist" />
+                    <result property="artistId" column="artist_id" />
+                    <result property="featArtist" column="feat_artist" />
+                    <result property="duration" column="duration" />
+                    <result property="lyricist" column="lyricist" />
+                    <result property="lyricistId" column="lyricist_id" />
+                    <result property="composer" column="composer" />
+                    <result property="composerId" column="composer_id" />
+                    <result property="streamUrl" column="stream_url" />
+                    <result property="listenNum" column="listen_num" />
+                    <result property="shareNum" column="share_num" />
+                    <result property="commentNum" column="comment_num" />
+                    <result property="lyric" column="lyric" />
+                    <result property="modifyTime" column="modify_time" />
+                    <result property="createTime" column="create_time" />
+            </resultMap>
+    <!-- Select SQL -->
+    <sql id="songCatchInfo.selector">
+        SELECT id,name,breif,album,album_id,artist,artist_id,feat_artist,duration,lyricist,lyricist_id,composer,composer_id,stream_url,listen_num,share_num,comment_num,modify_time,create_time FROM song_catch_info
+    </sql>
+    <!--包含TEXT 等大数据-->
+    <sql id="songCatchInfo.selectorall">
+        SELECT id,name,breif,album,album_id,artist,artist_id,feat_artist,duration,lyricist,lyricist_id,composer,composer_id,stream_url,listen_num,share_num,comment_num,lyric,modify_time,create_time FROM song_catch_info
+    </sql>
+    <sql id="songCatchInfoList.where">
+		<dynamic prepend=" WHERE ">
+            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="breif" prepend=" AND ">breif=#breif#</isNotNull><isNotNull property="album" prepend=" AND ">album=#album#</isNotNull><isNotNull property="albumId" prepend=" AND ">album_id=#albumId#</isNotNull><isNotNull property="artist" prepend=" AND ">artist=#artist#</isNotNull><isNotNull property="artistId" prepend=" AND ">artist_id=#artistId#</isNotNull><isNotNull property="featArtist" prepend=" AND ">feat_artist=#featArtist#</isNotNull><isNotNull property="duration" prepend=" AND ">duration=#duration#</isNotNull><isNotNull property="lyricist" prepend=" AND ">lyricist=#lyricist#</isNotNull><isNotNull property="lyricistId" prepend=" AND ">lyricist_id=#lyricistId#</isNotNull><isNotNull property="composer" prepend=" AND ">composer=#composer#</isNotNull><isNotNull property="composerId" prepend=" AND ">composer_id=#composerId#</isNotNull><isNotNull property="streamUrl" prepend=" AND ">stream_url=#streamUrl#</isNotNull><isNotNull property="listenNum" prepend=" AND ">listen_num=#listenNum#</isNotNull><isNotNull property="shareNum" prepend=" AND ">share_num=#shareNum#</isNotNull><isNotNull property="commentNum" prepend=" AND ">comment_num=#commentNum#</isNotNull><isNotNull property="lyric" prepend=" AND ">lyric=#lyric#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull>        </dynamic>
+    </sql>
+    <sql id="songCatchInfoList.order">
+        <dynamic prepend=" ORDER BY ">
+            <isNotEmpty property="orderFields">
+                <iterate property="orderFields" conjunction="," open="" close="">$orderFields[].fieldName$ $orderFields[].order$</iterate>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+	<sql id="songCatchInfoList.limit">
+        <dynamic prepend=" LIMIT ">
+            <isGreaterThan  property="pageSize" compareValue="0">
+                #startRow#,#pageSize#
+            </isGreaterThan>
+        </dynamic>
+    </sql>
+            <select id="SongCatchInfo.getSongCatchInfo" resultMap="songCatchInfoall">
+            <include refid="songCatchInfo.selectorall" />
+            WHERE ${tbb.pkcol.colName}=#${tbb.pkcol.propertyName}#
+        </select>
+                <select id="SongCatchInfo.getSongCatchInfosByKeys" resultMap="songCatchInfo">
+            <include refid="songCatchInfo.selector" />
+            WHERE ${tbb.pkcol.colName} in
+            <iterate conjunction="," open="(" close=")" property="keys">#keys[]#</iterate>
+        </select>
+                <delete id="SongCatchInfo.deleteByKey">
+            DELETE FROM song_catch_info WHERE  = #key#
+        </delete>
+                <delete id="SongCatchInfo.deleteByKeys">
+            DELETE FROM song_catch_info
+            WHERE ${tbb.pkcol.colName} in
+            <iterate conjunction="," open="(" close=")" property="keys">
+                #keys[]#
+            </iterate>
+        </delete>
+                                <update id="SongCatchInfo.updateSongCatchInfosByKeys" parameterClass="SongCatchInfo">
+            UPDATE song_catch_info 
+            <dynamic prepend="SET">
+                                               <isNotNull prepend="," property="id">
+                        id = #id#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="name">
+                        name = #name#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="breif">
+                        breif = #breif#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="album">
+                        album = #album#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="albumId">
+                        album_id = #albumId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="artist">
+                        artist = #artist#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="artistId">
+                        artist_id = #artistId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="featArtist">
+                        feat_artist = #featArtist#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="duration">
+                        duration = #duration#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="lyricist">
+                        lyricist = #lyricist#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="lyricistId">
+                        lyricist_id = #lyricistId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="composer">
+                        composer = #composer#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="composerId">
+                        composer_id = #composerId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="streamUrl">
+                        stream_url = #streamUrl#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="listenNum">
+                        listen_num = #listenNum#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="shareNum">
+                        share_num = #shareNum#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="commentNum">
+                        comment_num = #commentNum#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="lyric">
+                        lyric = #lyric#
+                    </isNotNull>
+                                                                <isNull prepend="," property="modifyTime" >modify_time=UNIX_TIMESTAMP()</isNull>
+                    <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
+                                                                <isNotNull prepend="," property="createTime">
+                        create_time = #createTime#
+                    </isNotNull>
+                                        </dynamic>
+            WHERE ${tbb.pkcol.colName} in
+            <iterate conjunction="," open="(" close=")" property="keys">
+                #keys[]#
+            </iterate>
+        </update>
+        <update id="SongCatchInfo.updateSongCatchInfo" parameterClass="SongCatchInfo">
+            UPDATE song_catch_info 
+            <dynamic prepend="SET">
+                                               <isNotNull prepend="," property="id">
+                        id = #id#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="name">
+                        name = #name#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="breif">
+                        breif = #breif#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="album">
+                        album = #album#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="albumId">
+                        album_id = #albumId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="artist">
+                        artist = #artist#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="artistId">
+                        artist_id = #artistId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="featArtist">
+                        feat_artist = #featArtist#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="duration">
+                        duration = #duration#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="lyricist">
+                        lyricist = #lyricist#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="lyricistId">
+                        lyricist_id = #lyricistId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="composer">
+                        composer = #composer#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="composerId">
+                        composer_id = #composerId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="streamUrl">
+                        stream_url = #streamUrl#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="listenNum">
+                        listen_num = #listenNum#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="shareNum">
+                        share_num = #shareNum#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="commentNum">
+                        comment_num = #commentNum#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="lyric">
+                        lyric = #lyric#
+                    </isNotNull>
+                                                                <isNull prepend="," property="modifyTime" >modify_time=UNIX_TIMESTAMP()</isNull>
+                    <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
+                                                                <isNotNull prepend="," property="createTime">
+                        create_time = #createTime#
+                    </isNotNull>
+                                        </dynamic>
+            WHERE  = ##
+        </update>
+            <select id="SongCatchInfo.getSongCatchInfoListWithPage" parameterClass="SongCatchInfoQuery" resultMap="songCatchInfo">
+        <include refid="songCatchInfo.selector" />
+        <include refid="songCatchInfoList.where" />
+        <include refid="songCatchInfoList.order" />
+        <include refid="songCatchInfoList.limit" />
+    </select>
+    <select id="SongCatchInfo.getSongCatchInfoListCount" parameterClass="SongCatchInfoQuery" resultClass="int">
+        SELECT count(*) FROM song_catch_info
+        <include refid="songCatchInfoList.where" />
+    </select>
+        <select id="SongCatchInfo.getSongCatchInfoList" parameterClass="SongCatchInfoQuery" resultMap="songCatchInfo">
+        <include refid="songCatchInfo.selector" />
+        <include refid="songCatchInfoList.where" />
+        <include refid="songCatchInfoList.order" />
+		<include refid="songCatchInfoList.limit" />
+    </select>
+    <!--    <insert id="SongCatchInfo.insertSongCatchInfo" parameterClass="SongCatchInfo">
+    INSERT INTO song_catch_info(
+            id,
+                name,
+                breif,
+                album,
+                album_id,
+                artist,
+                artist_id,
+                feat_artist,
+                duration,
+                lyricist,
+                lyricist_id,
+                composer,
+                composer_id,
+                stream_url,
+                listen_num,
+                share_num,
+                comment_num,
+                lyric,
+                            create_time    ,modify_time)
+    VALUES(#id#,#name#,#breif#,#album#,#albumId#,#artist#,#artistId#,#featArtist#,#duration#,#lyricist#,#lyricistId#,#composer#,#composerId#,#streamUrl#,#listenNum#,#shareNum#,#commentNum#,#lyric#,    now(),now())
+    <selectKey resultClass="long" type="post" keyProperty="">
+    SELECT last_insert_id() AS 
+    </selectKey>
+    </insert>
+    -->
+        <insert id="SongCatchInfo.insertSongCatchInfo" parameterClass="SongCatchInfo">
+        INSERT INTO song_catch_info
+        <dynamic prepend="(" close=")">
+                                                <isNotEmpty prepend="," property="id">id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="name">name</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="breif">breif</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="album">album</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="albumId">album_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="artist">artist</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="artistId">artist_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="featArtist">feat_artist</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="duration">duration</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="lyricist">lyricist</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="lyricistId">lyricist_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="composer">composer</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="composerId">composer_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="streamUrl">stream_url</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="listenNum">listen_num</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="shareNum">share_num</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="commentNum">comment_num</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="lyric">lyric</isNotEmpty>
+                                                                ,modify_time
+                                                                ,create_time
+                                    </dynamic>
+        VALUES
+        <dynamic prepend="(" close=")">
+                                                                        <isNotEmpty  prepend="," property="id">#id#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="name">#name#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="breif">#breif#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="album">#album#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="albumId">#albumId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="artist">#artist#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="artistId">#artistId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="featArtist">#featArtist#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="duration">#duration#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="lyricist">#lyricist#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="lyricistId">#lyricistId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="composer">#composer#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="composerId">#composerId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="streamUrl">#streamUrl#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="listenNum">#listenNum#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="shareNum">#shareNum#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="commentNum">#commentNum#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="lyric">#lyric#</isNotEmpty>
+                                                                                    ,UNIX_TIMESTAMP()
+                                                                                    ,UNIX_TIMESTAMP()
+                                                        </dynamic>
+        <selectKey resultClass="int" type="post" keyProperty="">
+            SELECT last_insert_id() AS 
+        </selectKey>
+    </insert>
+</sqlMap>

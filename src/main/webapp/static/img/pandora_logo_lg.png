@@ -1,0 +1,162 @@
+<html>
+
+<head>
+
+<title>Find Music You'll Love - Pandora</title>
+
+<style>
+
+body {
+	margin: 0;
+	padding: 0;
+	background: url("/img/splash.jpg") no-repeat center -230px #091028;
+	font-size: 14px;
+	font-family: arial, 'Helvetica Neue', helvetica, sans-serif;
+	}
+
+#brandingBar {
+	position: relative;
+	width: 100%;
+	min-width: 820px;
+	height: 30px;
+	background: transparent url(/img/branding-bar-bg.jpg) repeat-x scroll;
+	z-index: 1003;
+	}
+
+#brandingBar .logo {
+	background: transparent url(/img/pandora-logo.png) no-repeat;
+	width: 108px;
+	height: 18px;
+	cursor: pointer;
+	float: left;
+	margin: 7px 0 0 7px;
+}
+
+#message {
+	position: absolute;
+	top: 120px;
+	width: 100%;
+}
+
+#message .outer_bg {
+	margin: 0 auto;
+	padding: 10px;
+	width: 543px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	border: 1px solid #3D557F;
+	background: url(/img/outer_bg.png);
+	-moz-box-shadow: 0 0 32px #383a3c;
+	-webkit-box-shadow: 0 0 32px #383a3c;
+	box-shadow: 0 0 60px #383a3c;
+}
+
+#message .content {
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	-khtml-border-radius: 4px 4px 4px 4px;
+	border-radius: 4px 4px 4px 4px;
+	border: 1px solid #242E3E;
+	background: url(/img/search_welcome_bg.png) no-repeat #CDD7E9;
+	background: -webkit-gradient(linear,left top,left bottom,from(#F0F3F8),color-stop(6%,#DFE6F0),color-stop(15%,#E6EAF3),color-stop(45%,#F1F2F7),color-stop(70%,#CBD4E5),to(#DBE0F4));
+	background: -moz-linear-gradient(top,#F0F3F8,#DFE6F0 6%,#E6EAF3 15%,#F1F2F7 45%,#CBD4E5 70%,#DBE0F4);
+	color: #3A4046;
+	padding: 30px;
+	/*text-align: center;*/
+}
+
+.message_text {
+	font-size: 18px;
+	/*line-height: 1.27;*/
+	font-weight: bold;
+	color: #0D2D52;
+}
+
+a {
+	color: #00499C;
+	text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+<div id="brandingBar">
+	<div class="logo" onclick="document.location='/';"></div>
+</div>
+<div id="message">
+	<div class="outer_bg">
+		<div class="content">
+			<p class="message_text">We couldn't find the page you were looking for, but we can find and play the music you love.</p>
+			<p>Get started here: <a href="/">Homepage</a> , <a href="/music/top-stations">Genre Browser</a></p>
+		</div>
+	</div>
+</div>
+
+	<script type="text/javascript">
+	<!--
+	// Account ID : 246941
+	// Website URL: http://www.pandora.com
+	// Copyright (C) 2002-2005 OneStat.com All Rights Reserved
+	function OneStat_Pageview()
+	{
+		var d=document;
+		var sid="246941";
+		var CONTENTSECTION="";
+		var osp_ACTION="";
+		var osp_TRANSACTION="";
+		var osp_AMOUNT="";
+		var osp_PRODUCTCODE="";
+		var osp_PRODUCTGROUP="";
+		var osp_ADCAMPAIGN="";
+		var osp_URL=d.URL;
+		var osp_Title=d.title;
+		var t=new Date();
+		var p="http"+(d.URL.indexOf('https:')==0?'s':'')+"://stat.onestat.com/stat.aspx?tagver=2&sid="+sid;
+		p+="&url="+escape(osp_URL);
+		p+="&ti="+escape(osp_Title);
+		p+="&section="+escape(CONTENTSECTION);
+		p+="&cma="+escape(osp_ACTION);
+		p+="&cmt="+escape(osp_TRANSACTION);
+		p+="&cmm="+escape(osp_AMOUNT);
+		p+="&cmp="+escape(osp_PRODUCTCODE);
+		p+="&cmg="+escape(osp_PRODUCTGROUP);
+		p+="&cmad="+escape(osp_ADCAMPAIGN);
+		p+="&rf="+escape(parent==self?document.referrer:top.document.referrer);
+		p+="&tz="+escape(t.getTimezoneOffset());
+		p+="&ch="+escape(t.getHours());
+		p+="&js=1";
+		p+="&ul="+escape(navigator.appName=="Netscape"?navigator.language:navigator.userLanguage);
+		if(osp_URL!=d.URL) p+="&ol="+escape(d.URL);
+		if(typeof(screen)=="object"){
+		   p+="&sr="+screen.width+"x"+screen.height;p+="&cd="+screen.colorDepth;
+		   p+="&jo="+(navigator.javaEnabled()?"Yes":"No");
+		}
+		d.write('<img id="ONESTAT_TAG" border="0" width="1" height="1" src="'+p+'" >');
+	}
+
+	OneStat_Pageview();
+	//-->
+	</script>
+	<noscript>
+	<a href="http://www.onestat.com"><img border="0" width="1" height="1" src="http://stat.onestat.com/stat.aspx?tagver=2&amp;sid=246941&amp;js=No&amp;" ALT="OneStat.com Web Analytics"></a>
+	</noscript>
+
+	<!-- START Nielsen//NetRatings SiteCensus V5.2 -->
+	<!-- COPYRIGHT 2005 Nielsen//NetRatings -->
+	<script type="text/javascript">
+		var _rsCI="us-pandora";
+		var _rsCG="0";
+		var _rsDN="//secure-us.imrworldwide.com/";
+	</script>
+	<script type="text/javascript" src="//secure-us.imrworldwide.com/v52.js"></script>
+	<noscript>
+		<img src="//secure-us.imrworldwide.com/cgi-bin/m?ci=us-pandora&amp;cg=0" alt="" width="1" height="1"/>
+	</noscript>
+	<!-- END Nielsen//NetRatings SiteCensus V5.2 -->
+
+</body>
+
+</html>

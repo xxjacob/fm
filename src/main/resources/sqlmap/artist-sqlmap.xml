@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Artist">
+    <!-- Alias Map Defined -->
+    <typeAlias alias="ArtistQuery" type="com.ideax.fm360.query.ArtistQuery" />
+    <typeAlias alias="Artist" type="com.ideax.fm360.pojo.Artist" />
+    <resultMap id="artist" class="Artist">
+                    <result property="id" column="id" />
+                                <result property="name" column="name" />
+                                <result property="region" column="region" />
+                                                    <result property="modifyTime" column="modify_time" />
+                                <result property="createTime" column="create_time" />
+                        </resultMap>
+    <resultMap id="artistall" class="Artist">
+                    <result property="id" column="id" />
+                    <result property="name" column="name" />
+                    <result property="region" column="region" />
+                    <result property="description" column="description" />
+                    <result property="modifyTime" column="modify_time" />
+                    <result property="createTime" column="create_time" />
+            </resultMap>
+    <!-- Select SQL -->
+    <sql id="artist.selector">
+        SELECT id,name,region,modify_time,create_time FROM artist
+    </sql>
+    <!--包含TEXT 等大数据-->
+    <sql id="artist.selectorall">
+        SELECT id,name,region,description,modify_time,create_time FROM artist
+    </sql>
+    <sql id="artistList.where">
+		<dynamic prepend=" WHERE ">
+            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="region" prepend=" AND ">region=#region#</isNotNull><isNotNull property="description" prepend=" AND ">description=#description#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull>        </dynamic>
+    </sql>
+    <sql id="artistList.order">
+        <dynamic prepend=" ORDER BY ">
+            <isNotEmpty property="orderFields">
+                <iterate property="orderFields" conjunction="," open="" close="">$orderFields[].fieldName$ $orderFields[].order$</iterate>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+	<sql id="artistList.limit">
+        <dynamic prepend=" LIMIT ">
+            <isGreaterThan  property="pageSize" compareValue="0">
+                #startRow#,#pageSize#
+            </isGreaterThan>
+        </dynamic>
+    </sql>
+            <select id="Artist.getArtist" resultMap="artistall">
+            <include refid="artist.selectorall" />
+            WHERE id=#id#
+        </select>
+                <select id="Artist.getArtistsByKeys" resultMap="artist">
+            <include refid="artist.selector" />
+            WHERE id in
+            <iterate conjunction="," open="(" close=")" property="keys">#keys[]#</iterate>
+        </select>
+                <delete id="Artist.deleteByKey">
+            DELETE FROM artist WHERE id = #key#
+        </delete>
+                <delete id="Artist.deleteByKeys">
+            DELETE FROM artist
+            WHERE id in
+            <iterate conjunction="," open="(" close=")" property="keys">
+                #keys[]#
+            </iterate>
+        </delete>
+                                <update id="Artist.updateArtistsByKeys" parameterClass="Artist">
+            UPDATE artist 
+            <dynamic prepend="SET">
+                                                                           <isNotNull prepend="," property="name">
+                        name = #name#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="region">
+                        region = #region#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="description">
+                        description = #description#
+                    </isNotNull>
+                                                                <isNull prepend="," property="modifyTime" >modify_time=UNIX_TIMESTAMP()</isNull>
+                    <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
+                                                                <isNotNull prepend="," property="createTime">
+                        create_time = #createTime#
+                    </isNotNull>
+                                        </dynamic>
+            WHERE id in
+            <iterate conjunction="," open="(" close=")" property="keys">
+                #keys[]#
+            </iterate>
+        </update>
+        <update id="Artist.updateArtist" parameterClass="Artist">
+            UPDATE artist 
+            <dynamic prepend="SET">
+                                                                           <isNotNull prepend="," property="name">
+                        name = #name#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="region">
+                        region = #region#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="description">
+                        description = #description#
+                    </isNotNull>
+                                                                <isNull prepend="," property="modifyTime" >modify_time=UNIX_TIMESTAMP()</isNull>
+                    <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
+                                                                <isNotNull prepend="," property="createTime">
+                        create_time = #createTime#
+                    </isNotNull>
+                                        </dynamic>
+            WHERE id = #id#
+        </update>
+            <select id="Artist.getArtistListWithPage" parameterClass="ArtistQuery" resultMap="artist">
+        <include refid="artist.selector" />
+        <include refid="artistList.where" />
+        <include refid="artistList.order" />
+        <include refid="artistList.limit" />
+    </select>
+    <select id="Artist.getArtistListCount" parameterClass="ArtistQuery" resultClass="int">
+        SELECT count(*) FROM artist
+        <include refid="artistList.where" />
+    </select>
+        <select id="Artist.getArtistList" parameterClass="ArtistQuery" resultMap="artist">
+        <include refid="artist.selector" />
+        <include refid="artistList.where" />
+        <include refid="artistList.order" />
+		<include refid="artistList.limit" />
+    </select>
+    <!--    <insert id="Artist.insertArtist" parameterClass="Artist">
+    INSERT INTO artist(
+                    name,
+                region,
+                description,
+                            create_time    ,modify_time)
+    VALUES(#name#,#region#,#description#,    now(),now())
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    SELECT last_insert_id() AS id
+    </selectKey>
+    </insert>
+    -->
+        <insert id="Artist.insertArtist" parameterClass="Artist">
+        INSERT INTO artist
+        <dynamic prepend="(" close=")">
+                                                                            <isNotEmpty prepend="," property="name">name</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="region">region</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="description">description</isNotEmpty>
+                                                                ,modify_time
+                                                                ,create_time
+                                    </dynamic>
+        VALUES
+        <dynamic prepend="(" close=")">
+                                                                                                    <isNotEmpty  prepend="," property="name">#name#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="region">#region#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="description">#description#</isNotEmpty>
+                                                                                    ,UNIX_TIMESTAMP()
+                                                                                    ,UNIX_TIMESTAMP()
+                                                        </dynamic>
+        <selectKey resultClass="int" type="post" keyProperty="id">
+            SELECT last_insert_id() AS id
+        </selectKey>
+    </insert>
+</sqlMap>

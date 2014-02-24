@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Album">
+    <!-- Alias Map Defined -->
+    <typeAlias alias="AlbumQuery" type="com.ideax.fm360.query.AlbumQuery" />
+    <typeAlias alias="Album" type="com.ideax.fm360.pojo.Album" />
+    <resultMap id="album" class="Album">
+                    <result property="aid" column="aid" />
+                                <result property="name" column="name" />
+                                <result property="artistId" column="artist_id" />
+                                <result property="breif" column="breif" />
+                                <result property="releaseTime" column="release_time" />
+                                <result property="coverImg" column="cover_img" />
+                                <result property="musics" column="musics" />
+                        </resultMap>
+    <resultMap id="albumall" class="Album">
+                    <result property="aid" column="aid" />
+                    <result property="name" column="name" />
+                    <result property="artistId" column="artist_id" />
+                    <result property="breif" column="breif" />
+                    <result property="releaseTime" column="release_time" />
+                    <result property="coverImg" column="cover_img" />
+                    <result property="musics" column="musics" />
+            </resultMap>
+    <!-- Select SQL -->
+    <sql id="album.selector">
+        SELECT aid,name,artist_id,breif,release_time,cover_img,musics FROM album
+    </sql>
+    <!--包含TEXT 等大数据-->
+    <sql id="album.selectorall">
+        SELECT aid,name,artist_id,breif,release_time,cover_img,musics FROM album
+    </sql>
+    <sql id="albumList.where">
+		<dynamic prepend=" WHERE ">
+            <isNotNull property="aid" prepend=" AND ">aid=#aid#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="artistId" prepend=" AND ">artist_id=#artistId#</isNotNull><isNotNull property="breif" prepend=" AND ">breif=#breif#</isNotNull><isNotNull property="releaseTime" prepend=" AND ">release_time=#releaseTime#</isNotNull><isNotNull property="coverImg" prepend=" AND ">cover_img=#coverImg#</isNotNull><isNotNull property="musics" prepend=" AND ">musics=#musics#</isNotNull>        </dynamic>
+    </sql>
+    <sql id="albumList.order">
+        <dynamic prepend=" ORDER BY ">
+            <isNotEmpty property="orderFields">
+                <iterate property="orderFields" conjunction="," open="" close="">$orderFields[].fieldName$ $orderFields[].order$</iterate>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+	<sql id="albumList.limit">
+        <dynamic prepend=" LIMIT ">
+            <isGreaterThan  property="pageSize" compareValue="0">
+                #startRow#,#pageSize#
+            </isGreaterThan>
+        </dynamic>
+    </sql>
+            <select id="Album.getAlbum" resultMap="albumall">
+            <include refid="album.selectorall" />
+            WHERE aid=#aid#
+        </select>
+                <select id="Album.getAlbumsByKeys" resultMap="album">
+            <include refid="album.selector" />
+            WHERE aid in
+            <iterate conjunction="," open="(" close=")" property="keys">#keys[]#</iterate>
+        </select>
+                <delete id="Album.deleteByKey">
+            DELETE FROM album WHERE aid = #key#
+        </delete>
+                <delete id="Album.deleteByKeys">
+            DELETE FROM album
+            WHERE aid in
+            <iterate conjunction="," open="(" close=")" property="keys">
+                #keys[]#
+            </iterate>
+        </delete>
+                                <update id="Album.updateAlbumsByKeys" parameterClass="Album">
+            UPDATE album 
+            <dynamic prepend="SET">
+                                                                           <isNotNull prepend="," property="name">
+                        name = #name#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="artistId">
+                        artist_id = #artistId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="breif">
+                        breif = #breif#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="releaseTime">
+                        release_time = #releaseTime#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="coverImg">
+                        cover_img = #coverImg#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="musics">
+                        musics = #musics#
+                    </isNotNull>
+                                        </dynamic>
+            WHERE aid in
+            <iterate conjunction="," open="(" close=")" property="keys">
+                #keys[]#
+            </iterate>
+        </update>
+        <update id="Album.updateAlbum" parameterClass="Album">
+            UPDATE album 
+            <dynamic prepend="SET">
+                                                                           <isNotNull prepend="," property="name">
+                        name = #name#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="artistId">
+                        artist_id = #artistId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="breif">
+                        breif = #breif#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="releaseTime">
+                        release_time = #releaseTime#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="coverImg">
+                        cover_img = #coverImg#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="musics">
+                        musics = #musics#
+                    </isNotNull>
+                                        </dynamic>
+            WHERE aid = #aid#
+        </update>
+            <select id="Album.getAlbumListWithPage" parameterClass="AlbumQuery" resultMap="album">
+        <include refid="album.selector" />
+        <include refid="albumList.where" />
+        <include refid="albumList.order" />
+        <include refid="albumList.limit" />
+    </select>
+    <select id="Album.getAlbumListCount" parameterClass="AlbumQuery" resultClass="int">
+        SELECT count(*) FROM album
+        <include refid="albumList.where" />
+    </select>
+        <select id="Album.getAlbumList" parameterClass="AlbumQuery" resultMap="album">
+        <include refid="album.selector" />
+        <include refid="albumList.where" />
+        <include refid="albumList.order" />
+		<include refid="albumList.limit" />
+    </select>
+    <!--    <insert id="Album.insertAlbum" parameterClass="Album">
+    INSERT INTO album(
+                    name,
+                artist_id,
+                breif,
+                release_time,
+                cover_img,
+                musics,
+                )
+    VALUES(#name#,#artistId#,#breif#,#releaseTime#,#coverImg#,#musics#,    )
+    <selectKey resultClass="long" type="post" keyProperty="aid">
+    SELECT last_insert_id() AS aid
+    </selectKey>
+    </insert>
+    -->
+        <insert id="Album.insertAlbum" parameterClass="Album">
+        INSERT INTO album
+        <dynamic prepend="(" close=")">
+                                                                            <isNotEmpty prepend="," property="name">name</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="artistId">artist_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="breif">breif</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="releaseTime">release_time</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="coverImg">cover_img</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="musics">musics</isNotEmpty>
+                                    </dynamic>
+        VALUES
+        <dynamic prepend="(" close=")">
+                                                                                                    <isNotEmpty  prepend="," property="name">#name#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="artistId">#artistId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="breif">#breif#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="releaseTime">#releaseTime#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="coverImg">#coverImg#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="musics">#musics#</isNotEmpty>
+                                                        </dynamic>
+        <selectKey resultClass="int" type="post" keyProperty="aid">
+            SELECT last_insert_id() AS aid
+        </selectKey>
+    </insert>
+</sqlMap>

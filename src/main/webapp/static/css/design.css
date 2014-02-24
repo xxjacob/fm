@@ -1,0 +1,61 @@
+/* ------------------------------------------------------------
+ *	Background
+ ------------------------------------------------------------ */
+
+body {
+	background-color: #0b0f23;
+}
+
+#mainContainer {
+	background-image:url(/s/img/index_bg/skin_background.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-attachment: scroll;
+	height: 1200px;
+}
+
+/* ------------------------------------------------------------
+ *	Footer
+ ------------------------------------------------------------ */	
+
+#footer {
+	margin: 38px auto;
+}
+
+#footer a {
+	color: #7f89a3;
+	text-decoration: none;
+}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+#footer .legal {
+	color: #606b86;
+}
+
+/* ------------------------------------------------------------
+ *	Advertising
+ ------------------------------------------------------------ */
+
+.advertisement_square {
+	top: 0;
+	left: 0;
+ 	width: 300px !important;
+  	height: 250px !important;
+}
+
+.advertisement_tall {
+	top: 0;
+	left: 0;
+ 	width: 160px !important;
+  	height: 600px !important;
+}
+
+.advertisement_double_wide {
+	top: 0;
+	left: 0;
+ 	width: 300px !important;
+  	height: 600px !important;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+    
+<sqlMapConfig>
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" maxRequests="512"
+		maxSessions="128" maxTransactions="32" useStatementNamespaces="true"
+		defaultStatementTimeout="30" statementCachingEnabled="true"
+		classInfoCacheEnabled="true" />
+
+	<sqlMap resource="sqlmap/album-sqlmap.xml" />
+	<sqlMap resource="sqlmap/artist-sqlmap.xml" />
+	<sqlMap resource="sqlmap/song-sqlmap.xml" />
+</sqlMapConfig>

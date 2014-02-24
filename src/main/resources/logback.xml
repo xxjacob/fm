@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<substitutionProperty name="log.base" value="${log.base}" />
+	<appender name="DEBUGOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="sysAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}/all.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}/history/all.log.%d{yyyyMMdd}
+			</FileNamePattern>
+			<maxHistory>365</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org">
+		<level value="INFO" />
+		<appender-ref ref="sysAppender" />
+		<appender-ref ref="DEBUGOUT" />
+	</logger>
+	<logger name="com">
+		<level value="INFO" />
+		<appender-ref ref="sysAppender" />
+		<appender-ref ref="DEBUGOUT" />
+	</logger>
+	<logger name="com.ideax" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="sysAppender" />
+		<appender-ref ref="DEBUGOUT" />
+	</logger>
+	<logger name="com.ibatis" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="DEBUGOUT" />
+    </logger>
+	<logger name="java">
+		<level value="DEBUGOUT" />
+		<appender-ref ref="DEBUGOUT" />
+	</logger>
+
+</configuration>
