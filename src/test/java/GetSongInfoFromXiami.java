@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -45,9 +46,15 @@ public class GetSongInfoFromXiami {
 
     }
 
-    public static void catchDetailInfoFromXiami(SongXiami song) throws Exception {
+    public static void catchDetailInfoFromXiami(SongXiami song) {
         String searchkey = song.getName().replace(" ", "+") + "+" + song.getArtist().replace(" ", "+");
-        Document doc = Jsoup.connect("http://www.xiami.com/search?key=" + searchkey).get();
+        Document doc;
+        try {
+            doc = Jsoup.connect("http://www.xiami.com/search?key=" + searchkey).get();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+            return;
+        }
         System.out.println(searchkey);
         Elements newsHeadlines = doc.select(".track_list tbody");
         if (newsHeadlines.size() <= 0) {
@@ -76,13 +83,24 @@ public class GetSongInfoFromXiami {
         song.setXiamiAlbum(albumName);
         song.setXiamiAlbumLink(albumLink);
 
-        // Document albumDoc = Jsoup.connect(albumLink).get();
-        // Elements els = albumDoc.select(".cdCover185");
-        // if (els.size() <= 0) {
-        // System.out.println("no album info");
-        // }
-        // Element img = els.get(0);
-        // System.out.println(img.attr("href"));
+        // 专辑图片
+        Document albumDoc;
+        try {
+            albumDoc = Jsoup.connect(albumLink).get();
+            Elements coverels = albumDoc.select(".cdCDcover185");
+            if (coverels.size() > 0) {
+                Element img = coverels.get(0);
+                String src = img.attr("src");
+                if (StringUtils.isNotBlank(src))
+                    song.setCoverImg(src);
+            }
+            Elements albuminfo = albumDoc.select("#albums_info");
+            albuminfo.select("div");
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void getMp3Info(String path, SongXiami song) {
@@ -93,7 +111,7 @@ public class GetSongInfoFromXiami {
             song.setBitrate(mp3file.getBitrate());
             song.setIsvbr(mp3file.isVbr() ? (byte) 1 : (byte) 0);
             song.setDuration((int) (mp3file.getLengthInSeconds()));
-            
+
             if (mp3file.hasId3v1Tag()) {
                 ID3v1 id3v1Tag = mp3file.getId3v1Tag();
                 // System.out.println("Track: " + id3v1Tag.getTrack());
