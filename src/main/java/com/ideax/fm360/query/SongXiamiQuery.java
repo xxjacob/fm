@@ -563,6 +563,63 @@ public class SongXiamiQuery extends BaseQuery {
     	this.albumArtist = albumArtist;
     	return this;
     }
+	/** file_name **/
+    private String fileName;
+	/**
+    * 获取属性:fileName
+    * file_name
+    * @return fileName
+    */
+	public String getFileName () {
+    	return fileName;
+   	}
+   	/**
+     * 设置属性:fileName
+     * file_name
+     * @param fileName
+     */
+    public SongXiamiQuery setFileName(String fileName) {
+    	this.fileName = fileName;
+    	return this;
+    }
+	/** pcs_file_name **/
+    private String pcsFileName;
+	/**
+    * 获取属性:pcsFileName
+    * pcs_file_name
+    * @return pcsFileName
+    */
+	public String getPcsFileName () {
+    	return pcsFileName;
+   	}
+   	/**
+     * 设置属性:pcsFileName
+     * pcs_file_name
+     * @param pcsFileName
+     */
+    public SongXiamiQuery setPcsFileName(String pcsFileName) {
+    	this.pcsFileName = pcsFileName;
+    	return this;
+    }
+	/** file_path **/
+    private String filePath;
+	/**
+    * 获取属性:filePath
+    * file_path
+    * @return filePath
+    */
+	public String getFilePath () {
+    	return filePath;
+   	}
+   	/**
+     * 设置属性:filePath
+     * file_path
+     * @param filePath
+     */
+    public SongXiamiQuery setFilePath(String filePath) {
+    	this.filePath = filePath;
+    	return this;
+    }
 	/**==============================批量查询时的Order条件顺序设置==================================**/
 	public class OrderField{
 		public OrderField(String fieldName, String order) {
@@ -821,6 +878,30 @@ public class SongXiamiQuery extends BaseQuery {
 	 */	
 	public SongXiamiQuery orderbyAlbumArtist(boolean isAsc){
 		orderFields.add(new OrderField("album_artist",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：file_name
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongXiamiQuery orderbyFileName(boolean isAsc){
+		orderFields.add(new OrderField("file_name",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：pcs_file_name
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongXiamiQuery orderbyPcsFileName(boolean isAsc){
+		orderFields.add(new OrderField("pcs_file_name",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：file_path
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongXiamiQuery orderbyFilePath(boolean isAsc){
+		orderFields.add(new OrderField("file_path",isAsc?"ASC":"DESC"));
 		return this;
 	}
 }

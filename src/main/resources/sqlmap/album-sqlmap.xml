@@ -136,6 +136,13 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <include refid="albumList.order" />
 		<include refid="albumList.limit" />
     </select>
+	
+	    <select id="Album.getAlbumListWithText" parameterClass="AlbumQuery" resultMap="albumall">
+        <include refid="album.selectorall" />
+        <include refid="albumList.where" />
+        <include refid="albumList.order" />
+		<include refid="albumList.limit" />
+    </select>
     <!--    <insert id="Album.insertAlbum" parameterClass="Album">
     INSERT INTO album(
                     name,

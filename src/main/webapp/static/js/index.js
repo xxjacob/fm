@@ -1,13 +1,19 @@
 var construct = function() {
-	// 常量
+	// ------------------------常量------------------------
 	var pauseButton = $('.pauseButton');
 	var playButton = $('.playButton');
 	var skipButton = $('.skipButton');
 	var volumeButton = $('.volumeButton');
 	var volumeBg = $('.volumeBackground')
 	var dragVolume = $('.volumeKnob');
+	var thumbUpButton = $('.thumbUpButton');
+	var thumbDownButton = $('.thumbDownButton');
 	var progressMaxWidth = 232;
-	// private 变量
+	// ------------------------private 变量------------------------
+	// user
+	var user = null;
+	var playLists = [];
+	var selectedListId = {};
 	var current = null;
 	var status = 0; // 0 停止 1 播放 2暂停
 	var history = [];
@@ -48,26 +54,34 @@ var construct = function() {
 		}
 	}();
 
-	// private function
+	/*
+	 * ---------------------------------------------------------------------
+	 * ------------------------- private function -------------------------
+	 * ---------------------------------------------------------------------
+	 */
 	var loadBarMusicInfo = function(info) {
-		$('.playerBarArt').attr('src', info.album.coverImg);
-		$('.playerBarSong').html(info.song.name);
-		$('.playerBarArtist').html(info.song.artist);
-		$('.playerBarAlbum').html(info.song.album);
+		var coverImg = info.song.coverImg || "/s/img/no_album_art.jpg";
+		var songName = info.song.name || 'Unknown';
+		var artist = info.song.artist || 'Unknown';
+		var album = info.song.album || 'Unknown';
+		$('.playerBarArt').attr('src', coverImg);
+		$('.playerBarSong').html(songName);
+		$('.playerBarArtist').html(artist);
+		$('.playerBarAlbum').html(album);
 
-		$('.songTitle').html(info.song.name);
-		$('.artistSummary').html(info.song.artist);
-		$('.albumTitle').html(info.song.album);
+		$('.songTitle').html(songName);
+		$('.artistSummary').html(artist);
+		$('.albumTitle').html(album);
 
-		$('.artistBio > .heading').html('About ' + info.song.artist);
+		$('.artistBio > .heading').html('About ' + artist);
 
 		// push slide
 		var slideC = $('#stationSlides1844608319562125962');
 		var currentSlide = $('#stationSlides1844608319562125962 .slide:first-child');
-		if (info.album.coverImg) {
-			currentSlide.find('.art').attr('src', info.album.coverImg).show();
-			currentSlide.find('.noart').hide();
-		}
+
+		currentSlide.find('.art').attr('src', coverImg).show();
+		currentSlide.find('.noart').hide();
+
 		currentSlide.find('.current').fadeIn();
 		currentSlide.find('.previous').fadeOut();
 		var prevSlide = currentSlide.next();
@@ -98,20 +112,26 @@ var construct = function() {
 		}, 1000);
 
 		// add lyc
-		$('.lyricsText').html(info.song.lyric);
+		$('.lyricsText').html(info.song.lyric || "暂无歌词");
 
-		// push left history
-		var historyHtml = [
-				'<div class="stationListItem">',
-				'<ul class="stationName">',
-				'<li class="shuffleStationLabel shuffleStationLabelCurrent">',
-				'<div class="stationNameText" title="' + info.song.artist
-						+ '">' + info.song.name + '</div></li>', '</ul>',
-				'</div>' ];
-		$('#stationList li:first-child').removeClass(
-				"shuffleStationLabelCurrent");
-		$('#stationList').prepend(historyHtml.join(''));
-
+		// init thumb class
+		loadThumbInfo(info.thumb);
+	}
+	
+	/**
+	 * 加载专辑info
+	 */
+	var loadThumbInfo = function(thumb) {
+		if (thumb == 0) {
+			thumbUpButton.removeClass('indicator');
+			thumbDownButton.removeClass('indicator');
+		} else if (thumb == 1) {
+			thumbUpButton.addClass('indicator');
+			thumbDownButton.removeClass('indicator');
+		} else if (thumb == 2) {
+			thumbUpButton.removeClass('indicator');
+			thumbDownButton.addClass('indicator');
+		}
 	}
 
 	var resetProperties = function() {
@@ -126,11 +146,20 @@ var construct = function() {
 			// resetPlay();
 			status = 0;
 		}
+		var arr = [];
+		for ( var i in selectedListId) {
+			if (selectedListId[i])
+				arr.push(i);
+		}
 		$.ajax({
 			async : false,
-			url : "/fm/predict?r=" + new Date().getTime(),
+			url : "/fm/predict",
+			data : {
+				plid : arr,
+				r : new Date().getTime()
+			},
 			success : function(json, statusCode) {
-				if (json.err_no == 1) {
+				if (json.err_no == 0) {
 					var sound = soundManager.createSound({
 						id : json.song.id,
 						url : json.song.streamUrl,
@@ -138,9 +167,19 @@ var construct = function() {
 					json.sound = sound;
 					resetProperties();
 					loadBarMusicInfo(json);// 加载音乐信息，lrc等
-					progressBar.reset();// 进度条重置
+					// 分享内容更新
+					window._bd_share_config.common.bdText = "我正在360.fm听《"
+							+ json.song.name + "》";
+					window._bd_share_config.common.bdDesc = "猛击到在360fm听《"
+							+ json.song.name + "》";
+					window._bd_share_config.common.bdUrl = "";
+					window._bd_share_config.common.bdPic = json.song.coverImg
+							|| "";
+					// 进度条重置
+					progressBar.reset();
 					progressBar.setDuration(json.song.duration);
 					progressBar.start(json.song.duration);
+
 					history.push(json);
 					current = json;
 					sound.play({
@@ -154,12 +193,15 @@ var construct = function() {
 				}
 			},
 			error : function() {
-				alert("net work error!");
+				nextSong();
 			},
 			dataType : "json"
 		})
 	}
 
+	/**
+	 * 各种按钮功能初始化
+	 */
 	var initBtnAction = function() {
 		// init play/pause button
 		pauseButton.click(function() {
@@ -226,6 +268,122 @@ var construct = function() {
 			}
 		}();
 		volumeControl.init();
+
+		// init thumbup down
+		var thumbBtnAction = function(thumb) {
+			if (thumb != 1 && thumb != 2) {
+				return;
+			}
+			if (current) {
+				if (current.thumb != thumb) {
+					$.ajax({
+						async : false,
+						url : "/fm/thumb" + (thumb == 1 ? 'up' : 'down')
+								+ "?sid=" + current.song.id + "&r="
+								+ new Date().getTime(),
+						success : function(json, statusCode) {
+							if (json.err_no == 0) {
+								loadThumbInfo(thumb);
+								current.thumb = thumb;
+							} else {
+								alert("internal server error!");
+							}
+						},
+						error : function() {
+							alert("internal server error!");
+						},
+						complete : function() {
+							console.log(current);
+						},
+						dataType : "json"
+					})
+				}
+			}
+		}
+		thumbUpButton.click(function() {
+			if (!user)
+				return false;
+			thumbUpButton.off();
+			thumbBtnAction(1)
+			thumbUpButton.on("click", function() {
+				thumbBtnAction(1)
+			});
+		});
+		thumbDownButton.click(function() {
+			if (!user)
+				return false;
+			thumbDownButton.off();
+			thumbBtnAction(2)
+			thumbDownButton.on("click", function() {
+				thumbBtnAction(2)
+			});
+		});
+	}
+	/**
+	 * playlist 加载
+	 */
+	var showPlayList = function(playLists) {
+		if (!playLists)
+			return;
+		for ( var i in playLists) {
+			var checked = '';
+			if (playLists[i].type != 3) {
+				checked = 'checked';
+				selectedListId[playLists[i].id] = true;
+			}
+			var plHtmlArr = [
+					'<div class="stationListItem">',
+					'<ul class="stationName">',
+					'<li class="shuffleStationLabel"><span data-plid="'
+							+ playLists[i].id + '" class="checkbox ' + checked
+							+ '"></span>',
+					'<input checked="checked" value="'
+							+ playLists[i].id
+							+ '" class="shuffleStation styled" type="checkbox">',
+					'<div class="stationNameText " title="' + playLists[i].name
+							+ '">' + playLists[i].name + '</div></li>',
+					'</ul>', '</div>' ];
+			$('#stationList').append(plHtmlArr.join(''));
+		}
+		$('#stationList span').click(function() {
+			if ($(this).hasClass('checked')) {
+				$(this).removeClass('checked');
+				var plid = $(this).attr('data-plid');
+				selectedListId[plid] = false;
+			} else {
+				$(this).addClass('checked');
+				var plid = $(this).attr('data-plid');
+				selectedListId[plid] = true;
+			}
+		})
+	}
+
+	/**
+	 * 是否登陆，并获取用户信息
+	 */
+	var checkLogin = function() {
+		$.ajax({
+			async : false,
+			url : "/fm/my?r=" + new Date().getTime(),
+			success : function(json, statusCode) {
+				if (json.err_no == 0) {
+					if (json.login == true) {
+						user = json.user;
+						$('.userName').html(user.email);
+						playLists = json.playLists;
+						showPlayList(playLists);
+					}
+				} else {
+					alert("internal server error!");
+				}
+			},
+			error : function() {
+				alert("internal server error!");
+			},
+			complete : function() {
+			},
+			dataType : "json"
+		})
 	}
 
 	return {
@@ -233,7 +391,9 @@ var construct = function() {
 			nextSong()
 		},
 		init : function() {
-			// init setup SM2
+			// check login status
+			checkLogin();
+			// init setup SM2 and player action
 			soundManager.setup({
 				url : '/s/swf/',
 				onready : function() {

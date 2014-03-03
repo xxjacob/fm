@@ -70,6 +70,12 @@ public class SongXiami implements Serializable{
     private Integer bitrate;
 	/** album_artist **/
     private String albumArtist;
+	/** file_name **/
+    private String fileName;
+	/** pcs_file_name **/
+    private String pcsFileName;
+	/** file_path **/
+    private String filePath;
 
 	
    /**
@@ -563,6 +569,57 @@ public class SongXiami implements Serializable{
     */
    public void setAlbumArtist(String albumArtist) {
        this.albumArtist = albumArtist;
+   }
+	
+   /**
+    * 获取属性:fileName
+    * file_name
+    * @return fileName
+    */
+   public String getFileName() {
+       return fileName;
+   }
+   /**
+    * 设置属性:fileName
+    * file_name
+    * @param fileName
+    */
+   public void setFileName(String fileName) {
+       this.fileName = fileName;
+   }
+	
+   /**
+    * 获取属性:pcsFileName
+    * pcs_file_name
+    * @return pcsFileName
+    */
+   public String getPcsFileName() {
+       return pcsFileName;
+   }
+   /**
+    * 设置属性:pcsFileName
+    * pcs_file_name
+    * @param pcsFileName
+    */
+   public void setPcsFileName(String pcsFileName) {
+       this.pcsFileName = pcsFileName;
+   }
+	
+   /**
+    * 获取属性:filePath
+    * file_path
+    * @return filePath
+    */
+   public String getFilePath() {
+       return filePath;
+   }
+   /**
+    * 设置属性:filePath
+    * file_path
+    * @param filePath
+    */
+   public void setFilePath(String filePath) {
+       this.filePath = filePath;
    }
 
 	/**

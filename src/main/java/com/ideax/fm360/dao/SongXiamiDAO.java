@@ -89,5 +89,10 @@ public class SongXiamiDAO {
     public List<SongXiami> getSongXiamiList(SongXiamiQuery songXiamiQuery) throws SQLException{
 		return (List<SongXiami>)this.sqlMapClientTemplate.queryForList("SongXiami.getSongXiamiList", songXiamiQuery);
 	}
+	
+	@SuppressWarnings("unchecked")
+    public List<SongXiami> getSongXiamiListWithText(SongXiamiQuery songXiamiQuery) throws SQLException{
+		return (List<SongXiami>)this.sqlMapClientTemplate.queryForList("SongXiami.getSongXiamiListWithText", songXiamiQuery);
+	}
 
 }

@@ -89,5 +89,10 @@ public class AlbumDAO {
     public List<Album> getAlbumList(AlbumQuery albumQuery) throws SQLException{
 		return (List<Album>)this.sqlMapClientTemplate.queryForList("Album.getAlbumList", albumQuery);
 	}
+	
+	@SuppressWarnings("unchecked")
+    public List<Album> getAlbumListWithText(AlbumQuery albumQuery) throws SQLException{
+		return (List<Album>)this.sqlMapClientTemplate.queryForList("Album.getAlbumListWithText", albumQuery);
+	}
 
 }

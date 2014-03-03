@@ -316,23 +316,42 @@ public class SongQuery extends BaseQuery {
     	this.shareNum = shareNum;
     	return this;
     }
-	/** comment_num **/
-    private Integer commentNum;
+	/** 点赞 **/
+    private Integer thumbNum;
 	/**
-    * 获取属性:commentNum
-    * comment_num
-    * @return commentNum
+    * 获取属性:thumbNum
+    * 点赞
+    * @return thumbNum
     */
-	public Integer getCommentNum () {
-    	return commentNum;
+	public Integer getThumbNum () {
+    	return thumbNum;
    	}
    	/**
-     * 设置属性:commentNum
-     * comment_num
-     * @param commentNum
+     * 设置属性:thumbNum
+     * 点赞
+     * @param thumbNum
      */
-    public SongQuery setCommentNum(Integer commentNum) {
-    	this.commentNum = commentNum;
+    public SongQuery setThumbNum(Integer thumbNum) {
+    	this.thumbNum = thumbNum;
+    	return this;
+    }
+	/** 点踩 **/
+    private Integer buryNum;
+	/**
+    * 获取属性:buryNum
+    * 点踩
+    * @return buryNum
+    */
+	public Integer getBuryNum () {
+    	return buryNum;
+   	}
+   	/**
+     * 设置属性:buryNum
+     * 点踩
+     * @param buryNum
+     */
+    public SongQuery setBuryNum(Integer buryNum) {
+    	this.buryNum = buryNum;
     	return this;
     }
 	/** lyric **/
@@ -390,6 +409,63 @@ public class SongQuery extends BaseQuery {
      */
     public SongQuery setCreateTime(Integer createTime) {
     	this.createTime = createTime;
+    	return this;
+    }
+	/** pcs_filename **/
+    private String pcsFilename;
+	/**
+    * 获取属性:pcsFilename
+    * pcs_filename
+    * @return pcsFilename
+    */
+	public String getPcsFilename () {
+    	return pcsFilename;
+   	}
+   	/**
+     * 设置属性:pcsFilename
+     * pcs_filename
+     * @param pcsFilename
+     */
+    public SongQuery setPcsFilename(String pcsFilename) {
+    	this.pcsFilename = pcsFilename;
+    	return this;
+    }
+	/** sx_id **/
+    private Integer sxId;
+	/**
+    * 获取属性:sxId
+    * sx_id
+    * @return sxId
+    */
+	public Integer getSxId () {
+    	return sxId;
+   	}
+   	/**
+     * 设置属性:sxId
+     * sx_id
+     * @param sxId
+     */
+    public SongQuery setSxId(Integer sxId) {
+    	this.sxId = sxId;
+    	return this;
+    }
+	/** cover_img **/
+    private String coverImg;
+	/**
+    * 获取属性:coverImg
+    * cover_img
+    * @return coverImg
+    */
+	public String getCoverImg () {
+    	return coverImg;
+   	}
+   	/**
+     * 设置属性:coverImg
+     * cover_img
+     * @param coverImg
+     */
+    public SongQuery setCoverImg(String coverImg) {
+    	this.coverImg = coverImg;
     	return this;
     }
 	/**==============================批量查询时的Order条件顺序设置==================================**/
@@ -549,11 +625,19 @@ public class SongQuery extends BaseQuery {
 		return this;
 	}
 	/**
-	 * 设置排序按属性：comment_num
+	 * 设置排序按属性：点赞
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public SongQuery orderbyCommentNum(boolean isAsc){
-		orderFields.add(new OrderField("comment_num",isAsc?"ASC":"DESC"));
+	public SongQuery orderbyThumbNum(boolean isAsc){
+		orderFields.add(new OrderField("thumb_num",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：点踩
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongQuery orderbyBuryNum(boolean isAsc){
+		orderFields.add(new OrderField("bury_num",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**
@@ -578,6 +662,30 @@ public class SongQuery extends BaseQuery {
 	 */	
 	public SongQuery orderbyCreateTime(boolean isAsc){
 		orderFields.add(new OrderField("create_time",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：pcs_filename
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongQuery orderbyPcsFilename(boolean isAsc){
+		orderFields.add(new OrderField("pcs_filename",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：sx_id
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongQuery orderbySxId(boolean isAsc){
+		orderFields.add(new OrderField("sx_id",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：cover_img
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongQuery orderbyCoverImg(boolean isAsc){
+		orderFields.add(new OrderField("cover_img",isAsc?"ASC":"DESC"));
 		return this;
 	}
 }

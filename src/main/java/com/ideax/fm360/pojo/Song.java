@@ -44,14 +44,22 @@ public class Song implements Serializable{
     private Integer listenNum;
 	/** share_num **/
     private Integer shareNum;
-	/** comment_num **/
-    private Integer commentNum;
+	/** 点赞 **/
+    private Integer thumbNum;
+	/** 点踩 **/
+    private Integer buryNum;
 	/** lyric **/
     private String lyric;
 	/** modify_time **/
     private Integer modifyTime;
 	/** create_time **/
     private Integer createTime;
+	/** pcs_filename **/
+    private String pcsFilename;
+	/** sx_id **/
+    private Integer sxId;
+	/** cover_img **/
+    private String coverImg;
 
 	
    /**
@@ -327,20 +335,37 @@ public class Song implements Serializable{
    }
 	
    /**
-    * 获取属性:commentNum
-    * comment_num
-    * @return commentNum
+    * 获取属性:thumbNum
+    * 点赞
+    * @return thumbNum
     */
-   public Integer getCommentNum() {
-       return commentNum;
+   public Integer getThumbNum() {
+       return thumbNum;
    }
    /**
-    * 设置属性:commentNum
-    * comment_num
-    * @param commentNum
+    * 设置属性:thumbNum
+    * 点赞
+    * @param thumbNum
     */
-   public void setCommentNum(Integer commentNum) {
-       this.commentNum = commentNum;
+   public void setThumbNum(Integer thumbNum) {
+       this.thumbNum = thumbNum;
+   }
+	
+   /**
+    * 获取属性:buryNum
+    * 点踩
+    * @return buryNum
+    */
+   public Integer getBuryNum() {
+       return buryNum;
+   }
+   /**
+    * 设置属性:buryNum
+    * 点踩
+    * @param buryNum
+    */
+   public void setBuryNum(Integer buryNum) {
+       this.buryNum = buryNum;
    }
 	
    /**
@@ -392,6 +417,57 @@ public class Song implements Serializable{
     */
    public void setCreateTime(Integer createTime) {
        this.createTime = createTime;
+   }
+	
+   /**
+    * 获取属性:pcsFilename
+    * pcs_filename
+    * @return pcsFilename
+    */
+   public String getPcsFilename() {
+       return pcsFilename;
+   }
+   /**
+    * 设置属性:pcsFilename
+    * pcs_filename
+    * @param pcsFilename
+    */
+   public void setPcsFilename(String pcsFilename) {
+       this.pcsFilename = pcsFilename;
+   }
+	
+   /**
+    * 获取属性:sxId
+    * sx_id
+    * @return sxId
+    */
+   public Integer getSxId() {
+       return sxId;
+   }
+   /**
+    * 设置属性:sxId
+    * sx_id
+    * @param sxId
+    */
+   public void setSxId(Integer sxId) {
+       this.sxId = sxId;
+   }
+	
+   /**
+    * 获取属性:coverImg
+    * cover_img
+    * @return coverImg
+    */
+   public String getCoverImg() {
+       return coverImg;
+   }
+   /**
+    * 设置属性:coverImg
+    * cover_img
+    * @param coverImg
+    */
+   public void setCoverImg(String coverImg) {
+       this.coverImg = coverImg;
    }
 
 	/**

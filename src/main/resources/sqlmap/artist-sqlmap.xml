@@ -125,6 +125,13 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <include refid="artistList.order" />
 		<include refid="artistList.limit" />
     </select>
+	
+	    <select id="Artist.getArtistListWithText" parameterClass="ArtistQuery" resultMap="artistall">
+        <include refid="artist.selectorall" />
+        <include refid="artistList.where" />
+        <include refid="artistList.order" />
+		<include refid="artistList.limit" />
+    </select>
     <!--    <insert id="Artist.insertArtist" parameterClass="Artist">
     INSERT INTO artist(
                     name,

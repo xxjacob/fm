@@ -23,9 +23,13 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                 <result property="streamUrl" column="stream_url" />
                                 <result property="listenNum" column="listen_num" />
                                 <result property="shareNum" column="share_num" />
-                                <result property="commentNum" column="comment_num" />
+                                <result property="thumbNum" column="thumb_num" />
+                                <result property="buryNum" column="bury_num" />
                                                     <result property="modifyTime" column="modify_time" />
                                 <result property="createTime" column="create_time" />
+                                <result property="pcsFilename" column="pcs_filename" />
+                                <result property="sxId" column="sx_id" />
+                                <result property="coverImg" column="cover_img" />
                         </resultMap>
     <resultMap id="songall" class="Song">
                     <result property="id" column="id" />
@@ -44,22 +48,26 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     <result property="streamUrl" column="stream_url" />
                     <result property="listenNum" column="listen_num" />
                     <result property="shareNum" column="share_num" />
-                    <result property="commentNum" column="comment_num" />
+                    <result property="thumbNum" column="thumb_num" />
+                    <result property="buryNum" column="bury_num" />
                     <result property="lyric" column="lyric" />
                     <result property="modifyTime" column="modify_time" />
                     <result property="createTime" column="create_time" />
+                    <result property="pcsFilename" column="pcs_filename" />
+                    <result property="sxId" column="sx_id" />
+                    <result property="coverImg" column="cover_img" />
             </resultMap>
     <!-- Select SQL -->
     <sql id="song.selector">
-        SELECT id,name,breif,album,album_id,artist,artist_id,feat_artist,duration,lyricist,lyricist_id,composer,composer_id,stream_url,listen_num,share_num,comment_num,modify_time,create_time FROM song
+        SELECT id,name,breif,album,album_id,artist,artist_id,feat_artist,duration,lyricist,lyricist_id,composer,composer_id,stream_url,listen_num,share_num,thumb_num,bury_num,modify_time,create_time,pcs_filename,sx_id,cover_img FROM song
     </sql>
     <!--包含TEXT 等大数据-->
     <sql id="song.selectorall">
-        SELECT id,name,breif,album,album_id,artist,artist_id,feat_artist,duration,lyricist,lyricist_id,composer,composer_id,stream_url,listen_num,share_num,comment_num,lyric,modify_time,create_time FROM song
+        SELECT id,name,breif,album,album_id,artist,artist_id,feat_artist,duration,lyricist,lyricist_id,composer,composer_id,stream_url,listen_num,share_num,thumb_num,bury_num,lyric,modify_time,create_time,pcs_filename,sx_id,cover_img FROM song
     </sql>
     <sql id="songList.where">
 		<dynamic prepend=" WHERE ">
-            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="breif" prepend=" AND ">breif=#breif#</isNotNull><isNotNull property="album" prepend=" AND ">album=#album#</isNotNull><isNotNull property="albumId" prepend=" AND ">album_id=#albumId#</isNotNull><isNotNull property="artist" prepend=" AND ">artist=#artist#</isNotNull><isNotNull property="artistId" prepend=" AND ">artist_id=#artistId#</isNotNull><isNotNull property="featArtist" prepend=" AND ">feat_artist=#featArtist#</isNotNull><isNotNull property="duration" prepend=" AND ">duration=#duration#</isNotNull><isNotNull property="lyricist" prepend=" AND ">lyricist=#lyricist#</isNotNull><isNotNull property="lyricistId" prepend=" AND ">lyricist_id=#lyricistId#</isNotNull><isNotNull property="composer" prepend=" AND ">composer=#composer#</isNotNull><isNotNull property="composerId" prepend=" AND ">composer_id=#composerId#</isNotNull><isNotNull property="streamUrl" prepend=" AND ">stream_url=#streamUrl#</isNotNull><isNotNull property="listenNum" prepend=" AND ">listen_num=#listenNum#</isNotNull><isNotNull property="shareNum" prepend=" AND ">share_num=#shareNum#</isNotNull><isNotNull property="commentNum" prepend=" AND ">comment_num=#commentNum#</isNotNull><isNotNull property="lyric" prepend=" AND ">lyric=#lyric#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull>        </dynamic>
+            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="breif" prepend=" AND ">breif=#breif#</isNotNull><isNotNull property="album" prepend=" AND ">album=#album#</isNotNull><isNotNull property="albumId" prepend=" AND ">album_id=#albumId#</isNotNull><isNotNull property="artist" prepend=" AND ">artist=#artist#</isNotNull><isNotNull property="artistId" prepend=" AND ">artist_id=#artistId#</isNotNull><isNotNull property="featArtist" prepend=" AND ">feat_artist=#featArtist#</isNotNull><isNotNull property="duration" prepend=" AND ">duration=#duration#</isNotNull><isNotNull property="lyricist" prepend=" AND ">lyricist=#lyricist#</isNotNull><isNotNull property="lyricistId" prepend=" AND ">lyricist_id=#lyricistId#</isNotNull><isNotNull property="composer" prepend=" AND ">composer=#composer#</isNotNull><isNotNull property="composerId" prepend=" AND ">composer_id=#composerId#</isNotNull><isNotNull property="streamUrl" prepend=" AND ">stream_url=#streamUrl#</isNotNull><isNotNull property="listenNum" prepend=" AND ">listen_num=#listenNum#</isNotNull><isNotNull property="shareNum" prepend=" AND ">share_num=#shareNum#</isNotNull><isNotNull property="thumbNum" prepend=" AND ">thumb_num=#thumbNum#</isNotNull><isNotNull property="buryNum" prepend=" AND ">bury_num=#buryNum#</isNotNull><isNotNull property="lyric" prepend=" AND ">lyric=#lyric#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="pcsFilename" prepend=" AND ">pcs_filename=#pcsFilename#</isNotNull><isNotNull property="sxId" prepend=" AND ">sx_id=#sxId#</isNotNull><isNotNull property="coverImg" prepend=" AND ">cover_img=#coverImg#</isNotNull>        </dynamic>
     </sql>
     <sql id="songList.order">
         <dynamic prepend=" ORDER BY ">
@@ -142,8 +150,11 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="shareNum">
                         share_num = #shareNum#
                     </isNotNull>
-                                                                <isNotNull prepend="," property="commentNum">
-                        comment_num = #commentNum#
+                                                                <isNotNull prepend="," property="thumbNum">
+                        thumb_num = #thumbNum#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="buryNum">
+                        bury_num = #buryNum#
                     </isNotNull>
                                                                 <isNotNull prepend="," property="lyric">
                         lyric = #lyric#
@@ -152,6 +163,15 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
                                                                 <isNotNull prepend="," property="createTime">
                         create_time = #createTime#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="pcsFilename">
+                        pcs_filename = #pcsFilename#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="sxId">
+                        sx_id = #sxId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="coverImg">
+                        cover_img = #coverImg#
                     </isNotNull>
                                         </dynamic>
             WHERE id in
@@ -207,8 +227,11 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="shareNum">
                         share_num = #shareNum#
                     </isNotNull>
-                                                                <isNotNull prepend="," property="commentNum">
-                        comment_num = #commentNum#
+                                                                <isNotNull prepend="," property="thumbNum">
+                        thumb_num = #thumbNum#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="buryNum">
+                        bury_num = #buryNum#
                     </isNotNull>
                                                                 <isNotNull prepend="," property="lyric">
                         lyric = #lyric#
@@ -217,6 +240,15 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
                                                                 <isNotNull prepend="," property="createTime">
                         create_time = #createTime#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="pcsFilename">
+                        pcs_filename = #pcsFilename#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="sxId">
+                        sx_id = #sxId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="coverImg">
+                        cover_img = #coverImg#
                     </isNotNull>
                                         </dynamic>
             WHERE id = #id#
@@ -233,6 +265,13 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
     </select>
         <select id="Song.getSongList" parameterClass="SongQuery" resultMap="song">
         <include refid="song.selector" />
+        <include refid="songList.where" />
+        <include refid="songList.order" />
+		<include refid="songList.limit" />
+    </select>
+	
+	    <select id="Song.getSongListWithText" parameterClass="SongQuery" resultMap="songall">
+        <include refid="song.selectorall" />
         <include refid="songList.where" />
         <include refid="songList.order" />
 		<include refid="songList.limit" />
@@ -254,10 +293,14 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                 stream_url,
                 listen_num,
                 share_num,
-                comment_num,
+                thumb_num,
+                bury_num,
                 lyric,
-                            create_time    ,modify_time)
-    VALUES(#name#,#breif#,#album#,#albumId#,#artist#,#artistId#,#featArtist#,#duration#,#lyricist#,#lyricistId#,#composer#,#composerId#,#streamUrl#,#listenNum#,#shareNum#,#commentNum#,#lyric#,    now(),now())
+                                pcs_filename,
+                sx_id,
+                cover_img,
+            create_time    ,modify_time)
+    VALUES(#name#,#breif#,#album#,#albumId#,#artist#,#artistId#,#featArtist#,#duration#,#lyricist#,#lyricistId#,#composer#,#composerId#,#streamUrl#,#listenNum#,#shareNum#,#thumbNum#,#buryNum#,#lyric#,#pcsFilename#,#sxId#,#coverImg#,    now(),now())
     <selectKey resultClass="long" type="post" keyProperty="id">
     SELECT last_insert_id() AS id
     </selectKey>
@@ -281,10 +324,14 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotEmpty prepend="," property="streamUrl">stream_url</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="listenNum">listen_num</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="shareNum">share_num</isNotEmpty>
-                                                                <isNotEmpty prepend="," property="commentNum">comment_num</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="thumbNum">thumb_num</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="buryNum">bury_num</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="lyric">lyric</isNotEmpty>
                                                                 ,modify_time
                                                                 ,create_time
+                                                                <isNotEmpty prepend="," property="pcsFilename">pcs_filename</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="sxId">sx_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="coverImg">cover_img</isNotEmpty>
                                     </dynamic>
         VALUES
         <dynamic prepend="(" close=")">
@@ -303,10 +350,14 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                                                             <isNotEmpty  prepend="," property="streamUrl">#streamUrl#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="listenNum">#listenNum#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="shareNum">#shareNum#</isNotEmpty>
-                                                                                                            <isNotEmpty  prepend="," property="commentNum">#commentNum#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="thumbNum">#thumbNum#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="buryNum">#buryNum#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="lyric">#lyric#</isNotEmpty>
                                                                                     ,UNIX_TIMESTAMP()
                                                                                     ,UNIX_TIMESTAMP()
+                                                                                                            <isNotEmpty  prepend="," property="pcsFilename">#pcsFilename#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="sxId">#sxId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="coverImg">#coverImg#</isNotEmpty>
                                                         </dynamic>
         <selectKey resultClass="int" type="post" keyProperty="id">
             SELECT last_insert_id() AS id

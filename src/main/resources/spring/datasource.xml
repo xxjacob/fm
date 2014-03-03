@@ -46,4 +46,12 @@
 	</bean>
 
 
+	<!-- redis -->
+	<bean id="redisAccess" class="com.ideax.fm360.dao.RedisAccess">
+		<property name="ip" value="${redis.ip}" />
+		<property name="port" value="${redis.port}" />
+		<property name="minConn" value="${redis.minConn}" />
+		<property name="maxConn" value="${redis.maxConn}" />
+	</bean>
+
 </beans>

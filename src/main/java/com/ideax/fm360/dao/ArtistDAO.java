@@ -89,5 +89,10 @@ public class ArtistDAO {
     public List<Artist> getArtistList(ArtistQuery artistQuery) throws SQLException{
 		return (List<Artist>)this.sqlMapClientTemplate.queryForList("Artist.getArtistList", artistQuery);
 	}
+	
+	@SuppressWarnings("unchecked")
+    public List<Artist> getArtistListWithText(ArtistQuery artistQuery) throws SQLException{
+		return (List<Artist>)this.sqlMapClientTemplate.queryForList("Artist.getArtistListWithText", artistQuery);
+	}
 
 }

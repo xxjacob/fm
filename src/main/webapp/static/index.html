@@ -52,7 +52,6 @@
 							</div>
 					</span> <!-- no href -->
 				</span>
-
 			</div>
 
 		</div>
@@ -239,7 +238,18 @@
 
 											<div style="width: 190px; height: 512px;" class="jspContainer">
 												<div style="padding: 0px; top: 0px; width: 190px;" class="jspPane">
-													<div id="stationList"></div>
+													<div id="stationList">
+														<div class="stationListItem  selected">
+															<div id="shuffleContainer">
+																<ul class="stationName">
+																	<li>
+																		<div id="shuffleIcon">Play Lists</div>
+																	</li>
+																</ul>
+																<div class="" id="shuffleButtonHoverArea">&nbsp;</div>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -339,19 +349,10 @@
 
 											<div style="display: block;" id="trackInfoButtons" class="unselectable">
 												<div class="buttons">
-													<div class="button btn_bg autoshareButton">
-														<div class="arrow"></div>
-														<div class="icon"></div>
-														<div class="text">Publish</div>
-													</div>
-													<div class="button btn_bg shareButton">
-														<div class="icon"></div>
-														<div class="text">Share...</div>
-													</div>
-													<div class="button btn_bg buyButton">
-														<div class="arrow"></div>
-														<div class="icon"></div>
-														<div class="text">Buy</div>
+													<div class="bdsharebuttonbox" data-tag="share_1">
+														<a class="bds_qzone" data-cmd="qzone" href="#"></a> <a class="bds_tsina" data-cmd="tsina"></a><a
+															class="bds_renren" data-cmd="renren"></a> <a class="bds_tqq" data-cmd="tqq"></a> <a class="bds_count"
+															data-cmd="count"></a>
 													</div>
 												</div>
 											</div>
@@ -435,8 +436,7 @@
 						</div>
 					</div>
 
-					<div style="display: block;" id="footer" class="footerContainer clearfix">
-					</div>
+					<div style="display: block;" id="footer" class="footerContainer clearfix"></div>
 				</div>
 
 				<div></div>
@@ -445,4 +445,25 @@
 			</div>
 		</div>
 		<!-- //mainContainer -->
+		<script>
+			window._bd_share_config = {
+				common : {
+					bdText : '',
+					bdDesc : '',
+					bdUrl : '',
+					bdPic : '',
+					bdStyle : "2"
+				},
+				share : [ {
+					"bdSize" : 24,
+				} ],
+
+			}
+
+			//以下为js加载部分
+			with (document)
+				0[(getElementsByTagName('head')[0] || body)
+						.appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='
+						+ ~(-new Date() / 36e5)];
+		</script>
 </body>

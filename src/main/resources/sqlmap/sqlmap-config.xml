@@ -13,4 +13,7 @@
 	<sqlMap resource="sqlmap/album-sqlmap.xml" />
 	<sqlMap resource="sqlmap/artist-sqlmap.xml" />
 	<sqlMap resource="sqlmap/song-sqlmap.xml" />
+	<sqlMap resource="sqlmap/song_xiami-sqlmap.xml" />
+	<sqlMap resource="sqlmap/song_list-sqlmap.xml" />
+	<sqlMap resource="sqlmap/user-sqlmap.xml" />
 </sqlMapConfig>

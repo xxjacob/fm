@@ -45,7 +45,7 @@
         <appender-ref ref="DEBUGOUT" />
     </logger>
 	<logger name="java">
-		<level value="DEBUGOUT" />
+		<level value="ERROR" />
 		<appender-ref ref="DEBUGOUT" />
 	</logger>
 
