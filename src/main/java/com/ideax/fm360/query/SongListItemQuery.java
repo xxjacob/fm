@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author xxjacob
  */
-public class SongListQuery extends BaseQuery {
+public class SongListItemQuery extends BaseQuery {
 	
 	/** ====================查询唯一单条记录使用==========================**/
 	
@@ -27,8 +27,27 @@ public class SongListQuery extends BaseQuery {
      * id
      * @param id
      */
-    public SongListQuery setId(Integer id) {
+    public SongListItemQuery setId(Integer id) {
     	this.id = id;
+    	return this;
+    }
+	/** list_id **/
+    private Integer listId;
+	/**
+    * 获取属性:listId
+    * list_id
+    * @return listId
+    */
+	public Integer getListId () {
+    	return listId;
+   	}
+   	/**
+     * 设置属性:listId
+     * list_id
+     * @param listId
+     */
+    public SongListItemQuery setListId(Integer listId) {
+    	this.listId = listId;
     	return this;
     }
 	/** uid **/
@@ -46,53 +65,34 @@ public class SongListQuery extends BaseQuery {
      * uid
      * @param uid
      */
-    public SongListQuery setUid(Integer uid) {
+    public SongListItemQuery setUid(Integer uid) {
     	this.uid = uid;
     	return this;
     }
-	/** name **/
-    private String name;
+	/** sid **/
+    private Integer sid;
 	/**
-    * 获取属性:name
-    * name
-    * @return name
+    * 获取属性:sid
+    * sid
+    * @return sid
     */
-	public String getName () {
-    	return name;
+	public Integer getSid () {
+    	return sid;
    	}
    	/**
-     * 设置属性:name
-     * name
-     * @param name
+     * 设置属性:sid
+     * sid
+     * @param sid
      */
-    public SongListQuery setName(String name) {
-    	this.name = name;
+    public SongListItemQuery setSid(Integer sid) {
+    	this.sid = sid;
     	return this;
     }
-	/** breif **/
-    private String breif;
-	/**
-    * 获取属性:breif
-    * breif
-    * @return breif
-    */
-	public String getBreif () {
-    	return breif;
-   	}
-   	/**
-     * 设置属性:breif
-     * breif
-     * @param breif
-     */
-    public SongListQuery setBreif(String breif) {
-    	this.breif = breif;
-    	return this;
-    }
-	/** 1、点赞歌单； 2踩掉歌单 **/
+	/** type **/
     private Byte type;
 	/**
     * 获取属性:type
-    * 1、点赞歌单； 2踩掉歌单
+    * type
     * @return type
     */
 	public Byte getType () {
@@ -100,30 +100,11 @@ public class SongListQuery extends BaseQuery {
    	}
    	/**
      * 设置属性:type
-     * 1、点赞歌单； 2踩掉歌单
+     * type
      * @param type
      */
-    public SongListQuery setType(Byte type) {
+    public SongListItemQuery setType(Byte type) {
     	this.type = type;
-    	return this;
-    }
-	/** 1,2,3 **/
-    private Integer songCount;
-	/**
-    * 获取属性:songCount
-    * 1,2,3
-    * @return songCount
-    */
-	public Integer getSongCount () {
-    	return songCount;
-   	}
-   	/**
-     * 设置属性:songCount
-     * 1,2,3
-     * @param songCount
-     */
-    public SongListQuery setSongCount(Integer songCount) {
-    	this.songCount = songCount;
     	return this;
     }
 	/** create_time **/
@@ -141,7 +122,7 @@ public class SongListQuery extends BaseQuery {
      * create_time
      * @param createTime
      */
-    public SongListQuery setCreateTime(Integer createTime) {
+    public SongListItemQuery setCreateTime(Integer createTime) {
     	this.createTime = createTime;
     	return this;
     }
@@ -160,27 +141,27 @@ public class SongListQuery extends BaseQuery {
      * modify_time
      * @param modifyTime
      */
-    public SongListQuery setModifyTime(Integer modifyTime) {
+    public SongListItemQuery setModifyTime(Integer modifyTime) {
     	this.modifyTime = modifyTime;
     	return this;
     }
-	/** extra **/
-    private String extra;
+	/** comment **/
+    private String comment;
 	/**
-    * 获取属性:extra
-    * extra
-    * @return extra
+    * 获取属性:comment
+    * comment
+    * @return comment
     */
-	public String getExtra () {
-    	return extra;
+	public String getComment () {
+    	return comment;
    	}
    	/**
-     * 设置属性:extra
-     * extra
-     * @param extra
+     * 设置属性:comment
+     * comment
+     * @param comment
      */
-    public SongListQuery setExtra(String extra) {
-    	this.extra = extra;
+    public SongListItemQuery setComment(String comment) {
+    	this.comment = comment;
     	return this;
     }
 	/**==============================批量查询时的Order条件顺序设置==================================**/
@@ -215,55 +196,47 @@ public class SongListQuery extends BaseQuery {
 	 * 设置排序按属性：id
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public SongListQuery orderbyId(boolean isAsc){
+	public SongListItemQuery orderbyId(boolean isAsc){
 		orderFields.add(new OrderField("id",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：list_id
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongListItemQuery orderbyListId(boolean isAsc){
+		orderFields.add(new OrderField("list_id",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**
 	 * 设置排序按属性：uid
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public SongListQuery orderbyUid(boolean isAsc){
+	public SongListItemQuery orderbyUid(boolean isAsc){
 		orderFields.add(new OrderField("uid",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**
-	 * 设置排序按属性：name
+	 * 设置排序按属性：sid
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public SongListQuery orderbyName(boolean isAsc){
-		orderFields.add(new OrderField("name",isAsc?"ASC":"DESC"));
+	public SongListItemQuery orderbySid(boolean isAsc){
+		orderFields.add(new OrderField("sid",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**
-	 * 设置排序按属性：breif
+	 * 设置排序按属性：type
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public SongListQuery orderbyBreif(boolean isAsc){
-		orderFields.add(new OrderField("breif",isAsc?"ASC":"DESC"));
-		return this;
-	}
-	/**
-	 * 设置排序按属性：1、点赞歌单； 2踩掉歌单
-	 * @param isAsc 是否升序，否则为降序
-	 */	
-	public SongListQuery orderbyType(boolean isAsc){
+	public SongListItemQuery orderbyType(boolean isAsc){
 		orderFields.add(new OrderField("type",isAsc?"ASC":"DESC"));
-		return this;
-	}
-	/**
-	 * 设置排序按属性：1,2,3
-	 * @param isAsc 是否升序，否则为降序
-	 */	
-	public SongListQuery orderbySongCount(boolean isAsc){
-		orderFields.add(new OrderField("song_count",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**
 	 * 设置排序按属性：create_time
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public SongListQuery orderbyCreateTime(boolean isAsc){
+	public SongListItemQuery orderbyCreateTime(boolean isAsc){
 		orderFields.add(new OrderField("create_time",isAsc?"ASC":"DESC"));
 		return this;
 	}
@@ -271,16 +244,16 @@ public class SongListQuery extends BaseQuery {
 	 * 设置排序按属性：modify_time
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public SongListQuery orderbyModifyTime(boolean isAsc){
+	public SongListItemQuery orderbyModifyTime(boolean isAsc){
 		orderFields.add(new OrderField("modify_time",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**
-	 * 设置排序按属性：extra
+	 * 设置排序按属性：comment
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public SongListQuery orderbyExtra(boolean isAsc){
-		orderFields.add(new OrderField("extra",isAsc?"ASC":"DESC"));
+	public SongListItemQuery orderbyComment(boolean isAsc){
+		orderFields.add(new OrderField("comment",isAsc?"ASC":"DESC"));
 		return this;
 	}
 }

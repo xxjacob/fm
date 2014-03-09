@@ -16,4 +16,5 @@
 	<sqlMap resource="sqlmap/song_xiami-sqlmap.xml" />
 	<sqlMap resource="sqlmap/song_list-sqlmap.xml" />
 	<sqlMap resource="sqlmap/user-sqlmap.xml" />
+	<sqlMap resource="sqlmap/song_list_item-sqlmap.xml" />
 </sqlMapConfig>

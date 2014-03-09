@@ -1,0 +1,10 @@
+package com.ideax.common;
+
+import java.util.HashMap;
+
+public class HashMapR<K, V> extends HashMap<K, V> {
+
+    private static final long serialVersionUID = 1L;
+
+    
+}

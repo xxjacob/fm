@@ -1,10 +1,14 @@
 package com.ideax.common;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -12,11 +16,23 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.config.SocketConfig;
+import org.apache.http.impl.NoConnectionReuseStrategy;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Util {
+
+    static Logger logger = LoggerFactory.getLogger(Util.class);
 
     public static ObjectMapper mapper = new ObjectMapper();
     static {
@@ -75,6 +91,7 @@ public class Util {
     public static final String host = "http://bcs.duapp.com";
 
     /**
+     * 获取前面后pcs地址
      * 
      * @param method
      * @param bucket
@@ -143,14 +160,87 @@ public class Util {
         return null;
     }
 
-    public static void main(String[] args) throws Exception {
-        StringBuilder sb = new StringBuilder();
-        sb.append("MBO").append('\n').append("Method=").append("GET").append('\n').append("Bucket=").append(bucket)
-                .append('\n').append("Object=").append("/断桥残雪 - 许嵩.mp3").append('\n');
-        String hmac = doSign(sb.toString(), SK);
-        System.out.println(sb.toString());
-        System.out.println(hmac);
-
-        System.out.println(Util.genPcsUrl("GET", "fmstore", "断桥残雪 - 许嵩.mp3", 0));
+    /*
+     * --------------
+     */
+    private static CloseableHttpClient httpclient;
+    static {
+        httpclient = HttpClients.custom()
+        // disable reuse
+                .setConnectionReuseStrategy(NoConnectionReuseStrategy.INSTANCE)
+                // set agent name
+                .setUserAgent("iloveqq")
+                // disable cookie
+                .disableCookieManagement()
+                // .disableRedirectHandling()
+                // socket config, 10s read timeout
+                .setDefaultSocketConfig(SocketConfig.custom().setSoTimeout(10000).build()).build();
     }
+
+    /**
+     * util to get http/ https response as utf8 string
+     * 
+     * @param url
+     * @param params
+     * @return
+     */
+    @SuppressWarnings("deprecation")
+    public static String getHttpResponseString(String url, Map<String, String> params) {
+        if (params != null && !params.isEmpty()) {
+            StringBuilder sb = new StringBuilder();
+            for (Entry<String, String> a : params.entrySet()) {
+                try {
+                    sb.append('&').append(a.getKey()).append('=').append(URLEncoder.encode(a.getValue(), "UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                    sb.append(URLEncoder.encode(a.getValue()));
+                }
+            }
+            sb.setCharAt(0, '?');
+            url = url + sb.toString();
+        }
+        HttpGet get = new HttpGet(url);
+        CloseableHttpResponse resp;
+        try {
+            resp = httpclient.execute(get);
+            if (!(resp.getStatusLine().getStatusCode() == 200)) {
+                logger.error("ERROR : report app xml result , response error : status=[{}]", resp.getStatusLine()
+                        .getStatusCode());
+                EntityUtils.consumeQuietly(resp.getEntity());
+                return null;
+            } else
+                return EntityUtils.toString(resp.getEntity(), "UTF-8");
+        } catch (ClientProtocolException e) {
+            logger.error("", e);
+        } catch (IOException e) {
+            logger.error("", e);
+        }
+        return null;
+    }
+
+    public static void main(String[] args) throws Exception {
+        String openidStr = "callback( {\"client_id\":\"101033103\",\"openid\":\"9CA246F8643379AA102C5EA5263ED688\"} );";
+        int oi = openidStr.indexOf("\"openid\"");
+        if (oi < 0) {
+            logger.error("get openid error response:" + oi);
+        }
+        int start = openidStr.indexOf('"', oi + "\"openid\"".length());
+        if (start < 0) {
+            logger.error("get openid error response:" + start);
+        }
+        int end = openidStr.indexOf('"', start + 1);
+        if (end <= start) {
+            logger.error("get openid error response:" +oi+ start + end);
+        }
+        System.out.println(openidStr.substring(start+1,end));
+        // StringBuilder sb = new StringBuilder();
+        // sb.append("MBO").append('\n').append("Method=").append("GET").append('\n').append("Bucket=").append(bucket)
+        // .append('\n').append("Object=").append("/断桥残雪 - 许嵩.mp3").append('\n');
+        // String hmac = doSign(sb.toString(), SK);
+        // System.out.println(sb.toString());
+        // System.out.println(hmac);
+        //
+        // System.out.println(Util.genPcsUrl("GET", "fmstore", "断桥残雪 - 许嵩.mp3",
+        // 0));
+    }
+
 }

@@ -1,12 +1,15 @@
 package com.ideax.fm360.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,15 +22,17 @@ import com.ideax.common.exception.EC;
 import com.ideax.common.exception.IllegalException;
 import com.ideax.fm360.constant.Const;
 import com.ideax.fm360.pojo.Song;
+import com.ideax.fm360.pojo.SongListItem;
 import com.ideax.fm360.pojo.User;
 import com.ideax.fm360.service.AlbumService;
 import com.ideax.fm360.service.IPassportService;
+import com.ideax.fm360.service.SongListService;
 import com.ideax.fm360.service.SongService;
 import com.ideax.fm360.service.UserService;
 
 @Controller
 @RequestMapping("fm")
-public class ServiceC {
+public class SongC implements InitializingBean {
 
     @Autowired
     SongService songService;
@@ -37,40 +42,13 @@ public class ServiceC {
 
     @Autowired
     UserService userService;
+
     @Autowired
     IPassportService passportService;
 
-    @RequestMapping("my")
-    @ResponseBody
-    public Object myInfo(HttpServletRequest req, HttpServletResponse resp) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("err_no", EC.OK);
-        User user = passportService.getLoginUser(req);
-        if (user == null) {
-            result.put("login", false);
-            return result;
-        }
-        result.put("login", true);
-        result.put("user", user);
-        result.put("playLists", userService.getUserPlayLists(user.getId()));
-        return result;
-    }
+    @Autowired
+    SongListService songListService;
 
-    @RequestMapping("login")
-    @ResponseBody
-    public Object login(@RequestParam String username, @RequestParam String pwd, HttpServletResponse resp) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("err_no", EC.OK);
-        User user = userService.getUserByNamePwd(username, Util.md5Encoding(pwd));
-        if (user == null) {
-            result.put("login", false);
-            return result;
-        }
-        passportService.login(user, resp);
-        result.put("user", user);
-        result.put("playLists", userService.getUserPlayLists(user.getId()));
-        return result;
-    }
 
     @RequestMapping("predict")
     @ResponseBody
@@ -79,19 +57,35 @@ public class ServiceC {
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("err_no", EC.OK);
         try {
-            int plid = 1;
+            int plid = 0;
             if (user != null) {
                 int[] plids = ParamUtils.getValue(req.getParameterValues("plid[]"), int[].class, 0, EC.EC_PARAM);
                 if (plids != null && plids.length > 0) {
                     plid = plids[new Random().nextInt(plids.length)];
                 }
             }
-            Song s = songService.nextSong(plid, null);
+            Song s = songService.nextSong(user == null ? 0 : user.getId(), plid, null);
             s.setStreamUrl(Util.genPcsUrl("GET", "fmstore", s.getPcsFilename(), 0));
             result.put("song", s);
-            if (user != null)
-                result.put("thumb", userService.thumbInfo(s.getId(), user));
-            else
+            if (user != null) {
+                List<SongListItem> songlist = songListService.thumbInfo(s.getId(), user.getId());
+                // 歌曲所在的歌单id
+                List<Integer> listIds = new ArrayList<Integer>();
+                int thumbStatus = Const.THUMB_NO;
+                if (songlist != null && songlist.size() > 0) {
+                    for (SongListItem sl : songlist) {
+                        if (sl.getType() == Const.SONG_LIST_TYPE_THUMBDOWN) {
+                            thumbStatus = Const.THUMB_DOWN;
+                        } else if (sl.getType() == Const.SONG_LIST_TYPE_THUMBUP) {
+                            thumbStatus = Const.THUMB_UP;
+                        } else {
+                            listIds.add(sl.getListId());
+                        }
+                    }
+                }
+                result.put("thumb", thumbStatus);
+                result.put("playList", listIds);
+            } else
                 result.put("thumb", Const.THUMB_NO);
             // 0未推广， 1订， 2踩
             return result;
@@ -113,11 +107,12 @@ public class ServiceC {
     public String thumbup(HttpServletRequest req, @RequestParam int sid) {
         User user = passportService.getLoginUser(req);
         try {
-            userService.thumbup(sid, user);
+            int[] ret = songListService.thumbup(sid, user.getId());
+            return "{\"err_no\":0,\"thumb\":" + ret[0] + ", \"thumbup_num\":" + ret[1] + ",\"thumbdown_num\":" + ret[2]
+                    + "}";
         } catch (IllegalException ie) {
             return "{\"err_no\":1}";
         }
-        return "{\"err_no\":0}";
     }
 
     /**
@@ -132,10 +127,16 @@ public class ServiceC {
     public String thumbdown(HttpServletRequest req, @RequestParam int sid) {
         User user = passportService.getLoginUser(req);
         try {
-            userService.thumbdown(sid, user);
+            int[] ret = songListService.thumbdown(sid, user.getId());
+            return "{\"err_no\":0,\"thumb\":" + ret[0] + ", \"thumbup_num\":" + ret[1] + ",\"thumbdown_num\":" + ret[2]
+                    + "}";
         } catch (IllegalException ie) {
             return "{\"err_no\":1}";
         }
-        return "{\"err_no\":0}";
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
     }
 }

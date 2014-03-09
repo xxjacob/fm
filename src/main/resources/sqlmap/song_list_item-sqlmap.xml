@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SongListItem">
+    <!-- Alias Map Defined -->
+    <typeAlias alias="SongListItemQuery" type="com.ideax.fm360.query.SongListItemQuery" />
+    <typeAlias alias="SongListItem" type="com.ideax.fm360.pojo.SongListItem" />
+    <resultMap id="songListItem" class="SongListItem">
+                    <result property="id" column="id" />
+                                <result property="listId" column="list_id" />
+                                <result property="uid" column="uid" />
+                                <result property="sid" column="sid" />
+                                <result property="type" column="type" />
+                                <result property="createTime" column="create_time" />
+                                <result property="modifyTime" column="modify_time" />
+                                <result property="comment" column="comment" />
+                        </resultMap>
+    <resultMap id="songListItemall" class="SongListItem">
+                    <result property="id" column="id" />
+                    <result property="listId" column="list_id" />
+                    <result property="uid" column="uid" />
+                    <result property="sid" column="sid" />
+                    <result property="type" column="type" />
+                    <result property="createTime" column="create_time" />
+                    <result property="modifyTime" column="modify_time" />
+                    <result property="comment" column="comment" />
+            </resultMap>
+    <!-- Select SQL -->
+    <sql id="songListItem.selector">
+        SELECT id,list_id,uid,sid,type,create_time,modify_time,comment FROM song_list_item
+    </sql>
+    <!--包含TEXT 等大数据-->
+    <sql id="songListItem.selectorall">
+        SELECT id,list_id,uid,sid,type,create_time,modify_time,comment FROM song_list_item
+    </sql>
+    <sql id="songListItemList.where">
+		<dynamic prepend=" WHERE ">
+            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="listId" prepend=" AND ">list_id=#listId#</isNotNull><isNotNull property="uid" prepend=" AND ">uid=#uid#</isNotNull><isNotNull property="sid" prepend=" AND ">sid=#sid#</isNotNull><isNotNull property="type" prepend=" AND ">type=#type#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="comment" prepend=" AND ">comment=#comment#</isNotNull>        </dynamic>
+    </sql>
+    <sql id="songListItemList.order">
+        <dynamic prepend=" ORDER BY ">
+            <isNotEmpty property="orderFields">
+                <iterate property="orderFields" conjunction="," open="" close="">$orderFields[].fieldName$ $orderFields[].order$</iterate>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+	<sql id="songListItemList.limit">
+        <dynamic prepend=" LIMIT ">
+            <isGreaterThan  property="pageSize" compareValue="0">
+                #startRow#,#pageSize#
+            </isGreaterThan>
+        </dynamic>
+    </sql>
+            <select id="SongListItem.getSongListItem" resultMap="songListItemall">
+            <include refid="songListItem.selectorall" />
+            WHERE id=#id#
+        </select>
+                <select id="SongListItem.getSongListItemsByKeys" resultMap="songListItem">
+            <include refid="songListItem.selector" />
+            WHERE id in
+            <iterate conjunction="," open="(" close=")" property="keys">#keys[]#</iterate>
+        </select>
+                <delete id="SongListItem.deleteByKey">
+            DELETE FROM song_list_item WHERE id = #key#
+        </delete>
+                <delete id="SongListItem.deleteByKeys">
+            DELETE FROM song_list_item
+            WHERE id in
+            <iterate conjunction="," open="(" close=")" property="keys">
+                #keys[]#
+            </iterate>
+        </delete>
+                                <update id="SongListItem.updateSongListItemsByKeys" parameterClass="SongListItem">
+            UPDATE song_list_item 
+            <dynamic prepend="SET">
+                                                                           <isNotNull prepend="," property="listId">
+                        list_id = #listId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="uid">
+                        uid = #uid#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="sid">
+                        sid = #sid#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="type">
+                        type = #type#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="createTime">
+                        create_time = #createTime#
+                    </isNotNull>
+                                                                <isNull prepend="," property="modifyTime" >modify_time=UNIX_TIMESTAMP()</isNull>
+                    <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
+                                                                <isNotNull prepend="," property="comment">
+                        comment = #comment#
+                    </isNotNull>
+                                        </dynamic>
+            WHERE id in
+            <iterate conjunction="," open="(" close=")" property="keys">
+                #keys[]#
+            </iterate>
+        </update>
+        <update id="SongListItem.updateSongListItem" parameterClass="SongListItem">
+            UPDATE song_list_item 
+            <dynamic prepend="SET">
+                                                                           <isNotNull prepend="," property="listId">
+                        list_id = #listId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="uid">
+                        uid = #uid#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="sid">
+                        sid = #sid#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="type">
+                        type = #type#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="createTime">
+                        create_time = #createTime#
+                    </isNotNull>
+                                                                <isNull prepend="," property="modifyTime" >modify_time=UNIX_TIMESTAMP()</isNull>
+                    <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
+                                                                <isNotNull prepend="," property="comment">
+                        comment = #comment#
+                    </isNotNull>
+                                        </dynamic>
+            WHERE id = #id#
+        </update>
+            <select id="SongListItem.getSongListItemListWithPage" parameterClass="SongListItemQuery" resultMap="songListItem">
+        <include refid="songListItem.selector" />
+        <include refid="songListItemList.where" />
+        <include refid="songListItemList.order" />
+        <include refid="songListItemList.limit" />
+    </select>
+    <select id="SongListItem.getSongListItemListCount" parameterClass="SongListItemQuery" resultClass="int">
+        SELECT count(*) FROM song_list_item
+        <include refid="songListItemList.where" />
+    </select>
+        <select id="SongListItem.getSongListItemList" parameterClass="SongListItemQuery" resultMap="songListItem">
+        <include refid="songListItem.selector" />
+        <include refid="songListItemList.where" />
+        <include refid="songListItemList.order" />
+		<include refid="songListItemList.limit" />
+    </select>
+	
+	    <select id="SongListItem.getSongListItemListWithText" parameterClass="SongListItemQuery" resultMap="songListItemall">
+        <include refid="songListItem.selectorall" />
+        <include refid="songListItemList.where" />
+        <include refid="songListItemList.order" />
+		<include refid="songListItemList.limit" />
+    </select>
+    <!--    <insert id="SongListItem.insertSongListItem" parameterClass="SongListItem">
+    INSERT INTO song_list_item(
+                    list_id,
+                uid,
+                sid,
+                type,
+                                comment,
+            create_time    ,modify_time)
+    VALUES(#listId#,#uid#,#sid#,#type#,#comment#,    now(),now())
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    SELECT last_insert_id() AS id
+    </selectKey>
+    </insert>
+    -->
+        <insert id="SongListItem.insertSongListItem" parameterClass="SongListItem">
+        INSERT INTO song_list_item
+        <dynamic prepend="(" close=")">
+                                                                            <isNotEmpty prepend="," property="listId">list_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="uid">uid</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="sid">sid</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="type">type</isNotEmpty>
+                                                                ,create_time
+                                                                ,modify_time
+                                                                <isNotEmpty prepend="," property="comment">comment</isNotEmpty>
+                                    </dynamic>
+        VALUES
+        <dynamic prepend="(" close=")">
+                                                                                                    <isNotEmpty  prepend="," property="listId">#listId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="uid">#uid#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="sid">#sid#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="type">#type#</isNotEmpty>
+                                                                                    ,UNIX_TIMESTAMP()
+                                                                                    ,UNIX_TIMESTAMP()
+                                                                                                            <isNotEmpty  prepend="," property="comment">#comment#</isNotEmpty>
+                                                        </dynamic>
+        <selectKey resultClass="int" type="post" keyProperty="id">
+            SELECT last_insert_id() AS id
+        </selectKey>
+    </insert>
+</sqlMap>

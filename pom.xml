@@ -154,6 +154,11 @@
 			<systemPath>D:/GitHub/fm/src/main/webapp/WEB-INF/lib/bcs-sdk-java_1.4.5.jar</systemPath>
 			<scope>system</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.mpatric</groupId>
+			<artifactId>mp3agic</artifactId>
+			<version>0.8.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>360fm</finalName>
@@ -219,11 +224,11 @@
 	</build>
 	<properties>
 		<mysql.version>5.1.6</mysql.version>
-		<log.base>/home/work/lightapp/logs</log.base>
+		<log.base>/data/logs/</log.base>
 		<app.jdbc.url>jdbc\:mysql\://10.48.24.32\:8906/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
 		<app.jdbc.username>developer_w</app.jdbc.username>
 		<app.jdbc.password>v60KOStx8cMQrv60</app.jdbc.password>
-		<img.upload.path>/home/work/uploadimg/</img.upload.path>
+		<mp3.upload.path>/data/360fm/mp3/</mp3.upload.path>
 	</properties>
 	<profiles>
 		<!--profile for dev -->
@@ -231,20 +236,32 @@
 			<id>local</id>
 			<properties>
 				<log.base>D:/logs/</log.base>
-				<app.jdbc.url>jdbc\:mysql\://10.48.24.32\:8906/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
-				<app.jdbc.username>xuxin03</app.jdbc.username>
-				<app.jdbc.password>xuxin03</app.jdbc.password>
+				<app.jdbc.url>jdbc\:mysql\://211.149.200.132\:8306/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
+				<app.jdbc.username>xxjacob</app.jdbc.username>
+				<app.jdbc.password>1395630</app.jdbc.password>
+				<mp3.upload.path>D:/logs/</mp3.upload.path>
 			</properties>
 		</profile>
 		<!--profile for perf -->
 		<profile>
+			<id>test</id>
+			<properties>
+				<log.base>/home/users/xuxin03/logs/</log.base>
+				<app.jdbc.url>jdbc\:mysql\://10.48.24.32\:8906/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
+				<app.jdbc.username>xuxin03</app.jdbc.username>
+				<app.jdbc.password>xuxin03</app.jdbc.password>
+				<mp3.upload.path></mp3.upload.path>
+			</properties>
+		</profile>
+		<profile>
 			<id>prod</id>
 			<properties>
-				<log.base>/data/3g/logs</log.base>
-				<img.upload.path>/data/www/3g.zhanguojs.com/static/upload/</img.upload.path>
-				<app.jdbc.url>jdbc\:mysql\://42.96.158.199\:6610/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
-				<app.jdbc.username>zgjs_db_admin</app.jdbc.username>
-				<app.jdbc.password>zgjsmeihaoadmin</app.jdbc.password>
+				<log.base>/home/logs/</log.base>
+				<app.jdbc.url>jdbc\:mysql\://127.0.0.1\:8306/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
+				<app.jdbc.username>root</app.jdbc.username>
+				<app.jdbc.password></app.jdbc.password>
+				<mp3.upload.path></mp3.upload.path>
+				<mp3.upload.path>/home/data/360fm/mp3</mp3.upload.path>
 			</properties>
 		</profile>
 	</profiles>

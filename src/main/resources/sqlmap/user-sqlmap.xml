@@ -10,53 +10,71 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     <result property="id" column="id" />
                                 <result property="email" column="email" />
                                 <result property="password" column="password" />
+                                <result property="username" column="username" />
                                 <result property="nickname" column="nickname" />
                                 <result property="gender" column="gender" />
                                 <result property="birthY" column="birth_y" />
                                 <result property="birthMd" column="birth_md" />
                                 <result property="figureurl" column="figureurl" />
+                                <result property="figureurl2" column="figureurl2" />
                                 <result property="region" column="region" />
                                 <result property="introduce" column="introduce" />
                                 <result property="education" column="education" />
-                                <result property="bloodGroup" column="blood_group" />
                                 <result property="earning" column="earning" />
                                 <result property="profession" column="profession" />
                                 <result property="status" column="status" />
                                 <result property="createTime" column="create_time" />
                                 <result property="modifyTime" column="modify_time" />
-                                <result property="invitor" column="invitor" />
+                                <result property="qqId" column="qq_id" />
+                                <result property="qqToken" column="qq_token" />
+                                <result property="qqTokenTime" column="qq_token_time" />
+                                <result property="weiboId" column="weibo_id" />
+                                <result property="weiboToken" column="weibo_token" />
+                                <result property="weiboTokenTime" column="weibo_token_time" />
+                                <result property="doubanId" column="douban_id" />
+                                <result property="doubanToken" column="douban_token" />
+                                <result property="doubanTokenTime" column="douban_token_time" />
                         </resultMap>
     <resultMap id="userall" class="User">
                     <result property="id" column="id" />
                     <result property="email" column="email" />
                     <result property="password" column="password" />
+                    <result property="username" column="username" />
                     <result property="nickname" column="nickname" />
                     <result property="gender" column="gender" />
                     <result property="birthY" column="birth_y" />
                     <result property="birthMd" column="birth_md" />
                     <result property="figureurl" column="figureurl" />
+                    <result property="figureurl2" column="figureurl2" />
                     <result property="region" column="region" />
                     <result property="introduce" column="introduce" />
                     <result property="education" column="education" />
-                    <result property="bloodGroup" column="blood_group" />
                     <result property="earning" column="earning" />
                     <result property="profession" column="profession" />
                     <result property="status" column="status" />
                     <result property="createTime" column="create_time" />
                     <result property="modifyTime" column="modify_time" />
-                    <result property="invitor" column="invitor" />
+                    <result property="qqId" column="qq_id" />
+                    <result property="qqToken" column="qq_token" />
+                    <result property="qqTokenTime" column="qq_token_time" />
+                    <result property="weiboId" column="weibo_id" />
+                    <result property="weiboToken" column="weibo_token" />
+                    <result property="weiboTokenTime" column="weibo_token_time" />
+                    <result property="doubanId" column="douban_id" />
+                    <result property="doubanToken" column="douban_token" />
+                    <result property="doubanTokenTime" column="douban_token_time" />
             </resultMap>
     <!-- Select SQL -->
     <sql id="user.selector">
-        SELECT id,email,password,nickname,gender,birth_y,birth_md,figureurl,region,introduce,education,blood_group,earning,profession,status,create_time,modify_time,invitor FROM user
+        SELECT id,email,password,username,nickname,gender,birth_y,birth_md,figureurl,figureurl2,region,introduce,education,earning,profession,status,create_time,modify_time,qq_id,qq_token,qq_token_time,weibo_id,weibo_token,weibo_token_time,douban_id,douban_token,douban_token_time FROM user
     </sql>
     <!--包含TEXT 等大数据-->
     <sql id="user.selectorall">
-        SELECT id,email,password,nickname,gender,birth_y,birth_md,figureurl,region,introduce,education,blood_group,earning,profession,status,create_time,modify_time,invitor FROM user
+        SELECT id,email,password,username,nickname,gender,birth_y,birth_md,figureurl,figureurl2,region,introduce,education,earning,profession,status,create_time,modify_time,qq_id,qq_token,qq_token_time,weibo_id,weibo_token,weibo_token_time,douban_id,douban_token,douban_token_time FROM user
     </sql>
     <sql id="userList.where">
 		<dynamic prepend=" WHERE ">
-            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="email" prepend=" AND ">email=#email#</isNotNull><isNotNull property="password" prepend=" AND ">password=#password#</isNotNull><isNotNull property="nickname" prepend=" AND ">nickname=#nickname#</isNotNull><isNotNull property="gender" prepend=" AND ">gender=#gender#</isNotNull><isNotNull property="birthY" prepend=" AND ">birth_y=#birthY#</isNotNull><isNotNull property="birthMd" prepend=" AND ">birth_md=#birthMd#</isNotNull><isNotNull property="figureurl" prepend=" AND ">figureurl=#figureurl#</isNotNull><isNotNull property="region" prepend=" AND ">region=#region#</isNotNull><isNotNull property="introduce" prepend=" AND ">introduce=#introduce#</isNotNull><isNotNull property="education" prepend=" AND ">education=#education#</isNotNull><isNotNull property="bloodGroup" prepend=" AND ">blood_group=#bloodGroup#</isNotNull><isNotNull property="earning" prepend=" AND ">earning=#earning#</isNotNull><isNotNull property="profession" prepend=" AND ">profession=#profession#</isNotNull><isNotNull property="status" prepend=" AND ">status=#status#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="invitor" prepend=" AND ">invitor=#invitor#</isNotNull>        </dynamic>
+            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="email" prepend=" AND ">email=#email#</isNotNull><isNotNull property="password" prepend=" AND ">password=#password#</isNotNull><isNotNull property="username" prepend=" AND ">username=#username#</isNotNull><isNotNull property="nickname" prepend=" AND ">nickname=#nickname#</isNotNull><isNotNull property="gender" prepend=" AND ">gender=#gender#</isNotNull><isNotNull property="birthY" prepend=" AND ">birth_y=#birthY#</isNotNull><isNotNull property="birthMd" prepend=" AND ">birth_md=#birthMd#</isNotNull><isNotNull property="figureurl" prepend=" AND ">figureurl=#figureurl#</isNotNull><isNotNull property="figureurl2" prepend=" AND ">figureurl2=#figureurl2#</isNotNull><isNotNull property="region" prepend=" AND ">region=#region#</isNotNull><isNotNull property="introduce" prepend=" AND ">introduce=#introduce#</isNotNull><isNotNull property="education" prepend=" AND ">education=#education#</isNotNull><isNotNull property="earning" prepend=" AND ">earning=#earning#</isNotNull><isNotNull property="profession" prepend=" AND ">profession=#profession#</isNotNull><isNotNull property="status" prepend=" AND ">status=#status#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="qqId" prepend=" AND ">qq_id=#qqId#</isNotNull><isNotNull property="qqToken" prepend=" AND ">qq_token=#qqToken#</isNotNull><isNotNull property="qqTokenTime" prepend=" AND ">qq_token_time=#qqTokenTime#</isNotNull><isNotNull property="weiboId" prepend=" AND ">weibo_id=#weiboId#</isNotNull><isNotNull property="weiboToken" prepend=" AND ">weibo_token=#weiboToken#</isNotNull><isNotNull property="weiboTokenTime" prepend=" AND ">weibo_token_time=#weiboTokenTime#</isNotNull><isNotNull property="doubanId" prepend=" AND ">douban_id=#doubanId#</isNotNull><isNotNull property="doubanToken" prepend=" AND ">douban_token=#doubanToken#</isNotNull><isNotNull property="doubanTokenTime" prepend=" AND ">douban_token_time=#doubanTokenTime#</isNotNull>        </dynamic>
     </sql>
     <sql id="userList.order">
         <dynamic prepend=" ORDER BY ">
@@ -100,6 +118,9 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="password">
                         password = #password#
                     </isNotNull>
+                                                                <isNotNull prepend="," property="username">
+                        username = #username#
+                    </isNotNull>
                                                                 <isNotNull prepend="," property="nickname">
                         nickname = #nickname#
                     </isNotNull>
@@ -115,6 +136,9 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="figureurl">
                         figureurl = #figureurl#
                     </isNotNull>
+                                                                <isNotNull prepend="," property="figureurl2">
+                        figureurl2 = #figureurl2#
+                    </isNotNull>
                                                                 <isNotNull prepend="," property="region">
                         region = #region#
                     </isNotNull>
@@ -123,9 +147,6 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     </isNotNull>
                                                                 <isNotNull prepend="," property="education">
                         education = #education#
-                    </isNotNull>
-                                                                <isNotNull prepend="," property="bloodGroup">
-                        blood_group = #bloodGroup#
                     </isNotNull>
                                                                 <isNotNull prepend="," property="earning">
                         earning = #earning#
@@ -141,8 +162,32 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     </isNotNull>
                                                                 <isNull prepend="," property="modifyTime" >modify_time=UNIX_TIMESTAMP()</isNull>
                     <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
-                                                                <isNotNull prepend="," property="invitor">
-                        invitor = #invitor#
+                                                                <isNotNull prepend="," property="qqId">
+                        qq_id = #qqId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="qqToken">
+                        qq_token = #qqToken#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="qqTokenTime">
+                        qq_token_time = #qqTokenTime#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="weiboId">
+                        weibo_id = #weiboId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="weiboToken">
+                        weibo_token = #weiboToken#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="weiboTokenTime">
+                        weibo_token_time = #weiboTokenTime#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="doubanId">
+                        douban_id = #doubanId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="doubanToken">
+                        douban_token = #doubanToken#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="doubanTokenTime">
+                        douban_token_time = #doubanTokenTime#
                     </isNotNull>
                                         </dynamic>
             WHERE id in
@@ -159,6 +204,9 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="password">
                         password = #password#
                     </isNotNull>
+                                                                <isNotNull prepend="," property="username">
+                        username = #username#
+                    </isNotNull>
                                                                 <isNotNull prepend="," property="nickname">
                         nickname = #nickname#
                     </isNotNull>
@@ -174,6 +222,9 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="figureurl">
                         figureurl = #figureurl#
                     </isNotNull>
+                                                                <isNotNull prepend="," property="figureurl2">
+                        figureurl2 = #figureurl2#
+                    </isNotNull>
                                                                 <isNotNull prepend="," property="region">
                         region = #region#
                     </isNotNull>
@@ -182,9 +233,6 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     </isNotNull>
                                                                 <isNotNull prepend="," property="education">
                         education = #education#
-                    </isNotNull>
-                                                                <isNotNull prepend="," property="bloodGroup">
-                        blood_group = #bloodGroup#
                     </isNotNull>
                                                                 <isNotNull prepend="," property="earning">
                         earning = #earning#
@@ -200,8 +248,32 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     </isNotNull>
                                                                 <isNull prepend="," property="modifyTime" >modify_time=UNIX_TIMESTAMP()</isNull>
                     <isNotNull prepend="," property="modifyTime" >modify_time=#modifyTime#</isNotNull>
-                                                                <isNotNull prepend="," property="invitor">
-                        invitor = #invitor#
+                                                                <isNotNull prepend="," property="qqId">
+                        qq_id = #qqId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="qqToken">
+                        qq_token = #qqToken#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="qqTokenTime">
+                        qq_token_time = #qqTokenTime#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="weiboId">
+                        weibo_id = #weiboId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="weiboToken">
+                        weibo_token = #weiboToken#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="weiboTokenTime">
+                        weibo_token_time = #weiboTokenTime#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="doubanId">
+                        douban_id = #doubanId#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="doubanToken">
+                        douban_token = #doubanToken#
+                    </isNotNull>
+                                                                <isNotNull prepend="," property="doubanTokenTime">
+                        douban_token_time = #doubanTokenTime#
                     </isNotNull>
                                         </dynamic>
             WHERE id = #id#
@@ -233,21 +305,30 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
     INSERT INTO user(
                     email,
                 password,
+                username,
                 nickname,
                 gender,
                 birth_y,
                 birth_md,
                 figureurl,
+                figureurl2,
                 region,
                 introduce,
                 education,
-                blood_group,
                 earning,
                 profession,
                 status,
-                                invitor,
+                                qq_id,
+                qq_token,
+                qq_token_time,
+                weibo_id,
+                weibo_token,
+                weibo_token_time,
+                douban_id,
+                douban_token,
+                douban_token_time,
             create_time    ,modify_time)
-    VALUES(#email#,#password#,#nickname#,#gender#,#birthY#,#birthMd#,#figureurl#,#region#,#introduce#,#education#,#bloodGroup#,#earning#,#profession#,#status#,#invitor#,    now(),now())
+    VALUES(#email#,#password#,#username#,#nickname#,#gender#,#birthY#,#birthMd#,#figureurl#,#figureurl2#,#region#,#introduce#,#education#,#earning#,#profession#,#status#,#qqId#,#qqToken#,#qqTokenTime#,#weiboId#,#weiboToken#,#weiboTokenTime#,#doubanId#,#doubanToken#,#doubanTokenTime#,    now(),now())
     <selectKey resultClass="long" type="post" keyProperty="id">
     SELECT last_insert_id() AS id
     </selectKey>
@@ -258,41 +339,59 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <dynamic prepend="(" close=")">
                                                                             <isNotEmpty prepend="," property="email">email</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="password">password</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="username">username</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="nickname">nickname</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="gender">gender</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="birthY">birth_y</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="birthMd">birth_md</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="figureurl">figureurl</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="figureurl2">figureurl2</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="region">region</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="introduce">introduce</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="education">education</isNotEmpty>
-                                                                <isNotEmpty prepend="," property="bloodGroup">blood_group</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="earning">earning</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="profession">profession</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="status">status</isNotEmpty>
                                                                 ,create_time
                                                                 ,modify_time
-                                                                <isNotEmpty prepend="," property="invitor">invitor</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="qqId">qq_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="qqToken">qq_token</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="qqTokenTime">qq_token_time</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="weiboId">weibo_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="weiboToken">weibo_token</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="weiboTokenTime">weibo_token_time</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="doubanId">douban_id</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="doubanToken">douban_token</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="doubanTokenTime">douban_token_time</isNotEmpty>
                                     </dynamic>
         VALUES
         <dynamic prepend="(" close=")">
                                                                                                     <isNotEmpty  prepend="," property="email">#email#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="password">#password#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="username">#username#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="nickname">#nickname#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="gender">#gender#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="birthY">#birthY#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="birthMd">#birthMd#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="figureurl">#figureurl#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="figureurl2">#figureurl2#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="region">#region#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="introduce">#introduce#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="education">#education#</isNotEmpty>
-                                                                                                            <isNotEmpty  prepend="," property="bloodGroup">#bloodGroup#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="earning">#earning#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="profession">#profession#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="status">#status#</isNotEmpty>
                                                                                     ,UNIX_TIMESTAMP()
                                                                                     ,UNIX_TIMESTAMP()
-                                                                                                            <isNotEmpty  prepend="," property="invitor">#invitor#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="qqId">#qqId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="qqToken">#qqToken#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="qqTokenTime">#qqTokenTime#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="weiboId">#weiboId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="weiboToken">#weiboToken#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="weiboTokenTime">#weiboTokenTime#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="doubanId">#doubanId#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="doubanToken">#doubanToken#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="doubanTokenTime">#doubanTokenTime#</isNotEmpty>
                                                         </dynamic>
         <selectKey resultClass="int" type="post" keyProperty="id">
             SELECT last_insert_id() AS id

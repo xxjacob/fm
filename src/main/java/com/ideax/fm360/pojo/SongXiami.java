@@ -76,6 +76,8 @@ public class SongXiami implements Serializable{
     private String pcsFileName;
 	/** file_path **/
     private String filePath;
+	/** song_id **/
+    private Integer songId;
 
 	
    /**
@@ -620,6 +622,23 @@ public class SongXiami implements Serializable{
     */
    public void setFilePath(String filePath) {
        this.filePath = filePath;
+   }
+	
+   /**
+    * 获取属性:songId
+    * song_id
+    * @return songId
+    */
+   public Integer getSongId() {
+       return songId;
+   }
+   /**
+    * 设置属性:songId
+    * song_id
+    * @param songId
+    */
+   public void setSongId(Integer songId) {
+       this.songId = songId;
    }
 
 	/**

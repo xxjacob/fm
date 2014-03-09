@@ -48,7 +48,9 @@ public class LocalPassportService implements IPassportService {
         String sessionid = RandomStringUtils.random(32, true, true);
         loginAdmins.put(sessionid, user);
         Cookie cookie = new Cookie(sso_cookie, sessionid);
-        cookie.setMaxAge(3600 * 30);
+        cookie.setMaxAge(3600 * 24 * 10);
+        cookie.setPath("/");
+        cookie.setDomain("360.fm");
         resp.addCookie(cookie);
     }
 

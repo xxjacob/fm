@@ -69,6 +69,25 @@ public class UserQuery extends BaseQuery {
     	this.password = password;
     	return this;
     }
+	/** username **/
+    private String username;
+	/**
+    * 获取属性:username
+    * username
+    * @return username
+    */
+	public String getUsername () {
+    	return username;
+   	}
+   	/**
+     * 设置属性:username
+     * username
+     * @param username
+     */
+    public UserQuery setUsername(String username) {
+    	this.username = username;
+    	return this;
+    }
 	/** 昵称 **/
     private String nickname;
 	/**
@@ -164,6 +183,25 @@ public class UserQuery extends BaseQuery {
     	this.figureurl = figureurl;
     	return this;
     }
+	/** 大头像 **/
+    private String figureurl2;
+	/**
+    * 获取属性:figureurl2
+    * 大头像
+    * @return figureurl2
+    */
+	public String getFigureurl2 () {
+    	return figureurl2;
+   	}
+   	/**
+     * 设置属性:figureurl2
+     * 大头像
+     * @param figureurl2
+     */
+    public UserQuery setFigureurl2(String figureurl2) {
+    	this.figureurl2 = figureurl2;
+    	return this;
+    }
 	/** 区域代码ppcccccctttttt **/
     private Long region;
 	/**
@@ -219,25 +257,6 @@ public class UserQuery extends BaseQuery {
      */
     public UserQuery setEducation(Byte education) {
     	this.education = education;
-    	return this;
-    }
-	/** 1 a 2b 3ab 4o 5其他 **/
-    private Byte bloodGroup;
-	/**
-    * 获取属性:bloodGroup
-    * 1 a 2b 3ab 4o 5其他
-    * @return bloodGroup
-    */
-	public Byte getBloodGroup () {
-    	return bloodGroup;
-   	}
-   	/**
-     * 设置属性:bloodGroup
-     * 1 a 2b 3ab 4o 5其他
-     * @param bloodGroup
-     */
-    public UserQuery setBloodGroup(Byte bloodGroup) {
-    	this.bloodGroup = bloodGroup;
     	return this;
     }
 	/** 收入 **/
@@ -336,22 +355,174 @@ public class UserQuery extends BaseQuery {
     	return this;
     }
 	/** 邀请者 **/
-    private String invitor;
+    private String qqId;
 	/**
-    * 获取属性:invitor
+    * 获取属性:qqId
     * 邀请者
-    * @return invitor
+    * @return qqId
     */
-	public String getInvitor () {
-    	return invitor;
+	public String getQqId () {
+    	return qqId;
    	}
    	/**
-     * 设置属性:invitor
+     * 设置属性:qqId
      * 邀请者
-     * @param invitor
+     * @param qqId
      */
-    public UserQuery setInvitor(String invitor) {
-    	this.invitor = invitor;
+    public UserQuery setQqId(String qqId) {
+    	this.qqId = qqId;
+    	return this;
+    }
+	/** qq_token **/
+    private String qqToken;
+	/**
+    * 获取属性:qqToken
+    * qq_token
+    * @return qqToken
+    */
+	public String getQqToken () {
+    	return qqToken;
+   	}
+   	/**
+     * 设置属性:qqToken
+     * qq_token
+     * @param qqToken
+     */
+    public UserQuery setQqToken(String qqToken) {
+    	this.qqToken = qqToken;
+    	return this;
+    }
+	/** qq_token_time **/
+    private Integer qqTokenTime;
+	/**
+    * 获取属性:qqTokenTime
+    * qq_token_time
+    * @return qqTokenTime
+    */
+	public Integer getQqTokenTime () {
+    	return qqTokenTime;
+   	}
+   	/**
+     * 设置属性:qqTokenTime
+     * qq_token_time
+     * @param qqTokenTime
+     */
+    public UserQuery setQqTokenTime(Integer qqTokenTime) {
+    	this.qqTokenTime = qqTokenTime;
+    	return this;
+    }
+	/** weibo_id **/
+    private String weiboId;
+	/**
+    * 获取属性:weiboId
+    * weibo_id
+    * @return weiboId
+    */
+	public String getWeiboId () {
+    	return weiboId;
+   	}
+   	/**
+     * 设置属性:weiboId
+     * weibo_id
+     * @param weiboId
+     */
+    public UserQuery setWeiboId(String weiboId) {
+    	this.weiboId = weiboId;
+    	return this;
+    }
+	/** weibo_token **/
+    private String weiboToken;
+	/**
+    * 获取属性:weiboToken
+    * weibo_token
+    * @return weiboToken
+    */
+	public String getWeiboToken () {
+    	return weiboToken;
+   	}
+   	/**
+     * 设置属性:weiboToken
+     * weibo_token
+     * @param weiboToken
+     */
+    public UserQuery setWeiboToken(String weiboToken) {
+    	this.weiboToken = weiboToken;
+    	return this;
+    }
+	/** weibo_token_time **/
+    private String weiboTokenTime;
+	/**
+    * 获取属性:weiboTokenTime
+    * weibo_token_time
+    * @return weiboTokenTime
+    */
+	public String getWeiboTokenTime () {
+    	return weiboTokenTime;
+   	}
+   	/**
+     * 设置属性:weiboTokenTime
+     * weibo_token_time
+     * @param weiboTokenTime
+     */
+    public UserQuery setWeiboTokenTime(String weiboTokenTime) {
+    	this.weiboTokenTime = weiboTokenTime;
+    	return this;
+    }
+	/** douban_id **/
+    private String doubanId;
+	/**
+    * 获取属性:doubanId
+    * douban_id
+    * @return doubanId
+    */
+	public String getDoubanId () {
+    	return doubanId;
+   	}
+   	/**
+     * 设置属性:doubanId
+     * douban_id
+     * @param doubanId
+     */
+    public UserQuery setDoubanId(String doubanId) {
+    	this.doubanId = doubanId;
+    	return this;
+    }
+	/** douban_token **/
+    private String doubanToken;
+	/**
+    * 获取属性:doubanToken
+    * douban_token
+    * @return doubanToken
+    */
+	public String getDoubanToken () {
+    	return doubanToken;
+   	}
+   	/**
+     * 设置属性:doubanToken
+     * douban_token
+     * @param doubanToken
+     */
+    public UserQuery setDoubanToken(String doubanToken) {
+    	this.doubanToken = doubanToken;
+    	return this;
+    }
+	/** douban_token_time **/
+    private Integer doubanTokenTime;
+	/**
+    * 获取属性:doubanTokenTime
+    * douban_token_time
+    * @return doubanTokenTime
+    */
+	public Integer getDoubanTokenTime () {
+    	return doubanTokenTime;
+   	}
+   	/**
+     * 设置属性:doubanTokenTime
+     * douban_token_time
+     * @param doubanTokenTime
+     */
+    public UserQuery setDoubanTokenTime(Integer doubanTokenTime) {
+    	this.doubanTokenTime = doubanTokenTime;
     	return this;
     }
 	/**==============================批量查询时的Order条件顺序设置==================================**/
@@ -407,6 +578,14 @@ public class UserQuery extends BaseQuery {
 		return this;
 	}
 	/**
+	 * 设置排序按属性：username
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyUsername(boolean isAsc){
+		orderFields.add(new OrderField("username",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
 	 * 设置排序按属性：昵称
 	 * @param isAsc 是否升序，否则为降序
 	 */	
@@ -447,6 +626,14 @@ public class UserQuery extends BaseQuery {
 		return this;
 	}
 	/**
+	 * 设置排序按属性：大头像
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyFigureurl2(boolean isAsc){
+		orderFields.add(new OrderField("figureurl2",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
 	 * 设置排序按属性：区域代码ppcccccctttttt
 	 * @param isAsc 是否升序，否则为降序
 	 */	
@@ -468,14 +655,6 @@ public class UserQuery extends BaseQuery {
 	 */	
 	public UserQuery orderbyEducation(boolean isAsc){
 		orderFields.add(new OrderField("education",isAsc?"ASC":"DESC"));
-		return this;
-	}
-	/**
-	 * 设置排序按属性：1 a 2b 3ab 4o 5其他
-	 * @param isAsc 是否升序，否则为降序
-	 */	
-	public UserQuery orderbyBloodGroup(boolean isAsc){
-		orderFields.add(new OrderField("blood_group",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**
@@ -522,8 +701,72 @@ public class UserQuery extends BaseQuery {
 	 * 设置排序按属性：邀请者
 	 * @param isAsc 是否升序，否则为降序
 	 */	
-	public UserQuery orderbyInvitor(boolean isAsc){
-		orderFields.add(new OrderField("invitor",isAsc?"ASC":"DESC"));
+	public UserQuery orderbyQqId(boolean isAsc){
+		orderFields.add(new OrderField("qq_id",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：qq_token
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyQqToken(boolean isAsc){
+		orderFields.add(new OrderField("qq_token",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：qq_token_time
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyQqTokenTime(boolean isAsc){
+		orderFields.add(new OrderField("qq_token_time",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：weibo_id
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyWeiboId(boolean isAsc){
+		orderFields.add(new OrderField("weibo_id",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：weibo_token
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyWeiboToken(boolean isAsc){
+		orderFields.add(new OrderField("weibo_token",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：weibo_token_time
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyWeiboTokenTime(boolean isAsc){
+		orderFields.add(new OrderField("weibo_token_time",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：douban_id
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyDoubanId(boolean isAsc){
+		orderFields.add(new OrderField("douban_id",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：douban_token
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyDoubanToken(boolean isAsc){
+		orderFields.add(new OrderField("douban_token",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：douban_token_time
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyDoubanTokenTime(boolean isAsc){
+		orderFields.add(new OrderField("douban_token_time",isAsc?"ASC":"DESC"));
 		return this;
 	}
 }

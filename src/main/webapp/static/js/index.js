@@ -112,14 +112,15 @@ var construct = function() {
 		}, 1000);
 
 		// add lyc
-		$('.lyricsText').html(info.song.lyric || "暂无歌词");
+		$('.lyricsText').html(
+				info.song.lyric || "Lyrics currently not avaliable");
 
 		// init thumb class
 		loadThumbInfo(info.thumb);
 	}
-	
+
 	/**
-	 * 加载专辑info
+	 * 加载thumb info
 	 */
 	var loadThumbInfo = function(thumb) {
 		if (thumb == 0) {
@@ -170,8 +171,7 @@ var construct = function() {
 					// 分享内容更新
 					window._bd_share_config.common.bdText = "我正在360.fm听《"
 							+ json.song.name + "》";
-					window._bd_share_config.common.bdDesc = "猛击到在360fm听《"
-							+ json.song.name + "》";
+					window._bd_share_config.common.bdDesc = "最好听的音乐在这里等你。";
 					window._bd_share_config.common.bdUrl = "";
 					window._bd_share_config.common.bdPic = json.song.coverImg
 							|| "";
@@ -193,7 +193,7 @@ var construct = function() {
 				}
 			},
 			error : function() {
-				nextSong();
+				// nextSong();
 			},
 			dataType : "json"
 		})
@@ -204,30 +204,33 @@ var construct = function() {
 	 */
 	var initBtnAction = function() {
 		// init play/pause button
-		pauseButton.click(function() {
+		pauseButton.click(function(e) {
 			if (!current)
 				return false;
 			current.sound.pause();
 			status = 2;
 			pauseButton.hide();
 			playButton.show();
+			e.preventDefault();
 		});
 		// init button
-		playButton.click(function() {
+		playButton.click(function(e) {
 			if (!current)
 				return false;
 			current.sound.resume();
 			status = 1;
 			playButton.hide();
 			pauseButton.show();
+			e.preventDefault();
 		});
-		skipButton.click(function() {
+		skipButton.click(function(e) {
 			nextSong();
+			e.preventDefault();
 		});
-		volumeButton.hover(function() {
+		volumeButton.hover(function(e) {
 			volumeBg.show();
 		});
-		volumeBg.hover(null, function() {
+		volumeBg.hover(null, function(e) {
 			volumeBg.fadeOut();
 		});
 		// volume draggable
@@ -271,52 +274,61 @@ var construct = function() {
 
 		// init thumbup down
 		var thumbBtnAction = function(thumb) {
-			if (thumb != 1 && thumb != 2) {
+			if (thumb != 'up' && thumb != 'down') {
 				return;
 			}
 			if (current) {
-				if (current.thumb != thumb) {
-					$.ajax({
-						async : false,
-						url : "/fm/thumb" + (thumb == 1 ? 'up' : 'down')
-								+ "?sid=" + current.song.id + "&r="
-								+ new Date().getTime(),
-						success : function(json, statusCode) {
-							if (json.err_no == 0) {
-								loadThumbInfo(thumb);
-								current.thumb = thumb;
-							} else {
-								alert("internal server error!");
+				$.ajax({
+					async : false,
+					url : "/fm/thumb" + thumb + "?sid=" + current.song.id
+							+ "&r=" + new Date().getTime(),
+					success : function(json, statusCode) {
+						if (json.err_no == 0) {
+							loadThumbInfo(json.thumb);
+							current.thumb = json.thumb;
+							for (var i in playLists){
+								var playList = playLists[i];
+								if (playList.type == 2 && json.thumbup_num >= 0){
+									playList.songCount = json.thumbup_num;
+								}
+								if (playList.type == 3 && json.thumbdown_num >= 0){
+									playList.songCount = json.thumbdown_num;
+								}
+								if (playList.element)
+									$(playList.element).children(".stationNameText").html(playList.name + ' ['+ playList.songCount+']');
 							}
-						},
-						error : function() {
+						} else {
 							alert("internal server error!");
-						},
-						complete : function() {
-							console.log(current);
-						},
-						dataType : "json"
-					})
-				}
+						}
+					},
+					error : function() {
+						alert("internal server error!");
+					},
+					complete : function() {
+					},
+					dataType : "json"
+				})
 			}
 		}
-		thumbUpButton.click(function() {
+		thumbUpButton.click(function(e) {
 			if (!user)
 				return false;
 			thumbUpButton.off();
-			thumbBtnAction(1)
+			thumbBtnAction("up")
 			thumbUpButton.on("click", function() {
-				thumbBtnAction(1)
+				thumbBtnAction("up")
 			});
+			e.preventDefault();
 		});
-		thumbDownButton.click(function() {
+		thumbDownButton.click(function(e) {
 			if (!user)
 				return false;
 			thumbDownButton.off();
-			thumbBtnAction(2)
+			thumbBtnAction("down")
 			thumbDownButton.on("click", function() {
-				thumbBtnAction(2)
+				thumbBtnAction("down")
 			});
+			e.preventDefault();
 		});
 	}
 	/**
@@ -326,35 +338,44 @@ var construct = function() {
 		if (!playLists)
 			return;
 		for ( var i in playLists) {
+			var playList = playLists[i];
 			var checked = '';
-			if (playLists[i].type != 3) {
+			if (playList.songCount != 0 || playList.type == 3) {
 				checked = 'checked';
-				selectedListId[playLists[i].id] = true;
+				selectedListId[playList.id] = true;
 			}
 			var plHtmlArr = [
 					'<div class="stationListItem">',
 					'<ul class="stationName">',
 					'<li class="shuffleStationLabel"><span data-plid="'
-							+ playLists[i].id + '" class="checkbox ' + checked
+							+ playList.id + '" class="checkbox ' + checked
 							+ '"></span>',
 					'<input checked="checked" value="'
-							+ playLists[i].id
+							+ playList.id
 							+ '" class="shuffleStation styled" type="checkbox">',
-					'<div class="stationNameText " title="' + playLists[i].name
-							+ '">' + playLists[i].name + '</div></li>',
-					'</ul>', '</div>' ];
-			$('#stationList').append(plHtmlArr.join(''));
+					'<div class="stationNameText " title="' + playList.name
+							+ '">' + playList.name + ' [' + playList.songCount
+							+ ']</div></li>', '</ul>', '</div>' ];
+			var itemElement = $(plHtmlArr.join(''));
+			playList.element = itemElement;
+			$('#stationList').append(itemElement);
 		}
-		$('#stationList span').click(function() {
+		$('#stationList span').click(function(e) {
+			var plid = $(this).attr('data-plid');
+			for (var i in playLists){
+				var playList = playLists[i];
+				if (playList.songCount == 0 && playList.type != 3) {
+					return;
+				}
+			}
 			if ($(this).hasClass('checked')) {
 				$(this).removeClass('checked');
-				var plid = $(this).attr('data-plid');
 				selectedListId[plid] = false;
 			} else {
 				$(this).addClass('checked');
-				var plid = $(this).attr('data-plid');
 				selectedListId[plid] = true;
 			}
+			e.preventDefault();
 		})
 	}
 
@@ -364,14 +385,18 @@ var construct = function() {
 	var checkLogin = function() {
 		$.ajax({
 			async : false,
-			url : "/fm/my?r=" + new Date().getTime(),
+			url : "/my?r=" + new Date().getTime(),
 			success : function(json, statusCode) {
 				if (json.err_no == 0) {
 					if (json.login == true) {
 						user = json.user;
-						$('.userName').html(user.email);
-						playLists = json.playLists;
-						showPlayList(playLists);
+						$('.userName').html(user.nickName);
+						$('.anonymousUser').hide();
+						$('.notAnonymousUser').show();
+						if (json.playLists}{
+							playLists = json.playLists;
+							showPlayList(json.playLists);
+						}
 					}
 				} else {
 					alert("internal server error!");
@@ -403,10 +428,28 @@ var construct = function() {
 				ontimeout : function() {
 				}
 			});
+		},
+		checkLogin : function() {
+			checkLogin();
 		}
 	}
 };
 $(function() {
-	var index = construct();
+	$('.signInLink')
+			.click(
+					function() {
+						window
+								.open(
+										"https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101033103&redirect_uri=http%3A%2F%2Fen.360.fm%2F3rd%2Fsuccess&scope=get_user_info&state=login",
+										"_blank",
+										"height=450,width=700,menubar=no,top=150,left=300");
+						e.preventDefault();
+					});
+	index = construct();
 	index.init();
 })
+
+// 第三方登陆子窗口调用
+var login = function() {
+	index.checkLogin();
+}

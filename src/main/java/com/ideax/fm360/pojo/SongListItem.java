@@ -7,29 +7,27 @@ import java.io.Serializable;
  *
  * @author xxjacob
  */
-public class SongList implements Serializable{
+public class SongListItem implements Serializable{
 
 	/** 序列化ID */
 	private static final long serialVersionUID = 1L;
 
 	/** id **/
     private Integer id;
+	/** list_id **/
+    private Integer listId;
 	/** uid **/
     private Integer uid;
-	/** name **/
-    private String name;
-	/** breif **/
-    private String breif;
-	/** 1、点赞歌单； 2踩掉歌单 **/
+	/** sid **/
+    private Integer sid;
+	/** type **/
     private Byte type;
-	/** 1,2,3 **/
-    private Integer songCount;
 	/** create_time **/
     private Integer createTime;
 	/** modify_time **/
     private Integer modifyTime;
-	/** extra **/
-    private String extra;
+	/** comment **/
+    private String comment;
 
 	
    /**
@@ -50,6 +48,23 @@ public class SongList implements Serializable{
    }
 	
    /**
+    * 获取属性:listId
+    * list_id
+    * @return listId
+    */
+   public Integer getListId() {
+       return listId;
+   }
+   /**
+    * 设置属性:listId
+    * list_id
+    * @param listId
+    */
+   public void setListId(Integer listId) {
+       this.listId = listId;
+   }
+	
+   /**
     * 获取属性:uid
     * uid
     * @return uid
@@ -67,42 +82,25 @@ public class SongList implements Serializable{
    }
 	
    /**
-    * 获取属性:name
-    * name
-    * @return name
+    * 获取属性:sid
+    * sid
+    * @return sid
     */
-   public String getName() {
-       return name;
+   public Integer getSid() {
+       return sid;
    }
    /**
-    * 设置属性:name
-    * name
-    * @param name
+    * 设置属性:sid
+    * sid
+    * @param sid
     */
-   public void setName(String name) {
-       this.name = name;
-   }
-	
-   /**
-    * 获取属性:breif
-    * breif
-    * @return breif
-    */
-   public String getBreif() {
-       return breif;
-   }
-   /**
-    * 设置属性:breif
-    * breif
-    * @param breif
-    */
-   public void setBreif(String breif) {
-       this.breif = breif;
+   public void setSid(Integer sid) {
+       this.sid = sid;
    }
 	
    /**
     * 获取属性:type
-    * 1、点赞歌单； 2踩掉歌单
+    * type
     * @return type
     */
    public Byte getType() {
@@ -110,28 +108,11 @@ public class SongList implements Serializable{
    }
    /**
     * 设置属性:type
-    * 1、点赞歌单； 2踩掉歌单
+    * type
     * @param type
     */
    public void setType(Byte type) {
        this.type = type;
-   }
-	
-   /**
-    * 获取属性:songCount
-    * 1,2,3
-    * @return songCount
-    */
-   public Integer getSongCount() {
-       return songCount;
-   }
-   /**
-    * 设置属性:songCount
-    * 1,2,3
-    * @param songCount
-    */
-   public void setSongCount(Integer songCount) {
-       this.songCount = songCount;
    }
 	
    /**
@@ -169,20 +150,20 @@ public class SongList implements Serializable{
    }
 	
    /**
-    * 获取属性:extra
-    * extra
-    * @return extra
+    * 获取属性:comment
+    * comment
+    * @return comment
     */
-   public String getExtra() {
-       return extra;
+   public String getComment() {
+       return comment;
    }
    /**
-    * 设置属性:extra
-    * extra
-    * @param extra
+    * 设置属性:comment
+    * comment
+    * @param comment
     */
-   public void setExtra(String extra) {
-       this.extra = extra;
+   public void setComment(String comment) {
+       this.comment = comment;
    }
 
 	/**

@@ -620,6 +620,25 @@ public class SongXiamiQuery extends BaseQuery {
     	this.filePath = filePath;
     	return this;
     }
+	/** song_id **/
+    private Integer songId;
+	/**
+    * 获取属性:songId
+    * song_id
+    * @return songId
+    */
+	public Integer getSongId () {
+    	return songId;
+   	}
+   	/**
+     * 设置属性:songId
+     * song_id
+     * @param songId
+     */
+    public SongXiamiQuery setSongId(Integer songId) {
+    	this.songId = songId;
+    	return this;
+    }
 	/**==============================批量查询时的Order条件顺序设置==================================**/
 	public class OrderField{
 		public OrderField(String fieldName, String order) {
@@ -902,6 +921,14 @@ public class SongXiamiQuery extends BaseQuery {
 	 */	
 	public SongXiamiQuery orderbyFilePath(boolean isAsc){
 		orderFields.add(new OrderField("file_path",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：song_id
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongXiamiQuery orderbySongId(boolean isAsc){
+		orderFields.add(new OrderField("song_id",isAsc?"ASC":"DESC"));
 		return this;
 	}
 }

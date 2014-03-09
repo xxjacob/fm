@@ -1,0 +1,1382 @@
+<html lang="en"
+	class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+<title>Pandora Internet Radio - Listen to Free Music You'll Love</title>
+
+<meta content="Pandora Internet Radio - Listen to Free Music You'll Love" property="og:title">
+<meta
+	content="Pandora is free, personalized radio that plays music you'll love. Discover new music and enjoy old favorites. Start with your favorite artist, song or composer and Pandora will create a custom station that plays similar tracks."
+	property="og:description">
+<meta content="website" property="og:type">
+<meta content="http://www.pandora.com/account/sign-in" property="og:url">
+<meta content="Pandora" property="og:site_name">
+<meta content="http://www.pandora.com/img/pandora_favicon_144.png" property="og:image">
+
+
+<meta content="Pandora" name="application-name">
+<meta content="/browserconfig.xml" name="msapplication-config">
+<meta content="Listen to music you love" name="msapplication-tooltip">
+<meta content="width=1200;height=900" name="msapplication-window">
+<meta content="/ie_app/pandora_favicon_144.png" name="msapplication-TileImage">
+<meta content="#f3f4f6" name="msapplication-TileColor">
+<meta content="name=Music Genres;action-uri=http://www.pandora.com/music;icon-uri=http://pandora.com/favicon.ico"
+	name="msapplication-task">
+<meta content="name=Help;action-uri=http://blog.pandora.com/faq;icon-uri=http://pandora.com/favicon.ico"
+	name="msapplication-task">
+<meta content="name=Pandora Blog;action-uri=http://blog.pandora.com;icon-uri=http://pandora.com/favicon.ico"
+	name="msapplication-task">
+
+<meta
+	content="Pandora is free, personalized radio that plays music you'll love. Discover new music and enjoy old favorites. Start with your favorite artist, song or composer and Pandora will create a custom station that plays similar tracks."
+	name="description">
+
+<link href="http://blog.pandora.com/pandora/index.xml" title="Pandora Blog" type="application/rss+xml" rel="alternate">
+<link href="/account/sign-in" rel="canonical">
+
+<link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
+<link href="/favicon.ico" type="image/ico" rel="icon">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<link href="/s/css/compiled.css?v=368413717" rel="stylesheet">
+<link href="/s/css/design.css?v=368413717" rel="stylesheet">
+<link href="/static/ribbon/bluebar.css?cb=1393919979565" type="text/css" rel="stylesheet">
+<link href="/static/valances/pandora/default/design.css" type="text/css" rel="stylesheet" id="valanceStyle">
+<link type="text/css" rel="stylesheet" id="skinStyle">
+
+<style type="text/css" media="print">
+.fullLyrics,.lyricsText {
+	display: none;
+	visibility: hidden;
+}
+</style>
+
+<style>
+._spacer {
+	display: none;
+	visibility: hidden;
+}
+</style>
+
+<script async="" src="//b.scorecardresearch.com/beacon.js"></script>
+<script async="" src="//www.google-analytics.com/ga.js"></script>
+<script src="/script.head.js?v=368413717"></script>
+<script type="text/javascript">
+	var _ts = new Date();
+	var _sts = new Date(1393919979565);
+	var flensed = {
+		base_path : "/js/libs/flXHR-1.0.6/"
+	};
+	var _pandoraVersion = "368413717";
+	var CLOSURE_NO_DEPS = true;
+
+	if (document.location.href.indexOf("//pandora.com") != -1) {
+		document.location.href = document.location.href.replace(
+				/\/\/pandora.com/, "//www.pandora.com");
+	}
+</script>
+<style type="text/css" media="screen">
+#Secretary {
+	visibility: hidden
+}
+</style>
+<script src="/js/libs/flXHR-1.0.6/checkplayer.js" type="text/javascript"></script>
+<script src="/js/libs/flXHR-1.0.6/flensed.js" type="text/javascript"></script>
+<style type="text/css" media="screen">
+.flXHRhideSwf {
+	left: -1px;
+	top: 0px;
+	width: 1px;
+	height: 1px;
+	position: absolute;
+}
+</style>
+<style type="text/css">
+.fb_hidden {
+	position: absolute;
+	top: -10000px;
+	z-index: 10001
+}
+
+.fb_invisible {
+	display: none
+}
+
+.fb_reset {
+	background: none;
+	border: 0;
+	border-spacing: 0;
+	color: #000;
+	cursor: auto;
+	direction: ltr;
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1;
+	margin: 0;
+	overflow: visible;
+	padding: 0;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0;
+	text-shadow: none;
+	text-transform: none;
+	visibility: visible;
+	white-space: normal;
+	word-spacing: normal
+}
+
+.fb_reset &gt ; div {
+	overflow: hidden
+}
+
+.fb_link img {
+	border: none
+}
+
+.fb_dialog {
+	background: rgba(82, 82, 82, .7);
+	position: absolute;
+	top: -10000px;
+	z-index: 10001
+}
+
+.fb_dialog_advanced {
+	padding: 10px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px
+}
+
+.fb_dialog_content {
+	background: #fff;
+	color: #333
+}
+
+.fb_dialog_close_icon {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png)
+		no-repeat scroll 0 0 transparent;
+	_background-image:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);
+	cursor: pointer;
+	display: block;
+	height: 15px;
+	position: absolute;
+	right: 18px;
+	top: 17px;
+	width: 15px;
+	top: 8px\9;
+	right: 7px\9
+}
+
+.fb_dialog_mobile .fb_dialog_close_icon {
+	top: 5px;
+	left: 5px;
+	right: auto
+}
+
+.fb_dialog_padding {
+	background-color: transparent;
+	position: absolute;
+	width: 1px;
+	z-index: -1
+}
+
+.fb_dialog_close_icon:hover {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png)
+		no-repeat scroll 0 -15px transparent;
+	_background-image:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)
+}
+
+.fb_dialog_close_icon:active {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png)
+		no-repeat scroll 0 -30px transparent;
+	_background-image:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)
+}
+
+.fb_dialog_loader {
+	background-color: #f2f2f2;
+	border: 1px solid #606060;
+	font-size: 24px;
+	padding: 20px
+}
+
+.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right
+	{
+	height: 10px;
+	width: 10px;
+	overflow: hidden;
+	position: absolute
+}
+
+.fb_dialog_top_left {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png)
+		no-repeat 0 0;
+	left: -10px;
+	top: -10px
+}
+
+.fb_dialog_top_right {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png)
+		no-repeat 0 -10px;
+	right: -10px;
+	top: -10px
+}
+
+.fb_dialog_bottom_left {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png)
+		no-repeat 0 -20px;
+	bottom: -10px;
+	left: -10px
+}
+
+.fb_dialog_bottom_right {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png)
+		no-repeat 0 -30px;
+	right: -10px;
+	bottom: -10px
+}
+
+.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom
+	{
+	position: absolute;
+	background: #525252;
+	filter: alpha(opacity = 70);
+	opacity: .7
+}
+
+.fb_dialog_vert_left,.fb_dialog_vert_right {
+	width: 10px;
+	height: 100%
+}
+
+.fb_dialog_vert_left {
+	margin-left: -10px
+}
+
+.fb_dialog_vert_right {
+	right: 0;
+	margin-right: -10px
+}
+
+.fb_dialog_horiz_top,.fb_dialog_horiz_bottom {
+	width: 100%;
+	height: 10px
+}
+
+.fb_dialog_horiz_top {
+	margin-top: -10px
+}
+
+.fb_dialog_horiz_bottom {
+	bottom: 0;
+	margin-bottom: -10px
+}
+
+.fb_dialog_iframe {
+	line-height: 0
+}
+
+.fb_dialog_content .dialog_title {
+	background: #6d84b4;
+	border: 1px solid #3b5998;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0
+}
+
+.fb_dialog_content .dialog_title &gt ; span {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+		no-repeat 5px 50%;
+	float: left;
+	padding: 5px 0 7px 26px
+}
+
+body.fb_hidden {
+	-webkit-transform: none;
+	height: 100%;
+	margin: 0;
+	overflow: visible;
+	position: absolute;
+	top: -10000px;
+	left: 0;
+	width: 100%
+}
+
+.fb_dialog.fb_dialog_mobile.loading {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white
+		no-repeat 50% 50%;
+	min-height: 100%;
+	min-width: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	z-index: 10001
+}
+
+.fb_dialog.fb_dialog_mobile.loading.centered {
+	max-height: 590px;
+	min-height: 590px;
+	max-width: 500px;
+	min-width: 500px
+}
+
+#fb-root #fb_dialog_ipad_overlay {
+	background: rgba(0, 0, 0, .45);
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	min-height: 100%;
+	z-index: 10000
+}
+
+#fb-root #fb_dialog_ipad_overlay.hidden {
+	display: none
+}
+
+.fb_dialog.fb_dialog_mobile.loading iframe {
+	visibility: hidden
+}
+
+.fb_dialog_content .dialog_header {
+	-webkit-box-shadow: white 0 1px 1px -1px inset;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA),
+		to(#2C4987));
+	border-bottom: 1px solid;
+	border-color: #1d4088;
+	color: #fff;
+	font: 14px Helvetica, sans-serif;
+	font-weight: bold;
+	text-overflow: ellipsis;
+	text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0;
+	vertical-align: middle;
+	white-space: nowrap
+}
+
+.fb_dialog_content .dialog_header table {
+	-webkit-font-smoothing: subpixel-antialiased;
+	height: 43px;
+	width: 100%
+}
+
+.fb_dialog_content .dialog_header td.header_left {
+	font-size: 12px;
+	padding-left: 5px;
+	vertical-align: middle;
+	width: 60px
+}
+
+.fb_dialog_content .dialog_header td.header_right {
+	font-size: 12px;
+	padding-right: 5px;
+	vertical-align: middle;
+	width: 60px
+}
+
+.fb_dialog_content .touchable_button {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6),
+		color-stop(0.5, #355492), to(#2A4887));
+	border: 1px solid #29447e;
+	-webkit-background-clip: padding-box;
+	-webkit-border-radius: 3px;
+	-webkit-box-shadow: rgba(0, 0, 0, .117188) 0 1px 1px inset,
+		rgba(255, 255, 255, .167969) 0 1px 0;
+	display: inline-block;
+	margin-top: 3px;
+	max-width: 85px;
+	line-height: 18px;
+	padding: 4px 12px;
+	position: relative
+}
+
+.fb_dialog_content .dialog_header .touchable_button input {
+	border: none;
+	background: none;
+	color: #fff;
+	font: 12px Helvetica, sans-serif;
+	font-weight: bold;
+	margin: 2px -12px;
+	padding: 2px 6px 3px 6px;
+	text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+}
+
+.fb_dialog_content .dialog_header .header_center {
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 18px;
+	text-align: center;
+	vertical-align: middle
+}
+
+.fb_dialog_content .dialog_content {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif)
+		no-repeat 50% 50%;
+	border: 1px solid #555;
+	border-bottom: 0;
+	border-top: 0;
+	height: 150px
+}
+
+.fb_dialog_content .dialog_footer {
+	background: #f2f2f2;
+	border: 1px solid #555;
+	border-top-color: #ccc;
+	height: 40px
+}
+
+#fb_dialog_loader_close {
+	float: left
+}
+
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button {
+	text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+}
+
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
+	visibility: hidden
+}
+
+.fb_iframe_widget {
+	display: inline-block;
+	position: relative
+}
+
+.fb_iframe_widget span {
+	display: inline-block;
+	position: relative;
+	text-align: justify
+}
+
+.fb_iframe_widget iframe {
+	position: absolute
+}
+
+.fb_iframe_widget_lift {
+	z-index: 1
+}
+
+.fb_hide_iframes iframe {
+	position: relative;
+	left: -10000px
+}
+
+.fb_iframe_widget_loader {
+	position: relative;
+	display: inline-block
+}
+
+.fb_iframe_widget_fluid {
+	display: inline
+}
+
+.fb_iframe_widget_fluid span {
+	width: 100%
+}
+
+.fb_iframe_widget_loader iframe {
+	min-height: 32px;
+	z-index: 2;
+	zoom: 1
+}
+
+.fb_iframe_widget_loader .FB_Loader {
+	background:
+		url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif)
+		no-repeat;
+	height: 32px;
+	width: 32px;
+	margin-left: -16px;
+	position: absolute;
+	left: 50%;
+	z-index: 4
+}
+
+.fb_connect_bar_container div,.fb_connect_bar_container span,.fb_connect_bar_container a,.fb_connect_bar_container img,.fb_connect_bar_container strong
+	{
+	background: none;
+	border-spacing: 0;
+	border: 0;
+	direction: ltr;
+	font-style: normal;
+	font-variant: normal;
+	letter-spacing: normal;
+	line-height: 1;
+	margin: 0;
+	overflow: visible;
+	padding: 0;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0;
+	text-shadow: none;
+	text-transform: none;
+	visibility: visible;
+	white-space: normal;
+	word-spacing: normal;
+	vertical-align: baseline
+}
+
+.fb_connect_bar_container {
+	position: fixed;
+	left: 0 !important;
+	right: 0 !important;
+	height: 42px !important;
+	padding: 0 25px !important;
+	margin: 0 !important;
+	vertical-align: middle !important;
+	border-bottom: 1px solid #333 !important;
+	background: #3b5998 !important;
+	z-index: 99999999 !important;
+	overflow: hidden !important
+}
+
+.fb_connect_bar_container_ie6 {
+	position: absolute;
+	top: expression(document.compatMode == "CSS1Compat" ?  
+		document.documentElement.scrollTop + "px" : body.scrollTop + "px")
+}
+
+.fb_connect_bar {
+	position: relative;
+	margin: auto;
+	height: 100%;
+	width: 100%;
+	padding: 6px 0 0 0 !important;
+	background: none;
+	color: #fff !important;
+	font-family: "lucida grande", tahoma, verdana, arial,
+		sans-serif !important;
+	font-size: 13px !important;
+	font-style: normal !important;
+	font-variant: normal !important;
+	font-weight: normal !important;
+	letter-spacing: normal !important;
+	line-height: 1 !important;
+	text-decoration: none !important;
+	text-indent: 0 !important;
+	text-shadow: none !important;
+	text-transform: none !important;
+	white-space: normal !important;
+	word-spacing: normal !important
+}
+
+.fb_connect_bar a:hover {
+	color: #fff
+}
+
+.fb_connect_bar .fb_profile img {
+	height: 30px;
+	width: 30px;
+	vertical-align: middle;
+	margin: 0 6px 5px 0
+}
+
+.fb_connect_bar div a,.fb_connect_bar span,.fb_connect_bar span a {
+	color: #bac6da;
+	font-size: 11px;
+	text-decoration: none
+}
+
+.fb_connect_bar .fb_buttons {
+	float: right;
+	margin-top: 7px
+}
+
+.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright {
+	position: fixed !important;
+	bottom: 0;
+	z-index: 999
+}
+
+.fbpluginrecommendationsbarleft {
+	left: 10px
+}
+
+.fbpluginrecommendationsbarright {
+	right: 10px
+}
+</style>
+</head>
+
+<body class="is-us width-p1-noAds" id="body" style="display: block;">
+	<div id="splash" style="display: none;">
+		<div class="logo">
+			<img width="538" height="110" src="/img/pandora-logo-splash-538x110.png?cachebuster=11393919975138">
+		</div>
+		<div class="cantload">
+			<p>It is taking longer than expected to fetch the next song to play. The music should be playing soon. If you get
+				tired of waiting, you can try reloading your browser.</p>
+			<br> Please check our <a target="_blank"
+				href="http://help.pandora.com/customer/portal/topics/7282-on-the-web/articles">Help page</a> for information about
+			troubleshooting Pandora on your browser.<br>
+		</div>
+	</div>
+
+	<div id="pandoraRibbonContainer">
+
+		<div class="ribbonContent">
+
+			<div class="ribbon" id="accountMessageRibbon">
+				<div class="pandora_bar_container" id="pandoraAccountMessageOuterWrapper">
+					<div class="pandora_bar">
+						<div class="account_message"></div>
+						<a href="#" class="account_message_learnmore" address="true"><img border="0" alt="learn more"
+							src="/static/ribbon/learn_more.png"></a>
+					</div>
+					<div class="account_message_close">
+						<a href="#" address="true"> <img border="0" alt="close" src="/static/ribbon/close.png"
+							class="account_message_close_img"> <span class="account_message_close_txt">Close <em>x</em></span>
+						<!-- account_message_close_txt -->
+						</a>
+					</div>
+					<!-- account_message_close -->
+					<a href="#" address="true">
+						<div class="nice_account_message_close box_drop_shadow"></div>
+					</a>
+				</div>
+			</div>
+
+			<div class="ribbon" id="renewalRibbon">
+				<div class="pandora_bar_container">
+					<div class="pandora_bar">
+						<div class="pandora_bar_message">
+							Your Pandora One <span id="pandora_bar_desc">subscription</span> will expire <span id="pandora_bar_day_count">shortly</span>.
+						</div>
+						<div class="renewal_buttons">
+							<div class="renew_more_info"></div>
+							<div class="renewal_no_thanks"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ribbon" id="trialRibbon">
+				<div class="pandora_bar_container">
+					<div class="pandora_bar">
+						<div class="trial_message_close">
+							<a href="#" address="true"><img border="0" alt="close" src="/static/ribbon/close.png"></a>
+						</div>
+						<div class="pandora_bar_message">
+							Your Pandora One trial subscription will expire <span id="pandora_bar_day_count">shortly</span>. <span
+								id="trialTxt">Upgrade to continue unlimited, ad-free listening.</span>
+						</div>
+						<div class="trial_buttons">
+							<div class="trial_upgrade"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ribbon" id="cappingRibbon">
+				<div class="pandora_bar_container">
+					<div class="pandora_bar">
+						<div class="pandora_bar_message">
+							You've listened to <span id="currentListeningHours"></span> hours of Pandora this month. Consider upgrading to
+							Pandora One.
+						</div>
+						<div class="capping_buttons">
+							<div class="capping_more_info"></div>
+							<div class="capping_no_thanks"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ribbon" id="facebookRibbon">
+				<div class="fb_reset fb_connect_bar_container">
+					<div class="fb_connect_bar">
+						<div class="fb_buttons">
+							<a href="#" class="fb_close" address="true"><img src="/static/images/fb_close_btn.png" alt="Close"
+								title="Close"></a>
+						</div>
+						<span class="fb_profile"><img width="32" height="32" id="fbRibbonImage"></span> Hi <span id="fbRibbonName"></span>.
+						<strong>Pandora</strong> is using Facebook to personalize your experience. <span> <a
+							href="http://www.facebook.com/sitetour/connect.php" class="fb_learn_more" target="_blank">Learn More</a> &ndash;
+							<a href="#" class="fb_no_thanks" address="true">No Thanks</a>
+						</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<!-- Top Navigation -->
+
+	<div id="topnav">
+
+		<!-- Branding Bar -->
+		<div id="brandingBar">
+			<div class="disabled"></div>
+			<div class="rightcolumn">
+				<span class="registeredUser" style="display: none;"> <span>&nbsp;<a class="upgradeLink" href="/one"
+						address="true">Upgrade</a>&nbsp;
+				</span>
+				</span> <span class="anonymousUser" style="display: inline;"> <span class="register"> <a
+						href="/account/register" class="registerLink underline" address="true">register</a> &nbsp; | &nbsp;
+				</span> <span class="signIn"> <a href="/account/sign-in" class="signInLink underline" address="true">sign in</a>
+						&nbsp; | &nbsp;
+				</span> <span class="help"> <a href="http://help.pandora.com/" target="_blank" class="underline">help</a>
+				</span>
+				</span> <span class="notAnonymousUser"> <span class="user_menu"> <span class="user_activator"> <span
+							class="userName_arrow"></span> <span class="userNameMenuTitle"><span class="userNameImage"></span><span
+								class="userName"></span></span>
+							<div class="dd_container" id="user_menu_dd">
+								<ul>
+									<li class="menu able"><a href="/account/info" address="true">Settings</a></li>
+									<li class="menu able"><a href="/profile" class="profileMenuItem" address="true">My Profile</a></li>
+									<li class="menu"><a target="_blank" href="/help" class="helpMenuItem">Help</a></li>
+									<li class="menu"><a href="#" class="signoutMenuItem" address="true">Sign out</a></li>
+								</ul>
+							</div>
+					</span>
+					<!-- no href -->
+
+				</span> <span id="rightColumnDivider"> &nbsp; | &nbsp; </span>
+
+
+				</span>
+
+			</div>
+
+			<div class="leftcolumn">
+				<div class="logo" style="display: block;"></div>
+				<div class="logosubscriber" style="display: none;"></div>
+			</div>
+			<div class="middlecolumndisabled"></div>
+			<div class="middlecolumn"></div>
+		</div>
+
+		<!-- Player Bar -->
+		<div id="playerBar" style="display: none;">
+			<div class="highlight">
+
+				<div class="disabled"></div>
+
+				<div class="columns">
+					<div class="rightcolumn">
+
+						<div class="nowplaying">
+
+							<div class="cd_menu">
+
+								<div class="cd_icon">
+									<div class="albumArt"></div>
+									<div class="cd_activator">
+										<a href="#" address="true"></a>
+									</div>
+								</div>
+
+								<div id="cd_menu_dd">
+									<div class="cd_tab"></div>
+									<ul>
+										<li><a class="tiredOfSong" href="#" address="true"><b>I’m tired</b> of this track</a></li>
+										<li><a class="moveSong" href="#" address="true"><b>Move</b> track to another station</a></li>
+										<li><a class="new_station" href="#" address="true"><b>New Station</b></a>
+											<ul class="station">
+												<li><a class="newStationFromSong" href="#" address="true"><b>from</b> Song</a></li>
+												<li><a class="newStationFromArtist" href="#" address="true"><b>from</b> Artist</a></li>
+											</ul></li>
+									</ul>
+								</div>
+
+							</div>
+							<!-- /cd_menu -->
+
+							<div style="display: none;" class="info">
+								<div>
+									<a class="playerBarSong" href="#" address="true"></a>
+								</div>
+								<div>
+									<span class="playerByText">by</span> <a class="playerBarArtist" href="#" address="true"></a>
+								</div>
+								<div>
+									<span>on</span> <a class="playerBarAlbum" href="#" address="true"></a>
+								</div>
+							</div>
+
+						</div>
+						<!-- /nowplaying -->
+					</div>
+					<!-- /rightcolumn -->
+					<div class="leftcolumn" style="display: none;">
+						<div class="searchBox">
+							<input type="text" spellcheck="false" autocomplete="off" class="searchInput" disabled="disabled">
+						</div>
+					</div>
+
+
+					<div class="middlecolumn" id="playbackControl">
+						<div class="buttons">
+							<div class="thumbDownButton">
+								<a href="#" address="true"></a>
+							</div>
+							<div class="thumbUpButton">
+								<a href="#" address="true"></a>
+							</div>
+							<div class="playButton">
+								<a href="#" address="true"></a>
+							</div>
+							<div class="pauseButton">
+								<a href="#" address="true"></a>
+							</div>
+							<div class="skipButton">
+								<a href="#" address="true"></a>
+							</div>
+							<div class="volumePosition">
+								<div class="volumeControl">
+									<div class="volumeBackground">
+										<div class="volumeBar"></div>
+										<div class="volumeKnob ui-draggable" style="left: 102px;"></div>
+									</div>
+									<div class="volumeButton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="progress">
+							<div class="remainingTime">-0:00</div>
+							<div class="elapsedTime">0:00</div>
+							<div class="progressBar">
+								<img width="2" height="3" src="/img/player-controls/progress-left.png"><img width="0" height="3"
+									src="/img/player-controls/progress-middle.png" class="progressMiddle"><img width="2" height="3"
+									src="/img/player-controls/progress-right.png">
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div id="skinTab" style="display: none;">Change Skin</div>
+
+		</div>
+
+	</div>
+
+	<div class="skinContainer">
+		<div id="mainContainer" class="no_player_bar">
+			<div id="main">
+
+				<div class="skinClick" id="skinClickLeft" style="display: none;"></div>
+				<div class="skinClick" id="skinClickRight" style="display: none;"></div>
+
+				<div class="welcome" id="welcomeSearch" style="visibility: visible; display: block;">
+					<div class="outer_bg">
+						<div class="welcome_content">
+							<p class="firstLine">
+								We created Pandora to put the <a href="/corporate/mgp" target="_blank">Music Genome Project</a> directly in your
+								hands
+							</p>
+							<p class="secondLine">
+								It’s a new kind of radio &ndash;<br> stations that play only music you like
+							</p>
+							<div class="searchBox" style="display: none;">
+								<div id="searchPopupWelcomePosition"></div>
+								<input type="text" spellcheck="false" autocomplete="off" class="searchInput">
+							</div>
+							<div class="bottom">
+								<div class="divider">&nbsp;</div>
+								<div class="signinContainer">
+									<div>
+										<div class="signinForm" style="display: block;">
+											<form class="loginForm" action="#">
+												<div class="formField hasValue">
+													<input type="email" name="email" class="field"> <span class="fieldLabel">Your email</span>
+												</div>
+												<div class="formField hasValue">
+													<input type="password" name="password" class="field"> <span class="fieldLabel">Password</span>
+												</div>
+												<div class="formField">
+													<input type="submit" class="btn_bg welcome_btn loginButton" value="Sign in">
+												</div>
+												<div class="formHelp clearfix">
+													<div class="formFieldError emailFieldError"></div>
+													<div class="formFieldError passwordFieldError"></div>
+													<div class="formFieldError serverFieldError">I'm sorry, I don't recognize your email and password.</div>
+													<div class="formFieldError suspendedAccountError">
+														Sorry, but this account has been suspended.<br>Please contact <a target="_blank"
+															href="http://help.pandora.com/customer/portal/articles/166313-contact-pandora-support">listener
+															support</a> for help.
+													</div>
+												</div>
+												<div class="formField remember">
+													<input type="checkbox" checked="" name="remember"><label>Remember me</label>
+												</div>
+												<div class="formField forgot">
+													<a class="help" href="/account/help">Forgot password?</a>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="btm_content clearfix">
+									<div class="message signin" style="display: none;">
+										Already have a Pandora account? <a href="/account/sign-in" address="true">Sign in</a>
+									</div>
+									<div class="message register" style="display: block;">
+										Create an account for free. <a href="/account/register" address="true">Register</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix" id="adLayout">
+
+					<div style="display: none; height: 0px;" id="ad_container" class="inactive invisible">
+						<div id="ad_your_ad_here" style="display: none; visibility: hidden;">
+							<a target="_blank" href="/advertise">Your Ad Here</a>
+						</div>
+						<div id="advertisement"></div>
+						<div id="google_adwords" style="display: none; visibility: hidden;">
+							<iframe scrolling="no" height="200" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0"
+								id="google_adwords_frame"></iframe>
+						</div>
+						<div id="advertisement_bottom" style="display: none; visibility: hidden;"></div>
+						<div id="ad_controls" style="display: none; visibility: hidden;">
+							<a href="#" class="skipLink" address="true">skip</a> <a target="_blank"
+								href="http://help.pandora.com/customer/portal/articles/162149-why-ads-" class="whyAdsLink">why ads?</a> <br
+								clear="all">
+						</div>
+						<div id="sponsored_logo"></div>
+					</div>
+					<!-- //ad_container" -->
+					<div id="companion_frame" class="inactive invisible"></div>
+
+					<div class="contentContainer" id="mainContentContainer" style="display: none;">
+						<div class="top"></div>
+						<div class="content clearfix">
+
+							<div class="contentnav">
+								<div class="disabled"></div>
+								<div class="stationListHeader">
+									<div class="home">
+										<div class="home_icon">Now Playing</div>
+									</div>
+								</div>
+								<div class="friends">
+									<div class="friends_icon">Music Feed</div>
+								</div>
+								<div class="myprofile">
+									<div class="myprofile_icon">My Profile</div>
+								</div>
+
+							</div>
+
+							<div id="mainContent">
+								<div style="display: none" class="home fxCol-cont-1 col-prop-1 view-2">
+									<div class="stationContent">
+										<div class="stationListHolder clearfix scroll-pane vertical-only"
+											style="overflow: hidden; padding: 0px; width: 100px;" scrollername="station_list">
+
+											<div class="jspContainer" style="width: 100px; height: 512px;">
+												<div class="jspPane" style="padding: 0px; top: 0px; width: 100px;">
+													<div id="stationList"></div>
+												</div>
+											</div>
+										</div>
+										<div class="clearfix" id="stationSortButtons">
+											<div class="btn_bg_sort unselectable selected" id="stationSortDate">Date</div>
+											<div class="btn_bg_sort unselectable" id="stationSortAlpha">A - Z</div>
+										</div>
+
+										<div id="promobox">
+											<div class="content_container clearfix">
+												<div class="contentbox" id="content_a" style="display: none;"></div>
+												<div class="contentbox" id="content_b" style="">
+													<style>
+.stationContent #promobox #demo1 h1 {
+	color: red;
+}
+</style>
+													<div id="demo1">
+														<a onclick="window.top.Pandora.launchStationFromId('1474954893733973314'); return false;" href="#"
+															adtype="legends_icons"><img border="0" src="/static/promo/img/sessions.jpg"> </a>
+													</div>
+												</div>
+											</div>
+											<div class="scroller unselectable" id="scrollLeft"></div>
+											<div class="scroller unselectable" id="scrollRight"></div>
+											<div class="dots">
+												<ul>
+													<li class="dot">&nbsp;</li>
+													<li class="dot">&nbsp;</li>
+													<li class="dot">&nbsp;</li>
+													<li class="dot">&nbsp;</li>
+													<li class="dot">&nbsp;</li>
+													<li class="dot selected">&nbsp;</li>
+													<li class="dot">&nbsp;</li>
+													<li class="dot">&nbsp;</li>
+												</ul>
+											</div>
+										</div>
+										<!-- /promobox -->
+										<div class="platformPromo view-3 clearfix">
+											<dl class="c-7 t-shade-2 list-h-1 clearfix">
+												<dt>Pandora for your</dt>
+												<dd>
+													<a title="Phone" href="/everywhere/mobile" class="icon-notext-1 i-phone-1" rel="tooltip" address="true"><div
+															class="tooltip_container">
+															<div class="tooltip">
+																<div class="toolbox">Phone</div>
+																<div class="tip"></div>
+															</div>
+														</div></a>
+												</dd>
+												<dd class="us-only-block">
+													<a title="Home" href="/everywhere/home" class="icon-notext-1 i-tv-1" rel="tooltip" address="true"><div
+															class="tooltip_container">
+															<div class="tooltip">
+																<div class="toolbox">Home</div>
+																<div class="tip"></div>
+															</div>
+														</div></a>
+												</dd>
+												<dd class="us-only-block">
+													<a title="Car" href="/everywhere/auto" class="icon-notext-1 i-car-1" rel="tooltip" address="true"><div
+															class="tooltip_container">
+															<div class="tooltip">
+																<div class="toolbox">Car</div>
+																<div class="tip"></div>
+															</div>
+														</div></a>
+												</dd>
+											</dl>
+										</div>
+										<!-- /platformPromo -->
+										<div id="shufflePicker" style="display: none;">
+											<div id="shufflePickerContainer">
+												<div id="shufflePickerItemContainer"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="homeRightSide">
+										<div class="slideDragLimit"></div>
+
+										<!-- Technique from http://stackoverflow.com/questions/42294/how-do-you-get-the-footer-to-stay-at-the-bottom-of-a-web-page/42301#42301 -->
+										<div style="display: inline-block" class="slidesBackground unselectable clearfix">
+											<div style="height: 222px;">
+												<img width="980" height="100%" src="/img/content-area/albumart-bg-top.jpg">
+											</div>
+											<img width="980" height="16" src="/img/content-area/albumart-bg-bottom.jpg" class="bottom">
+										</div>
+
+										<div class="slidesForeground">
+											<div class="slides unselectable" style="height: 215px; margin-top: -246px;"></div>
+											<div class="slides_right_scroll unselectable"></div>
+											<div class="slides_left_scroll unselectable"></div>
+											<div class="slider-overlay-1 clearfix" id="narrativeDetail">
+												<div class="item narrative clearfix">
+													<div class="close1" style="visibility: visible;"></div>
+													<div class="heading">Narrative</div>
+													<div class="itemContent"></div>
+													<div class="divider"></div>
+												</div>
+											</div>
+											<div class="slider-overlay-1 clearfix" id="songNarrativeDetail">
+												<div class="item song_narrative clearfix">
+													<div class="close1" style="visibility: visible;"></div>
+													<div class="heading">Why this track?</div>
+													<div class="itemContent"></div>
+													<div class="divider"></div>
+												</div>
+											</div>
+										</div>
+										<div id="currentSlideArrow" style="margin-right: 100px;"></div>
+
+										<div id="trackInfoContainer">
+											<div class="unselectable" id="trackInfo">
+												<div class="contents">
+													<div class="slideDragContainer">
+														<div class="slideDrag"></div>
+														<div class="slideDragHandle ui-draggable"></div>
+													</div>
+
+													<div class="info">
+														<img src="/img/content-area/thumbup-watermark.png" id="thumbup" class="thumb"> <img
+															src="/img/content-area/thumbdown-watermark.png" id="thumbdown" class="thumb">
+														<div class="trackData">
+															<div>
+																<a class="songTitle" href="#" address="true"></a>
+															</div>
+															<div>
+																<i class="byText">by</i> <a class="artistSummary" href="#" address="true"></a>
+															</div>
+															<div>
+																<i>on</i> <a class="albumTitle" href="#" address="true"></a>
+															</div>
+														</div>
+													</div>
+													<div class="audioAdInfo">
+														<div class="adText">Your music will be right back…</div>
+														<div class="whyAdsButton"></div>
+													</div>
+												</div>
+											</div>
+
+											<div class="unselectable" id="trackInfoButtons">
+												<div class="buttons">
+													<div class="button btn_bg autoshareButton">
+														<div class="arrow"></div>
+														<div class="icon"></div>
+														<div class="text">Publish</div>
+													</div>
+													<div class="button btn_bg shareButton">
+														<div class="icon"></div>
+														<div class="text">Share...</div>
+													</div>
+													<div class="button btn_bg buyButton">
+														<div class="arrow"></div>
+														<div class="icon"></div>
+														<div class="text">Buy</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div id="videoPageInfo">
+											<div class="video_art">
+												<a target="_blank" href="#"><img height="50"></a>
+											</div>
+											<div>
+												<p class="video_name">
+													Video: <span class="caption"></span>
+												</p>
+												<p>
+													<span class="caption_header"></span> presents <span class="caption_footer"></span>.
+												</p>
+												<p>
+													<a target="_blank" href="#">watch now</a>
+												</p>
+											</div>
+										</div>
+
+										<div class="fxCol-cont-5" id="detailContainer">
+											<div class="detail" id="trackDetail">
+												<div class="item lyrics">
+													<div class="close1"></div>
+													<div class="heading">Lyrics</div>
+													<div class="itemContent"></div>
+													<div class="divider"></div>
+												</div>
+												<div class="item nocontent nolyrics">
+													<div class="itemContent">Lyrics not available</div>
+													<div class="divider"></div>
+												</div>
+												<div class="item artistBio">
+													<div class="close1"></div>
+													<div class="heading">About</div>
+													<div class="itemContent"></div>
+													<div class="divider"></div>
+												</div>
+												<div class="item aboutEpisode">
+													<div class="close1"></div>
+													<div class="heading">About This Track</div>
+													<div class="itemContent"></div>
+													<div class="divider"></div>
+												</div>
+												<div class="item moreShows">
+													<div class="close1"></div>
+													<div class="heading">More Tracks</div>
+													<div class="itemContent"></div>
+													<div class="divider"></div>
+												</div>
+												<div class="item relatedArtists">
+													<div class="close1"></div>
+													<div class="heading">Similar Artists</div>
+													<div class="itemContent"></div>
+													<div class="divider"></div>
+												</div>
+											</div>
+											<div class="detail" id="customContentTrackDetail">
+												<div id="customContentTrackDetailFrame0"></div>
+												<div id="customContentTrackDetailFrame1"></div>
+											</div>
+											<div class="detail" id="audioAdDetail">
+												<div class="adText">
+													Audio ads help pay our bills. For an entirely ad-free experience, you can <a href="/one" address="true">upgrade</a>.
+												</div>
+											</div>
+											<div class="track_detail_close"></div>
+										</div>
+									</div>
+
+
+								</div>
+								<!-- /home -->
+
+								<div class="accountSettings fxCol-cont-2 col-prop-1"></div>
+								<div class="genres"></div>
+								<div class="bizdev"></div>
+								<div class="station"></div>
+								<div class="search col-prop-1"></div>
+								<div class="capping"></div>
+								<div class="payment"></div>
+								<div class="paymentConfirm"></div>
+								<div class="redemption" style="display: none;"></div>
+								<div class="error_page"></div>
+								<div class="pandoraOneInfo"></div>
+								<div class="giftInfo"></div>
+								<div class="survey"></div>
+								<div class="sponsoredTrial" style="display: none;"></div>
+
+
+							</div>
+						</div>
+					</div>
+
+					<div class="footerContainer clearfix center-window" id="footer">
+						<div class="navFooter" id="anonNavFooter">
+							<div class="container centerAnonymousFooter clearfix">
+								<div class="col1 list">
+									Company
+									<ul>
+										<li><a target="_blank" href="/about">about</a></li>
+										<li><a target="_blank" href="/advertise">advertising</a></li>
+										<li><a href="http://submit.pandora.com/submit/submission">Submit Your Music</a></li>
+										<li><a target="_blank" href="http://blog.pandora.com/">blog</a></li>
+										<li><a target="_blank" href="/careers/life-at-pandora">jobs</a></li>
+										<li><a target="_blank" href="http://investor.pandora.com/phoenix.zhtml?c=227956&amp;p=irol-irhome">investor</a></li>
+										<li><a target="_blank" href="/press">press</a></li>
+										<li><a target="_blank" href="/privacy">privacy</a></li>
+										<li><a target="_blank" href="/privacy#CA">Your CA Privacy Rights</a></li>
+										<li><a target="_blank" href="/legal">terms</a></li>
+										<li><a target="_blank" href="/advertising/preferences">Ad Preferences</a></li>
+									</ul>
+								</div>
+								<div class="col2 list">
+									Music Genre Stations
+									<ul>
+										<li><a href="/music/pop/todays-hits" address="true">Today's Hits</a></li>
+										<li><a href="/music/country/todays-country" address="true">Today's Country</a></li>
+										<li><a href="/music/hip-hop/todays-hip-hop-and-pop-hits" address="true">Today's Hip Hop and Pop Hits</a></li>
+										<li><a href="/music/rb/todays-rb-and-hip-hop-hits" address="true">Today's R&amp;B and Hip Hop Hits</a></li>
+										<li><a href="/music/christian-gospel/contemporary-gospel" address="true">Contemporary Gospel</a></li>
+										<li><a href="/music/rock/classic-rock" address="true">Classic Rock</a></li>
+										<li><a href="/music/classical/classical" address="true">Classical</a></li>
+										<li><a class="browseGenres" href="/music/top-stations" address="true">Browse genre stations</a></li>
+									</ul>
+								</div>
+								<div class="col3 list">
+									Pandora Everywhere
+									<ul>
+										<li><a href="/everywhere/mobile" address="true">Pandora on your phone</a></li>
+										<li class="us-only-block"><a href="/everywhere/auto" address="true">Pandora in your car</a></li>
+										<li class="us-only-block"><a href="/everywhere/home" address="true">Pandora in your home</a></li>
+										<li class="us-only-block"><a href="/everywhere/business" address="true">Pandora for your Business</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+						<div class="navFooter" id="registeredNavFooter" style="display: none;">
+							<div class="container">
+								<div class="list">
+									<ul class="row">
+										<li><a class="browseGenres" href="/music/top-stations" address="true">Genres</a></li>
+										<li><a href="/everywhere/mobile" address="true">Mobile</a></li>
+										<li class="us-only-inline"><a href="/everywhere/auto" address="true">Auto</a></li>
+										<li class="us-only-inline"><a href="/everywhere/home" address="true">Devices</a></li>
+										<li class="us-only-inline"><a href="/everywhere/business" address="true">Businesses</a></li>
+										<li><a target="_blank" href="/one/gift">Gifts</a></li>
+										<li><a target="_blank" href="/about">About</a></li>
+										<li><a target="_blank" href="/privacy">Privacy</a></li>
+										<li><a href="/privacy/#CA" target="_blank">Your CA Privacy Rights</a></li>
+										<li><a target="_blank" href="/legal">Terms</a></li>
+									</ul>
+									<ul class="row">
+										<li><a target="_blank" href="/careers/life-at-pandora">Jobs</a></li>
+										<li><a target="_blank" href="/advertise">Advertising</a></li>
+										<li><a target="_blank" href="http://submit.pandora.com/">Submit Your Music</a></li>
+										<li><a target="_blank" href="http://investor.pandora.com/phoenix.zhtml?c=227956&amp;p=irol-irhome">Investor</a></li>
+										<li><a target="_blank" href="/press">Press</a></li>
+										<li><a target="_blank" href="http://blog.pandora.com/">Blog</a></li>
+										<li><a target="_blank" href="http://help.pandora.com/">Help</a></li>
+										<li><a target="_blank" href="/advertising/preferences">Ad Preferences</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="legal">
+							&copy; 2005-2013 Pandora Media, Inc., All Rights Reserved <br> Pandora and the Music Genome Project are
+							registered trademarks of Pandora Media, Inc.
+						</div>
+					</div>
+				</div>
+
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<!-- //mainContainer -->
+
+
+		<div id="searchPopupNavPosition"></div>
+
+		<div class="dropdownmenu" id="buy_menu_dd"></div>
+		<div class="dropdownmenu" id="autoshare_menu_dd">
+			<ul>
+				<li><a class="autoshareOn" href="#" address="true"><div class="check"></div>
+						<div class="autoshareText">Publish to Facebook - On</div></a></li>
+				<li><a class="autoshareOff checked" href="#" address="true"><div class="check"></div>
+						<div class="autoshareText">Publish to Facebook - Off</div></a></li>
+				<li><a class="autoshareOptions" href="#" address="true">Options</a></li>
+			</ul>
+
+		</div>
+
+		<div class="site_warning" id="oldbrowser">
+			<p>In order to use Pandora internet radio, please upgrade to a more current browser.</p>
+			<!--[if lt IE 7 ]>
+			<p>Internet Explorer users can try installing <a href="http://www.google.com/chromeframe/">Chrome Frame</a></p>
+		<![endif]-->
+			<p>
+				Please check our <a href="http://help.pandora.com/customer/portal/topics/7282-on-the-web/articles">Help page</a> for
+				more information.
+			</p>
+		</div>
+
+		<div class="site_warning" id="noaudio">
+			<p>
+				In order to use Pandora internet radio, please upgrade to a more current browser<br> or install a newer version
+				of <a target="_blank" href="http://get.adobe.com/flashplayer/">Flash</a> (v.10 or later).
+			</p>
+		</div>
+
+		<div class="site_warning" id="noaudio_webkit">
+			<p>
+				In order to use Pandora internet radio, please install <a target="_blank" href="http://get.adobe.com/flashplayer/">Adobe
+					Flash</a> (v.10 or later).
+			</p>
+		</div>
+
+		<div class="site_warning" id="flash_upgrade"></div>
+	</div>
+</body>
+</html>

@@ -12,7 +12,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                 <result property="name" column="name" />
                                 <result property="breif" column="breif" />
                                 <result property="type" column="type" />
-                                                    <result property="createTime" column="create_time" />
+                                <result property="songCount" column="song_count" />
+                                <result property="createTime" column="create_time" />
                                 <result property="modifyTime" column="modify_time" />
                                 <result property="extra" column="extra" />
                         </resultMap>
@@ -22,22 +23,22 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     <result property="name" column="name" />
                     <result property="breif" column="breif" />
                     <result property="type" column="type" />
-                    <result property="songs" column="songs" />
+                    <result property="songCount" column="song_count" />
                     <result property="createTime" column="create_time" />
                     <result property="modifyTime" column="modify_time" />
                     <result property="extra" column="extra" />
             </resultMap>
     <!-- Select SQL -->
     <sql id="songList.selector">
-        SELECT id,uid,name,breif,type,create_time,modify_time,extra FROM song_list
+        SELECT id,uid,name,breif,type,song_count,create_time,modify_time,extra FROM song_list
     </sql>
     <!--包含TEXT 等大数据-->
     <sql id="songList.selectorall">
-        SELECT id,uid,name,breif,type,songs,create_time,modify_time,extra FROM song_list
+        SELECT id,uid,name,breif,type,song_count,create_time,modify_time,extra FROM song_list
     </sql>
     <sql id="songListList.where">
 		<dynamic prepend=" WHERE ">
-            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="uid" prepend=" AND ">uid=#uid#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="breif" prepend=" AND ">breif=#breif#</isNotNull><isNotNull property="type" prepend=" AND ">type=#type#</isNotNull><isNotNull property="songs" prepend=" AND ">songs=#songs#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="extra" prepend=" AND ">extra=#extra#</isNotNull>        </dynamic>
+            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="uid" prepend=" AND ">uid=#uid#</isNotNull><isNotNull property="name" prepend=" AND ">name=#name#</isNotNull><isNotNull property="breif" prepend=" AND ">breif=#breif#</isNotNull><isNotNull property="type" prepend=" AND ">type=#type#</isNotNull><isNotNull property="songCount" prepend=" AND ">song_count=#songCount#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="extra" prepend=" AND ">extra=#extra#</isNotNull>        </dynamic>
     </sql>
     <sql id="songListList.order">
         <dynamic prepend=" ORDER BY ">
@@ -87,8 +88,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="type">
                         type = #type#
                     </isNotNull>
-                                                                <isNotNull prepend="," property="songs">
-                        songs = #songs#
+                                                                <isNotNull prepend="," property="songCount">
+                        song_count = #songCount#
                     </isNotNull>
                                                                 <isNotNull prepend="," property="createTime">
                         create_time = #createTime#
@@ -119,8 +120,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="type">
                         type = #type#
                     </isNotNull>
-                                                                <isNotNull prepend="," property="songs">
-                        songs = #songs#
+                                                                <isNotNull prepend="," property="songCount">
+                        song_count = #songCount#
                     </isNotNull>
                                                                 <isNotNull prepend="," property="createTime">
                         create_time = #createTime#
@@ -162,10 +163,10 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                 name,
                 breif,
                 type,
-                songs,
+                song_count,
                                 extra,
             create_time    ,modify_time)
-    VALUES(#uid#,#name#,#breif#,#type#,#songs#,#extra#,    now(),now())
+    VALUES(#uid#,#name#,#breif#,#type#,#songCount#,#extra#,    now(),now())
     <selectKey resultClass="long" type="post" keyProperty="id">
     SELECT last_insert_id() AS id
     </selectKey>
@@ -178,7 +179,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotEmpty prepend="," property="name">name</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="breif">breif</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="type">type</isNotEmpty>
-                                                                <isNotEmpty prepend="," property="songs">songs</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="songCount">song_count</isNotEmpty>
                                                                 ,create_time
                                                                 ,modify_time
                                                                 <isNotEmpty prepend="," property="extra">extra</isNotEmpty>
@@ -189,7 +190,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                                                             <isNotEmpty  prepend="," property="name">#name#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="breif">#breif#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="type">#type#</isNotEmpty>
-                                                                                                            <isNotEmpty  prepend="," property="songs">#songs#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="songCount">#songCount#</isNotEmpty>
                                                                                     ,UNIX_TIMESTAMP()
                                                                                     ,UNIX_TIMESTAMP()
                                                                                                             <isNotEmpty  prepend="," property="extra">#extra#</isNotEmpty>

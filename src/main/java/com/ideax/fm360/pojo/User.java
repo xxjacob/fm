@@ -18,6 +18,8 @@ public class User implements Serializable{
     private String email;
 	/** password **/
     private String password;
+	/** username **/
+    private String username;
 	/** 昵称 **/
     private String nickname;
 	/** 性别 **/
@@ -28,14 +30,14 @@ public class User implements Serializable{
     private Integer birthMd;
 	/** 头像 **/
     private String figureurl;
+	/** 大头像 **/
+    private String figureurl2;
 	/** 区域代码ppcccccctttttt **/
     private Long region;
 	/** 简介 **/
     private String introduce;
 	/** 学历,1 高中，2大专，3本科，4硕士，5博士，6博士后 **/
     private Byte education;
-	/** 1 a 2b 3ab 4o 5其他 **/
-    private Byte bloodGroup;
 	/** 收入 **/
     private Byte earning;
 	/** profession **/
@@ -47,7 +49,23 @@ public class User implements Serializable{
 	/** modify_time **/
     private Integer modifyTime;
 	/** 邀请者 **/
-    private String invitor;
+    private String qqId;
+	/** qq_token **/
+    private String qqToken;
+	/** qq_token_time **/
+    private Integer qqTokenTime;
+	/** weibo_id **/
+    private String weiboId;
+	/** weibo_token **/
+    private String weiboToken;
+	/** weibo_token_time **/
+    private String weiboTokenTime;
+	/** douban_id **/
+    private String doubanId;
+	/** douban_token **/
+    private String doubanToken;
+	/** douban_token_time **/
+    private Integer doubanTokenTime;
 
 	
    /**
@@ -99,6 +117,23 @@ public class User implements Serializable{
     */
    public void setPassword(String password) {
        this.password = password;
+   }
+	
+   /**
+    * 获取属性:username
+    * username
+    * @return username
+    */
+   public String getUsername() {
+       return username;
+   }
+   /**
+    * 设置属性:username
+    * username
+    * @param username
+    */
+   public void setUsername(String username) {
+       this.username = username;
    }
 	
    /**
@@ -187,6 +222,23 @@ public class User implements Serializable{
    }
 	
    /**
+    * 获取属性:figureurl2
+    * 大头像
+    * @return figureurl2
+    */
+   public String getFigureurl2() {
+       return figureurl2;
+   }
+   /**
+    * 设置属性:figureurl2
+    * 大头像
+    * @param figureurl2
+    */
+   public void setFigureurl2(String figureurl2) {
+       this.figureurl2 = figureurl2;
+   }
+	
+   /**
     * 获取属性:region
     * 区域代码ppcccccctttttt
     * @return region
@@ -235,23 +287,6 @@ public class User implements Serializable{
     */
    public void setEducation(Byte education) {
        this.education = education;
-   }
-	
-   /**
-    * 获取属性:bloodGroup
-    * 1 a 2b 3ab 4o 5其他
-    * @return bloodGroup
-    */
-   public Byte getBloodGroup() {
-       return bloodGroup;
-   }
-   /**
-    * 设置属性:bloodGroup
-    * 1 a 2b 3ab 4o 5其他
-    * @param bloodGroup
-    */
-   public void setBloodGroup(Byte bloodGroup) {
-       this.bloodGroup = bloodGroup;
    }
 	
    /**
@@ -340,20 +375,156 @@ public class User implements Serializable{
    }
 	
    /**
-    * 获取属性:invitor
+    * 获取属性:qqId
     * 邀请者
-    * @return invitor
+    * @return qqId
     */
-   public String getInvitor() {
-       return invitor;
+   public String getQqId() {
+       return qqId;
    }
    /**
-    * 设置属性:invitor
+    * 设置属性:qqId
     * 邀请者
-    * @param invitor
+    * @param qqId
     */
-   public void setInvitor(String invitor) {
-       this.invitor = invitor;
+   public void setQqId(String qqId) {
+       this.qqId = qqId;
+   }
+	
+   /**
+    * 获取属性:qqToken
+    * qq_token
+    * @return qqToken
+    */
+   public String getQqToken() {
+       return qqToken;
+   }
+   /**
+    * 设置属性:qqToken
+    * qq_token
+    * @param qqToken
+    */
+   public void setQqToken(String qqToken) {
+       this.qqToken = qqToken;
+   }
+	
+   /**
+    * 获取属性:qqTokenTime
+    * qq_token_time
+    * @return qqTokenTime
+    */
+   public Integer getQqTokenTime() {
+       return qqTokenTime;
+   }
+   /**
+    * 设置属性:qqTokenTime
+    * qq_token_time
+    * @param qqTokenTime
+    */
+   public void setQqTokenTime(Integer qqTokenTime) {
+       this.qqTokenTime = qqTokenTime;
+   }
+	
+   /**
+    * 获取属性:weiboId
+    * weibo_id
+    * @return weiboId
+    */
+   public String getWeiboId() {
+       return weiboId;
+   }
+   /**
+    * 设置属性:weiboId
+    * weibo_id
+    * @param weiboId
+    */
+   public void setWeiboId(String weiboId) {
+       this.weiboId = weiboId;
+   }
+	
+   /**
+    * 获取属性:weiboToken
+    * weibo_token
+    * @return weiboToken
+    */
+   public String getWeiboToken() {
+       return weiboToken;
+   }
+   /**
+    * 设置属性:weiboToken
+    * weibo_token
+    * @param weiboToken
+    */
+   public void setWeiboToken(String weiboToken) {
+       this.weiboToken = weiboToken;
+   }
+	
+   /**
+    * 获取属性:weiboTokenTime
+    * weibo_token_time
+    * @return weiboTokenTime
+    */
+   public String getWeiboTokenTime() {
+       return weiboTokenTime;
+   }
+   /**
+    * 设置属性:weiboTokenTime
+    * weibo_token_time
+    * @param weiboTokenTime
+    */
+   public void setWeiboTokenTime(String weiboTokenTime) {
+       this.weiboTokenTime = weiboTokenTime;
+   }
+	
+   /**
+    * 获取属性:doubanId
+    * douban_id
+    * @return doubanId
+    */
+   public String getDoubanId() {
+       return doubanId;
+   }
+   /**
+    * 设置属性:doubanId
+    * douban_id
+    * @param doubanId
+    */
+   public void setDoubanId(String doubanId) {
+       this.doubanId = doubanId;
+   }
+	
+   /**
+    * 获取属性:doubanToken
+    * douban_token
+    * @return doubanToken
+    */
+   public String getDoubanToken() {
+       return doubanToken;
+   }
+   /**
+    * 设置属性:doubanToken
+    * douban_token
+    * @param doubanToken
+    */
+   public void setDoubanToken(String doubanToken) {
+       this.doubanToken = doubanToken;
+   }
+	
+   /**
+    * 获取属性:doubanTokenTime
+    * douban_token_time
+    * @return doubanTokenTime
+    */
+   public Integer getDoubanTokenTime() {
+       return doubanTokenTime;
+   }
+   /**
+    * 设置属性:doubanTokenTime
+    * douban_token_time
+    * @param doubanTokenTime
+    */
+   public void setDoubanTokenTime(Integer doubanTokenTime) {
+       this.doubanTokenTime = doubanTokenTime;
    }
 
 	/**
