@@ -205,9 +205,10 @@ public class UserC {
             userService.updateUser(update);
         }
 
+        response.setContentType("text/html");
         passportService.login(u, response);
 
-        return "<html><body>login success , closing ...</body><script>window.opener.login();window.close()</script></html>";
+        return "<!DOCTYPE html><html><body>login success , closing ...</body><script>window.opener.login();window.close()</script></html>";
     }
 
     @RequestMapping("register")

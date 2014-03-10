@@ -162,7 +162,7 @@ var construct = function() {
 			success : function(json, statusCode) {
 				if (json.err_no == 0) {
 					var sound = soundManager.createSound({
-						id : json.song.id,
+						id : 'song-'+json.song.id,
 						url : json.song.streamUrl,
 					});
 					json.sound = sound;
@@ -437,7 +437,7 @@ var construct = function() {
 $(function() {
 	$('.signInLink')
 			.click(
-					function() {
+					function(e) {
 						window
 								.open(
 										"https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101033103&redirect_uri=http%3A%2F%2Fen.360.fm%2F3rd%2Fsuccess&scope=get_user_info&state=login",

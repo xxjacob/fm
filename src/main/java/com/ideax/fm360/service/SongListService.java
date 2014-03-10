@@ -65,6 +65,7 @@ public class SongListService {
             SongList sl = this.getThumbupList(uid);
             if (!cancel) {
                 SongListItem songListItem = new SongListItem();
+                songListItem.setListId(sl.getId());
                 songListItem.setUid(uid);
                 songListItem.setSid(sid);
                 songListItem.setType(Const.SONG_LIST_TYPE_THUMBUP);
@@ -128,6 +129,7 @@ public class SongListService {
             SongList down = this.getThumbdownList(uid);
             if (!cancel) {
                 SongListItem songListItem = new SongListItem();
+                songListItem.setListId(down.getId());
                 songListItem.setUid(uid);
                 songListItem.setSid(sid);
                 songListItem.setType(Const.SONG_LIST_TYPE_THUMBDOWN);
