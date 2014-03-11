@@ -390,10 +390,10 @@ var construct = function() {
 				if (json.err_no == 0) {
 					if (json.login == true) {
 						user = json.user;
-						$('.userName').html(user.nickName);
+						$('.userName').html(user.nickname);
 						$('.anonymousUser').hide();
 						$('.notAnonymousUser').show();
-						if (json.playLists}{
+						if (json.playLists){
 							playLists = json.playLists;
 							showPlayList(json.playLists);
 						}
@@ -435,7 +435,7 @@ var construct = function() {
 	}
 };
 $(function() {
-	$('.signInLink')
+	$('.ico__qq')
 			.click(
 					function(e) {
 						window
@@ -445,6 +445,26 @@ $(function() {
 										"height=450,width=700,menubar=no,top=150,left=300");
 						e.preventDefault();
 					});
+	$('.ico__douban')
+	.click(
+			function(e) {
+				window
+						.open(
+								"https://www.douban.com/service/auth2/auth?response_type=code&client_id=0cddf221f4e7e2bd2699d665deb7a837&redirect_uri=http%3A%2F%2Fen.360.fm%2F3rd%2Fdouban&scope=douban_basic_common,music_basic_r&state=login",
+								"_blank",
+								"height=450,width=700,menubar=no,top=150,left=300");
+				e.preventDefault();
+			});
+	$('.ico__weibo')
+	.click(
+			function(e) {
+				window
+						.open(
+								"https://api.weibo.com/oauth2/authorize?client_id=1901684633&redirect_uri=http%3A%2F%2Fen.360.fm%2F3rd%2Fweibo&scope=follow_app_official_microblog&state=login",
+								"_blank",
+								"height=450,width=700,menubar=no,top=150,left=300");
+				e.preventDefault();
+			});
 	index = construct();
 	index.init();
 })

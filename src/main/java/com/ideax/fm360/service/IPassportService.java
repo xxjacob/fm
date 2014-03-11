@@ -7,7 +7,9 @@ import com.ideax.fm360.pojo.User;
 
 public interface IPassportService {
 
-    public User getLoginUser(HttpServletRequest request);
+	public User getLoginUser(HttpServletRequest request);
 
-    public void login(User user, HttpServletResponse resp);
+	public void login(User user, HttpServletResponse resp);
+
+	public void logout(User user, HttpServletRequest request, HttpServletResponse resp);
 }

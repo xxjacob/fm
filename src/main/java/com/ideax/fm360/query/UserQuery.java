@@ -450,13 +450,13 @@ public class UserQuery extends BaseQuery {
     	return this;
     }
 	/** weibo_token_time **/
-    private String weiboTokenTime;
+    private Integer weiboTokenTime;
 	/**
     * 获取属性:weiboTokenTime
     * weibo_token_time
     * @return weiboTokenTime
     */
-	public String getWeiboTokenTime () {
+	public Integer getWeiboTokenTime () {
     	return weiboTokenTime;
    	}
    	/**
@@ -464,7 +464,7 @@ public class UserQuery extends BaseQuery {
      * weibo_token_time
      * @param weiboTokenTime
      */
-    public UserQuery setWeiboTokenTime(String weiboTokenTime) {
+    public UserQuery setWeiboTokenTime(Integer weiboTokenTime) {
     	this.weiboTokenTime = weiboTokenTime;
     	return this;
     }
@@ -523,6 +523,25 @@ public class UserQuery extends BaseQuery {
      */
     public UserQuery setDoubanTokenTime(Integer doubanTokenTime) {
     	this.doubanTokenTime = doubanTokenTime;
+    	return this;
+    }
+	/** douban_refresh_token **/
+    private String doubanRefreshToken;
+	/**
+    * 获取属性:doubanRefreshToken
+    * douban_refresh_token
+    * @return doubanRefreshToken
+    */
+	public String getDoubanRefreshToken () {
+    	return doubanRefreshToken;
+   	}
+   	/**
+     * 设置属性:doubanRefreshToken
+     * douban_refresh_token
+     * @param doubanRefreshToken
+     */
+    public UserQuery setDoubanRefreshToken(String doubanRefreshToken) {
+    	this.doubanRefreshToken = doubanRefreshToken;
     	return this;
     }
 	/**==============================批量查询时的Order条件顺序设置==================================**/
@@ -767,6 +786,14 @@ public class UserQuery extends BaseQuery {
 	 */	
 	public UserQuery orderbyDoubanTokenTime(boolean isAsc){
 		orderFields.add(new OrderField("douban_token_time",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：douban_refresh_token
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public UserQuery orderbyDoubanRefreshToken(boolean isAsc){
+		orderFields.add(new OrderField("douban_refresh_token",isAsc?"ASC":"DESC"));
 		return this;
 	}
 }

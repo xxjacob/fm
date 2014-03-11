@@ -13112,3 +13112,24 @@ select.styled{
 	}
 
 }
+
+
+.ico__youku,.ico__sina,.ico__tecent,.ico__qzone,.ico__renren,.ico__msn,
+.ico__kaixin,.ico__pengyou,.ico__baidu,.ico__douban,.ico__mop,.ico__sohu,
+.ico__163,.ico__qq,.ico__weixin,.ico__yixin{display:inline-block;*display:inline;*zoom:1;width:16px;height:16px;background:url(/s/img/ico_apps.png) no-repeat;line-height:0;margin-right:5px;}
+.ico__youku{background-position:-96px 0;}
+.ico__sina{background-position:0 -32px;}
+.ico__tecent{background-position:-32px -32px;}
+.ico__qzone{background-position:-64px -32px;}
+.ico__renren{background-position:-96px -32px;}
+.ico__msn{background-position:0 -64px;}
+.ico__kaixin{background-position:-32px -64px;}
+.ico__pengyou{background-position:-64px -64px;}
+.ico__baidu{background-position:-96px -64px;}
+.ico__douban{background-position:0 -96px;}
+.ico__mop{background-position:-32px -96px;}
+.ico__sohu{background-position:-64px -96px;}
+.ico__163{background-position:-96px -96px;}
+.ico__qq{background-position:0 -128px;}
+.ico__weixin{background-position:-32px -128px;}
+.ico__yixin{background-position:-64px -128px;}

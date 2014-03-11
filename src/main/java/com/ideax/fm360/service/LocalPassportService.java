@@ -19,39 +19,52 @@ import com.ideax.fm360.pojo.User;
 @Service("passportService")
 public class LocalPassportService implements IPassportService {
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    // local store session
-    public static Map<String, User> loginAdmins = new HashMap<String, User>();
+	// local store session
+	public static Map<String, User> loginAdmins = new HashMap<String, User>();
 
-    @Autowired
-    UserDAO userDao;
+	@Autowired
+	UserDAO userDao;
 
-    static final String sso_cookie = "xhjuss";
+	static final String sso_cookie = "xhjuss";
 
-    @Override
-    public User getLoginUser(HttpServletRequest request) {
-        Cookie cs[] = request.getCookies();
-        if (cs != null) {
-            for (Cookie c : cs) {
-                if (c.getName().equals(sso_cookie)) {
-                    String uss = c.getValue();
-                    return loginAdmins.get(uss);
-                }
-            }
-        }
-        return null;
-    }
+	@Override
+	public User getLoginUser(HttpServletRequest request) {
+		Cookie cs[] = request.getCookies();
+		if (cs != null) {
+			for (Cookie c : cs) {
+				if (c.getName().equals(sso_cookie)) {
+					String uss = c.getValue();
+					return loginAdmins.get(uss);
+				}
+			}
+		}
+		return null;
+	}
 
-    @Override
-    public void login(User user, HttpServletResponse resp) {
-        String sessionid = RandomStringUtils.random(32, true, true);
-        loginAdmins.put(sessionid, user);
-        Cookie cookie = new Cookie(sso_cookie, sessionid);
-        cookie.setMaxAge(3600 * 24 * 10);
-        cookie.setPath("/");
-        cookie.setDomain("360.fm");
-        resp.addCookie(cookie);
-    }
+	@Override
+	public void login(User user, HttpServletResponse resp) {
+		String sessionid = RandomStringUtils.random(32, true, true);
+		loginAdmins.put(sessionid, user);
+		Cookie cookie = new Cookie(sso_cookie, sessionid);
+		cookie.setMaxAge(3600 * 24 * 10);
+		cookie.setPath("/");
+		cookie.setDomain("360.fm");
+		resp.addCookie(cookie);
+	}
+
+	@Override
+	public void logout(User user, HttpServletRequest request, HttpServletResponse resp) {
+		Cookie cs[] = request.getCookies();
+		if (cs != null) {
+			for (Cookie c : cs) {
+				if (c.getName().equals(sso_cookie)) {
+					String uss = c.getValue();
+					loginAdmins.remove(uss);
+				}
+			}
+		}
+	}
 
 }

@@ -59,13 +59,15 @@ public class User implements Serializable{
 	/** weibo_token **/
     private String weiboToken;
 	/** weibo_token_time **/
-    private String weiboTokenTime;
+    private Integer weiboTokenTime;
 	/** douban_id **/
     private String doubanId;
 	/** douban_token **/
     private String doubanToken;
 	/** douban_token_time **/
     private Integer doubanTokenTime;
+	/** douban_refresh_token **/
+    private String doubanRefreshToken;
 
 	
    /**
@@ -464,7 +466,7 @@ public class User implements Serializable{
     * weibo_token_time
     * @return weiboTokenTime
     */
-   public String getWeiboTokenTime() {
+   public Integer getWeiboTokenTime() {
        return weiboTokenTime;
    }
    /**
@@ -472,7 +474,7 @@ public class User implements Serializable{
     * weibo_token_time
     * @param weiboTokenTime
     */
-   public void setWeiboTokenTime(String weiboTokenTime) {
+   public void setWeiboTokenTime(Integer weiboTokenTime) {
        this.weiboTokenTime = weiboTokenTime;
    }
 	
@@ -525,6 +527,23 @@ public class User implements Serializable{
     */
    public void setDoubanTokenTime(Integer doubanTokenTime) {
        this.doubanTokenTime = doubanTokenTime;
+   }
+	
+   /**
+    * 获取属性:doubanRefreshToken
+    * douban_refresh_token
+    * @return doubanRefreshToken
+    */
+   public String getDoubanRefreshToken() {
+       return doubanRefreshToken;
+   }
+   /**
+    * 设置属性:doubanRefreshToken
+    * douban_refresh_token
+    * @param doubanRefreshToken
+    */
+   public void setDoubanRefreshToken(String doubanRefreshToken) {
+       this.doubanRefreshToken = doubanRefreshToken;
    }
 
 	/**

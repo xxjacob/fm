@@ -19,80 +19,83 @@ import com.ideax.fm360.query.UserQuery;
 @Service
 public class UserService {
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    SongDAO songDao;
+	@Autowired
+	SongDAO songDao;
 
-    @Autowired
-    UserDAO userDao;
+	@Autowired
+	UserDAO userDao;
 
-    @Autowired
-    SongListDAO songListDao;
+	@Autowired
+	SongListDAO songListDao;
 
+	/**
+	 * for login
+	 */
+	public User getUserByNamePwd(String name, String pwd) {
+		try {
+			List<User> us = userDao.getUserList(new UserQuery().setEmail(name).setPassword(pwd));
+			if (us != null && us.size() > 0) {
+				return us.get(0);
+			}
+			return null;
+		} catch (SQLException e) {
+			logger.error("", e);
+			throw new IllegalException(EC.EC_DB, "internal error!");
+		}
+	}
 
-    /**
-     * for login
-     */
-    public User getUserByNamePwd(String name, String pwd) {
-        try {
-            List<User> us = userDao.getUserList(new UserQuery().setEmail(name).setPassword(pwd));
-            if (us != null && us.size() > 0) {
-                return us.get(0);
-            }
-            return null;
-        } catch (SQLException e) {
-            logger.error("", e);
-            throw new IllegalException(EC.EC_DB, "internal error!");
-        }
-    }
+	/**
+	 * get
+	 */
+	public User getUserByOpenid(String platform, String id) {
+		try {
+			UserQuery q = new UserQuery();
+			if (platform.equals("qq")) {
+				q.setQqId(id);
+			} else if (platform.equals("douban")) {
+				q.setDoubanId(id);
+			} else if (platform.equals("weibo")) {
+				q.setWeiboId(id);
+			} else {
+				return null;
+			}
+			List<User> us = userDao.getUserList(q);
+			if (us != null && us.size() > 0) {
+				return us.get(0);
+			}
+			return null;
+		} catch (SQLException e) {
+			logger.error("", e);
+			throw new IllegalException(EC.EC_DB, "internal error!");
+		}
+	}
 
-    /**
-     * get
-     */
-    public User getUserByOpenid(String platform, String id) {
-        try {
-            UserQuery q = new UserQuery();
-            if (platform.equals("qq")) {
-                q.setQqId(id);
-            } else {
-                return null;
-            }
-            List<User> us = userDao.getUserList(q);
-            if (us != null && us.size() > 0) {
-                return us.get(0);
-            }
-            return null;
-        } catch (SQLException e) {
-            logger.error("", e);
-            throw new IllegalException(EC.EC_DB, "internal error!");
-        }
-    }
+	/**
+	 * get
+	 */
+	public int addUser(User newuser) {
+		try {
+			return userDao.addUser(newuser);
+		} catch (SQLException e) {
+			logger.error("", e);
+			throw new IllegalException(EC.EC_DB, "internal error!");
+		}
+	}
 
-    /**
-     * get
-     */
-    public int addUser(User newuser) {
-        try {
-            return userDao.addUser(newuser);
-        } catch (SQLException e) {
-            logger.error("", e);
-            throw new IllegalException(EC.EC_DB, "internal error!");
-        }
-    }
+	public int updateUser(User update) {
+		try {
+			return userDao.updateUser(update);
+		} catch (SQLException e) {
+			logger.error("", e);
+			throw new IllegalException(EC.EC_DB, "internal error!");
+		}
+	}
 
-    public int updateUser(User update) {
-        try {
-            return userDao.updateUser(update);
-        } catch (SQLException e) {
-            logger.error("", e);
-            throw new IllegalException(EC.EC_DB, "internal error!");
-        }
-    }
-    
-    /*
-     * ----------------------------------------------------------------
-     * --------------------------private ------------------------------
-     * ----------------------------------------------------------------
-     */
+	/*
+	 * ----------------------------------------------------------------
+	 * --------------------------private ------------------------------
+	 * ----------------------------------------------------------------
+	 */
 }

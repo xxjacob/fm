@@ -34,6 +34,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                 <result property="doubanId" column="douban_id" />
                                 <result property="doubanToken" column="douban_token" />
                                 <result property="doubanTokenTime" column="douban_token_time" />
+                                <result property="doubanRefreshToken" column="douban_refresh_token" />
                         </resultMap>
     <resultMap id="userall" class="User">
                     <result property="id" column="id" />
@@ -63,18 +64,19 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                     <result property="doubanId" column="douban_id" />
                     <result property="doubanToken" column="douban_token" />
                     <result property="doubanTokenTime" column="douban_token_time" />
+                    <result property="doubanRefreshToken" column="douban_refresh_token" />
             </resultMap>
     <!-- Select SQL -->
     <sql id="user.selector">
-        SELECT id,email,password,username,nickname,gender,birth_y,birth_md,figureurl,figureurl2,region,introduce,education,earning,profession,status,create_time,modify_time,qq_id,qq_token,qq_token_time,weibo_id,weibo_token,weibo_token_time,douban_id,douban_token,douban_token_time FROM user
+        SELECT id,email,password,username,nickname,gender,birth_y,birth_md,figureurl,figureurl2,region,introduce,education,earning,profession,status,create_time,modify_time,qq_id,qq_token,qq_token_time,weibo_id,weibo_token,weibo_token_time,douban_id,douban_token,douban_token_time,douban_refresh_token FROM user
     </sql>
     <!--包含TEXT 等大数据-->
     <sql id="user.selectorall">
-        SELECT id,email,password,username,nickname,gender,birth_y,birth_md,figureurl,figureurl2,region,introduce,education,earning,profession,status,create_time,modify_time,qq_id,qq_token,qq_token_time,weibo_id,weibo_token,weibo_token_time,douban_id,douban_token,douban_token_time FROM user
+        SELECT id,email,password,username,nickname,gender,birth_y,birth_md,figureurl,figureurl2,region,introduce,education,earning,profession,status,create_time,modify_time,qq_id,qq_token,qq_token_time,weibo_id,weibo_token,weibo_token_time,douban_id,douban_token,douban_token_time,douban_refresh_token FROM user
     </sql>
     <sql id="userList.where">
 		<dynamic prepend=" WHERE ">
-            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="email" prepend=" AND ">email=#email#</isNotNull><isNotNull property="password" prepend=" AND ">password=#password#</isNotNull><isNotNull property="username" prepend=" AND ">username=#username#</isNotNull><isNotNull property="nickname" prepend=" AND ">nickname=#nickname#</isNotNull><isNotNull property="gender" prepend=" AND ">gender=#gender#</isNotNull><isNotNull property="birthY" prepend=" AND ">birth_y=#birthY#</isNotNull><isNotNull property="birthMd" prepend=" AND ">birth_md=#birthMd#</isNotNull><isNotNull property="figureurl" prepend=" AND ">figureurl=#figureurl#</isNotNull><isNotNull property="figureurl2" prepend=" AND ">figureurl2=#figureurl2#</isNotNull><isNotNull property="region" prepend=" AND ">region=#region#</isNotNull><isNotNull property="introduce" prepend=" AND ">introduce=#introduce#</isNotNull><isNotNull property="education" prepend=" AND ">education=#education#</isNotNull><isNotNull property="earning" prepend=" AND ">earning=#earning#</isNotNull><isNotNull property="profession" prepend=" AND ">profession=#profession#</isNotNull><isNotNull property="status" prepend=" AND ">status=#status#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="qqId" prepend=" AND ">qq_id=#qqId#</isNotNull><isNotNull property="qqToken" prepend=" AND ">qq_token=#qqToken#</isNotNull><isNotNull property="qqTokenTime" prepend=" AND ">qq_token_time=#qqTokenTime#</isNotNull><isNotNull property="weiboId" prepend=" AND ">weibo_id=#weiboId#</isNotNull><isNotNull property="weiboToken" prepend=" AND ">weibo_token=#weiboToken#</isNotNull><isNotNull property="weiboTokenTime" prepend=" AND ">weibo_token_time=#weiboTokenTime#</isNotNull><isNotNull property="doubanId" prepend=" AND ">douban_id=#doubanId#</isNotNull><isNotNull property="doubanToken" prepend=" AND ">douban_token=#doubanToken#</isNotNull><isNotNull property="doubanTokenTime" prepend=" AND ">douban_token_time=#doubanTokenTime#</isNotNull>        </dynamic>
+            <isNotNull property="id" prepend=" AND ">id=#id#</isNotNull><isNotNull property="email" prepend=" AND ">email=#email#</isNotNull><isNotNull property="password" prepend=" AND ">password=#password#</isNotNull><isNotNull property="username" prepend=" AND ">username=#username#</isNotNull><isNotNull property="nickname" prepend=" AND ">nickname=#nickname#</isNotNull><isNotNull property="gender" prepend=" AND ">gender=#gender#</isNotNull><isNotNull property="birthY" prepend=" AND ">birth_y=#birthY#</isNotNull><isNotNull property="birthMd" prepend=" AND ">birth_md=#birthMd#</isNotNull><isNotNull property="figureurl" prepend=" AND ">figureurl=#figureurl#</isNotNull><isNotNull property="figureurl2" prepend=" AND ">figureurl2=#figureurl2#</isNotNull><isNotNull property="region" prepend=" AND ">region=#region#</isNotNull><isNotNull property="introduce" prepend=" AND ">introduce=#introduce#</isNotNull><isNotNull property="education" prepend=" AND ">education=#education#</isNotNull><isNotNull property="earning" prepend=" AND ">earning=#earning#</isNotNull><isNotNull property="profession" prepend=" AND ">profession=#profession#</isNotNull><isNotNull property="status" prepend=" AND ">status=#status#</isNotNull><isNotNull property="createTime" prepend=" AND ">create_time=#createTime#</isNotNull><isNotNull property="modifyTime" prepend=" AND ">modify_time=#modifyTime#</isNotNull><isNotNull property="qqId" prepend=" AND ">qq_id=#qqId#</isNotNull><isNotNull property="qqToken" prepend=" AND ">qq_token=#qqToken#</isNotNull><isNotNull property="qqTokenTime" prepend=" AND ">qq_token_time=#qqTokenTime#</isNotNull><isNotNull property="weiboId" prepend=" AND ">weibo_id=#weiboId#</isNotNull><isNotNull property="weiboToken" prepend=" AND ">weibo_token=#weiboToken#</isNotNull><isNotNull property="weiboTokenTime" prepend=" AND ">weibo_token_time=#weiboTokenTime#</isNotNull><isNotNull property="doubanId" prepend=" AND ">douban_id=#doubanId#</isNotNull><isNotNull property="doubanToken" prepend=" AND ">douban_token=#doubanToken#</isNotNull><isNotNull property="doubanTokenTime" prepend=" AND ">douban_token_time=#doubanTokenTime#</isNotNull><isNotNull property="doubanRefreshToken" prepend=" AND ">douban_refresh_token=#doubanRefreshToken#</isNotNull>        </dynamic>
     </sql>
     <sql id="userList.order">
         <dynamic prepend=" ORDER BY ">
@@ -189,6 +191,9 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="doubanTokenTime">
                         douban_token_time = #doubanTokenTime#
                     </isNotNull>
+                                                                <isNotNull prepend="," property="doubanRefreshToken">
+                        douban_refresh_token = #doubanRefreshToken#
+                    </isNotNull>
                                         </dynamic>
             WHERE id in
             <iterate conjunction="," open="(" close=")" property="keys">
@@ -275,6 +280,9 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotNull prepend="," property="doubanTokenTime">
                         douban_token_time = #doubanTokenTime#
                     </isNotNull>
+                                                                <isNotNull prepend="," property="doubanRefreshToken">
+                        douban_refresh_token = #doubanRefreshToken#
+                    </isNotNull>
                                         </dynamic>
             WHERE id = #id#
         </update>
@@ -327,8 +335,9 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                 douban_id,
                 douban_token,
                 douban_token_time,
+                douban_refresh_token,
             create_time    ,modify_time)
-    VALUES(#email#,#password#,#username#,#nickname#,#gender#,#birthY#,#birthMd#,#figureurl#,#figureurl2#,#region#,#introduce#,#education#,#earning#,#profession#,#status#,#qqId#,#qqToken#,#qqTokenTime#,#weiboId#,#weiboToken#,#weiboTokenTime#,#doubanId#,#doubanToken#,#doubanTokenTime#,    now(),now())
+    VALUES(#email#,#password#,#username#,#nickname#,#gender#,#birthY#,#birthMd#,#figureurl#,#figureurl2#,#region#,#introduce#,#education#,#earning#,#profession#,#status#,#qqId#,#qqToken#,#qqTokenTime#,#weiboId#,#weiboToken#,#weiboTokenTime#,#doubanId#,#doubanToken#,#doubanTokenTime#,#doubanRefreshToken#,    now(),now())
     <selectKey resultClass="long" type="post" keyProperty="id">
     SELECT last_insert_id() AS id
     </selectKey>
@@ -363,6 +372,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                 <isNotEmpty prepend="," property="doubanId">douban_id</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="doubanToken">douban_token</isNotEmpty>
                                                                 <isNotEmpty prepend="," property="doubanTokenTime">douban_token_time</isNotEmpty>
+                                                                <isNotEmpty prepend="," property="doubanRefreshToken">douban_refresh_token</isNotEmpty>
                                     </dynamic>
         VALUES
         <dynamic prepend="(" close=")">
@@ -392,6 +402,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                                                                                                             <isNotEmpty  prepend="," property="doubanId">#doubanId#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="doubanToken">#doubanToken#</isNotEmpty>
                                                                                                             <isNotEmpty  prepend="," property="doubanTokenTime">#doubanTokenTime#</isNotEmpty>
+                                                                                                            <isNotEmpty  prepend="," property="doubanRefreshToken">#doubanRefreshToken#</isNotEmpty>
                                                         </dynamic>
         <selectKey resultClass="int" type="post" keyProperty="id">
             SELECT last_insert_id() AS id
