@@ -212,17 +212,7 @@ public class UserC {
                 u.setId(id);
 
                 // 新建 thumb列表
-                SongList up = new SongList();
-                up.setUid(u.getId());
-                up.setName("Thumbups");
-                up.setType(Const.SONG_LIST_TYPE_THUMBUP);
-                songListService.addSongList(up);
-
-                SongList down = new SongList();
-                down.setUid(u.getId());
-                down.setName("~Thumbdowns");
-                down.setType(Const.SONG_LIST_TYPE_THUMBDOWN);
-                songListService.addSongList(down);
+                addDefaultPlayLists(u);
             }
         } else {
             User update = new User();

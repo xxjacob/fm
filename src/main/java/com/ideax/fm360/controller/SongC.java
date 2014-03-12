@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +61,7 @@ public class SongC implements InitializingBean {
             if (user != null) {
                 int[] plids = ParamUtils.getValue(req.getParameterValues("plid[]"), int[].class, 0, EC.EC_PARAM);
                 if (plids != null && plids.length > 0) {
-                    plid = plids[new Random().nextInt(plids.length)];
+                    plid = plids[RandomUtils.nextInt(plids.length)];
                 }
             }
             Song s = songService.nextSong(user == null ? 0 : user.getId(), plid, null);
