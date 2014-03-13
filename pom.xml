@@ -235,9 +235,9 @@
 			<id>local</id>
 			<properties>
 				<log.base>D:/logs/</log.base>
-				<app.jdbc.url>jdbc\:mysql\://211.149.200.132\:8306/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
-				<app.jdbc.username>xxjacob</app.jdbc.username>
-				<app.jdbc.password>1395630</app.jdbc.password>
+				<app.jdbc.url>jdbc\:mysql\://10.48.24.32\:8906/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
+				<app.jdbc.username>xuxin03</app.jdbc.username>
+				<app.jdbc.password>xuxin03</app.jdbc.password>
 				<mp3.upload.path>D:/logs/</mp3.upload.path>
 			</properties>
 		</profile>
@@ -259,7 +259,6 @@
 				<app.jdbc.url>jdbc\:mysql\://127.0.0.1\:8306/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
 				<app.jdbc.username>root</app.jdbc.username>
 				<app.jdbc.password></app.jdbc.password>
-				<mp3.upload.path></mp3.upload.path>
 				<mp3.upload.path>/home/data/360fm/mp3</mp3.upload.path>
 			</properties>
 		</profile>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <link href="http://libs.baidu.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+    $(function(){
+    })
+    </script>
+ </head>
+<body>
+    <div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                <div class="span12">
+                    <form class="form-horizontal">
+                        <div class="control-group">
+                             <label class="control-label" for="id">id</label>
+                            <div class="controls">
+                                <input id="id" name="id" type="text" value="$!{xiamiSong.id}" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                             <label class="control-label" for="name">name</label>
+                            <div class="controls">
+                                <input id="name" name="name" type="text" value="$!{xiamiSong.name}" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                             <label class="control-label" for="breif">breif</label>
+                            <div class="controls">
+                                <input id="breif" name="breif" type="text" value="$!{xiamiSong.breif}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >album</label>
+                            <div class="controls">
+                                <input  name="album" type="text" value="$!{xiamiSong.ablbum}" />
+                            </div>
+                        </div>
+                         
+                         <div class="control-group">
+                             <label class="control-label" for="artist">artist</label>
+                            <div class="controls">
+                                <input id="artist" name="artist" type="text" value="$!{xiamiSong.artist}" />
+                            </div>
+                        </div>
+                         
+                         <div class="control-group">
+                             <label class="control-label" for="featArtist">featArtist</label>
+                            <div class="controls">
+                                <input id="featArtist" name="featArtist" type="text" value="$!{xiamiSong.featArtist}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" for="lyricist">lyricist</label>
+                            <div class="controls">
+                                <input  name="lyricist" type="text" value="$!{xiamiSong.lyricist}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >composer</label>
+                            <div class="controls">
+                                <input  name="composer" type="text" value="$!{xiamiSong.composer}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >duration</label>
+                            <div class="controls">
+                                <input  name="duration" type="text" value="$!{xiamiSong.duration}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >coverImg</label>
+                            <div class="controls">
+                                <input  name="coverImg" type="text" value="$!{xiamiSong.coverImg}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiAlbumLink</label>
+                            <div class="controls">
+                                <input  name="xiamiAlbumLink" type="text" value="$!{xiamiSong.xiamiAlbumLink}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiSongName</label>
+                            <div class="controls">
+                                <input  name="xiamiSongName" type="text" value="$!{xiamiSong.xiamiSongName}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiSongLink</label>
+                            <div class="controls">
+                                <input  name="xiamiSongLink" type="text" value="$!{xiamiSong.xiamiSongLink}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiArtist</label>
+                            <div class="controls">
+                                <input  name="xiamiArtist" type="text" value="$!{xiamiSong.xiamiArtist}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiArtistLink</label>
+                            <div class="controls">
+                                <input  name="xiamiArtistLink" type="text"  value="$!{xiamiSong.xiamiArtistLink}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiLyric</label>
+                            <div class="controls">
+                                <input  name="xiamiLyric" type="text" value="$!{xiamiSong.xiamiLyric}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiAlbum</label>
+                            <div class="controls">
+                                <input  name="xiamiAlbum" type="text" value="$!{xiamiSong.xiamiAlbum}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiCoverImg</label>
+                            <div class="controls">
+                                <input  name="xiamiCoverImg" type="text" value="$!{xiamiSong.xiamiCoverImg}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiamiComposer</label>
+                            <div class="controls">
+                                <input  name="xiamiComposer" type="text" value="$!{xiamiSong.xiamiComposer}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >xiami_Lyricist</label>
+                            <div class="controls">
+                                <input  name="xiami_Lyricist" type="text" value="$!{xiamiSong.xiami_Lyricist}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >listenNum</label>
+                            <div class="controls">
+                                <input  name="listenNum" type="text" value="$!{xiamiSong.listenNum}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >shareNum</label>
+                            <div class="controls">
+                                <input  name="shareNum" type="text" value="$!{xiamiSong.shareNum}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >commentNum</label>
+                            <div class="controls">
+                                <input  name="commentNum" type="text" value="$!{xiamiSong.commentNum}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >modifyTime</label>
+                            <div class="controls">
+                                <input  name="modifyTime" type="text" value="$!{xiamiSong.modifyTime}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >createTime</label>
+                            <div class="controls">
+                                <input  name="createTime" type="text" value="$!{xiamiSong.createTime}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >year</label>
+                            <div class="controls">
+                                <input  name="year" type="text" value="$!{xiamiSong.year}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >isVbr</label>
+                            <div class="controls">
+                                <input  name="isVbr" type="text" value="$!{xiamiSong.isVbr}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >albumArtist</label>
+                            <div class="controls">
+                                <input  name="albumArtist" type="text" value="$!{xiamiSong.albumArtist}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >fileName</label>
+                            <div class="controls">
+                                <input  name="fileName" type="text" value="$!{xiamiSong.fileName}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >pcsFileName</label>
+                            <div class="controls">
+                                <input  name="pcsFileName" type="text" value="$!{xiamiSong.pcsFileName}"" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >filePath</label>
+                            <div class="controls">
+                                <input  name="filePath" type="text" value="$!{xiamiSong.filePath}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >songId</label>
+                            <div class="controls">
+                                <input  name="songId" type="text" value="$!{xiamiSong.songId}" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- special  -->
+</html>
