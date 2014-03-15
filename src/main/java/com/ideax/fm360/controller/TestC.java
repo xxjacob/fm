@@ -83,7 +83,7 @@ public class TestC {
             song.setDuration(sx.getDuration());
             song.setLyric(sx.getXiamiLyric());
             song.setLyricist(StringUtils.isBlank(sx.getXiamiLyricist()) ? sx.getLyricist() : sx.getXiamiLyricist());
-            song.setName(StringUtils.isBlank(sx.getName()) ? sx.getName() : sx.getXiamiSongName());
+            song.setName(StringUtils.isBlank(sx.getXiamiSongName()) ? sx.getName() : sx.getXiamiSongName());
             song.setPcsFilename(sx.getPcsFileName());
             song.setSxId(sx.getId());
             songDao.addSong(song);

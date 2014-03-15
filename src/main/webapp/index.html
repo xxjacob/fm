@@ -37,20 +37,13 @@
 		<div id="brandingBar">
 			<div style="display: none;" class="disabled"></div>
 			<div class="rightcolumn">
-				<span class="anonymousUser" style="display: inline;"> <span class="signIn">
-				<a href="#" class="ico__qq"></a>
-				<a href="#" class="ico__sina"></a>
-				<a href="#" class="ico__douban"></a>
+				<span class="anonymousUser" style="display: inline;"> <span class="signIn"> <a href="#"
+						class="ico__qq"></a> <a href="#" class="ico__sina"></a> <a href="#" class="ico__douban"></a>
 				</span>
-				</span>
-				<span style="display: none;" class="notAnonymousUser">
-					<span class="user_menu">
-						<span style="" class="user_activator">
-							<span class="userName_arrow"></span>
-							<span class="userNameMenuTitle">
-								<span style="display: none;" class="userNameImage"></span>
-								<span class="userName"></span>
-							</span>
+				</span> <span style="display: none;" class="notAnonymousUser"> <span class="user_menu"> <span style=""
+						class="user_activator"> <span class="userName_arrow"></span> <span class="userNameMenuTitle"> <span
+								style="display: none;" class="userNameImage"></span> <span class="userName"></span>
+						</span>
 							<div style="width: 140px;" id="user_menu_dd" class="dd_container">
 								<ul>
 									<!-- <li class="menu able"><a href="/account/info">Settings</a></li>
@@ -59,9 +52,9 @@
 									<li class="menu"><a class="signoutMenuItem" href="#">Sign out</a></li>
 								</ul>
 							</div>
-						</span> <!-- no href -->
-					</span>
-				</span>	
+					</span> <!-- no href -->
+				</span>
+				</span>
 			</div>
 
 		</div>
@@ -109,8 +102,7 @@
 									<a href="javascript:void(0);" class="playerBarSong">Loading ...</a>
 								</div>
 								<div>
-									<span class="playerByText">by</span> <a href="javascript:void(0);" class="playerBarArtist">Loading
-										...</a>
+									<span class="playerByText">by</span> <a href="javascript:void(0);" class="playerBarArtist">Loading ...</a>
 								</div>
 								<div>
 									<span>on</span> <a href="javascript:void(0);" class="playerBarAlbum">Loading ...</a>
@@ -336,8 +328,7 @@
 																<a href="javascript:void(0);" class="songTitle">Loading ...</a>
 															</div>
 															<div>
-																<i class="byText">by</i> <a href="javascript:void(0);" class="artistSummary">Loading
-																	...</a>
+																<i class="byText">by</i> <a href="javascript:void(0);" class="artistSummary">Loading ...</a>
 															</div>
 															<div>
 																<i>on</i> <a href="javascript:void(0);" class="albumTitle">Loading ...</a>
@@ -449,26 +440,37 @@
 			</div>
 		</div>
 	</div>
-		<!-- //mainContainer -->
-		<script>
-			window._bd_share_config = {
-				common : {
-					bdText : '',
-					bdDesc : '',
-					bdUrl : '',
-					bdPic : '',
-					bdStyle : "2"
-				},
-				share : [ {
-					"bdSize" : 24,
-				} ],
+	<!-- //mainContainer -->
+	<script>
+		window._bd_share_config = {
+			common : {
+				bdText : '',
+				bdDesc : '',
+				bdUrl : '',
+				bdPic : '',
+				bdStyle : "2"
+			},
+			share : [ {
+				"bdSize" : 24,
+			} ],
 
-			}
+		}
 
-			//以下为js加载部分
-			with (document)
-				0[(getElementsByTagName('head')[0] || body)
-						.appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='
-						+ ~(-new Date() / 36e5)];
+		//以下为js加载部分
+		with (document)
+			0[(getElementsByTagName('head')[0] || body)
+					.appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='
+					+ ~(-new Date() / 36e5)];
+	</script>
+	<div style="display: none;">
+		<script type="text/javascript">
+			var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://"
+					: " http://");
+			document
+					.write(unescape("%3Cscript src='"
+							+ _bdhmProtocol
+							+ "hm.baidu.com/h.js%3F8d72f80efd8a89d13d0ad76ac52f63a0' type='text/javascript'%3E%3C/script%3E"));
 		</script>
+		<script src=" http://hm.baidu.com/h.js?8d72f80efd8a89d13d0ad76ac52f63a0" type="text/javascript"></script>
+	</div>
 </body>

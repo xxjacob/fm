@@ -15,8 +15,19 @@
     <div class="row-fluid">
         <div class="span12">
             <div class="row-fluid">
-                <div class="span12">
-                    <form class="form-horizontal">
+                <div class="span4">
+					<b>使用方法:</b><br />
+					5、确认抓取的信息无误后(有红星的必填)点击“提交审核”<br />
+					6、猛击“上线”发布到线上, 然后等。。。看服务器网速了<br />
+					7、完成后，可以通过 http://en.360.fm/#20140778 试听<br />
+                    <form class="form-horizontal" action="/admin/save">
+						
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn btn-block btn-primary">提交审核</button>
+                            </div>
+                        </div>
+						
                         <div class="control-group">
                              <label class="control-label" for="id">id</label>
                             <div class="controls">
@@ -68,7 +79,7 @@
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >duration</label>
+                             <label class="control-label" >duration<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="duration" type="text" value="$!{xiamiSong.duration}" />
                             </div>
@@ -80,31 +91,31 @@
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >xiamiAlbumLink</label>
+                             <label class="control-label" >xiamiAlbumLink<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="xiamiAlbumLink" type="text" value="$!{xiamiSong.xiamiAlbumLink}" />
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >xiamiSongName</label>
+                             <label class="control-label" >xiamiSongName<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="xiamiSongName" type="text" value="$!{xiamiSong.xiamiSongName}" />
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >xiamiSongLink</label>
+                             <label class="control-label" >xiamiSongLink<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="xiamiSongLink" type="text" value="$!{xiamiSong.xiamiSongLink}" />
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >xiamiArtist</label>
+                             <label class="control-label" >xiamiArtist<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="xiamiArtist" type="text" value="$!{xiamiSong.xiamiArtist}" />
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >xiamiArtistLink</label>
+                             <label class="control-label" >xiamiArtistLink<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="xiamiArtistLink" type="text"  value="$!{xiamiSong.xiamiArtistLink}" />
                             </div>
@@ -116,13 +127,13 @@
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >xiamiAlbum</label>
+                             <label class="control-label" >xiamiAlbum<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="xiamiAlbum" type="text" value="$!{xiamiSong.xiamiAlbum}" />
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >xiamiCoverImg</label>
+                             <label class="control-label" >xiamiCoverImg<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="xiamiCoverImg" type="text" value="$!{xiamiSong.xiamiCoverImg}" />
                             </div>
@@ -157,7 +168,7 @@
                                 <input  name="commentNum" type="text" value="$!{xiamiSong.commentNum}" />
                             </div>
                         </div>
-                         <div class="control-group">
+                         <!--<div class="control-group">
                              <label class="control-label" >modifyTime</label>
                             <div class="controls">
                                 <input  name="modifyTime" type="text" value="$!{xiamiSong.modifyTime}" />
@@ -168,7 +179,7 @@
                             <div class="controls">
                                 <input  name="createTime" type="text" value="$!{xiamiSong.createTime}" />
                             </div>
-                        </div>
+                        </div>-->
                          <div class="control-group">
                              <label class="control-label" >year</label>
                             <div class="controls">
@@ -200,7 +211,7 @@
                             </div>
                         </div>
                          <div class="control-group">
-                             <label class="control-label" >filePath</label>
+                             <label class="control-label" >filePath<font color='red'>&nbsp;*</font></label>
                             <div class="controls">
                                 <input  name="filePath" type="text" value="$!{xiamiSong.filePath}" />
                             </div>
@@ -211,9 +222,102 @@
                                 <input  name="songId" type="text" value="$!{xiamiSong.songId}" />
                             </div>
                         </div>
+                    </form>
+                </div>
+				
+				<div class="span2">
+					 <form class="form-horizontal" action="/admin/add_song_by_xiami">
+                                <button class="btn btn-block btn-primary" type="submit" class="btn">→_→ 上  →_→ 线  →_→</button>
+								<input readonly=true id="id" name="id" type="text" value="$!{xiamiSong.id}" />
+                     </form>
+				</div>
+				<div class="span4">
+                    <form class="form-horizontal">
                         <div class="control-group">
+                             <label class="control-label" for="id">id</label>
                             <div class="controls">
-                                <button type="submit" class="btn">提交</button>
+                                <input readonly=true id="id" name="id" type="text" value="$!{song.id}" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                             <label class="control-label" for="name">name</label>
+                            <div class="controls">
+                                <input readonly=true id="name" name="name" type="text" value="$!{song.name}" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                             <label class="control-label" for="breif">breif</label>
+                            <div class="controls">
+                                <input readonly=true id="breif" name="breif" type="text" value="$!{song.breif}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >album</label>
+                            <div class="controls">
+                                <input readonly=true  name="album" type="text" value="$!{song.ablbum}" />
+                            </div>
+                        </div>
+                         
+                         <div class="control-group">
+                             <label class="control-label" for="artist">artist</label>
+                            <div class="controls">
+                                <input readonly=true id="artist" name="artist" type="text" value="$!{song.artist}" />
+                            </div>
+                        </div>
+                         
+                         <div class="control-group">
+                             <label class="control-label" for="featArtist">featArtist</label>
+                            <div class="controls">
+                                <input readonly=true id="featArtist" name="featArtist" type="text" value="$!{song.featArtist}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" for="lyricist">lyricist</label>
+                            <div class="controls">
+                                <input readonly=true  name="lyricist" type="text" value="$!{song.lyricist}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >composer</label>
+                            <div class="controls">
+                                <input readonly=true  name="composer" type="text" value="$!{song.composer}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >duration<font color='red'>&nbsp;*</font></label>
+                            <div class="controls">
+                                <input readonly=true  name="duration" type="text" value="$!{song.duration}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >coverImg</label>
+                            <div class="controls">
+                                <input readonly=true  name="coverImg" type="text" value="$!{song.coverImg}" />
+                            </div>
+                        </div>
+                         
+                         <div class="control-group">
+                             <label class="control-label" >lyric</label>
+                            <div class="controls">
+                                <input readonly=true  name="lyric" type="text" value="$!{song.lyric}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >streamUrl<font color='red'>&nbsp;*</font></label>
+                            <div class="controls">
+                                <input readonly=true  name="streamUrl" type="text" value="$!{song.streamUrl}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >pcsFilename<font color='red'>&nbsp;*</font></label>
+                            <div class="controls">
+                                <input readonly=true  name="pcsFilename" type="text" value="$!{song.pcsFilename}" />
+                            </div>
+                        </div>
+                         <div class="control-group">
+                             <label class="control-label" >sxId</label>
+                            <div class="controls">
+                                <input readonly=true  name="sxId" type="text" value="$!{song.sxId}" />
                             </div>
                         </div>
                     </form>

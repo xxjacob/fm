@@ -49,7 +49,6 @@ public class SongC implements InitializingBean {
     @Autowired
     SongListService songListService;
 
-
     @RequestMapping("predict")
     @ResponseBody
     public Object predict(HttpServletRequest req, HttpServletResponse resp) {
@@ -93,6 +92,43 @@ public class SongC implements InitializingBean {
             result.put("err_no", e.getErrorCode());
             return result;
         }
+    }
+
+    @RequestMapping("song")
+    @ResponseBody
+    public Object song(HttpServletRequest req, @RequestParam int id) {
+        User user = passportService.getLoginUser(req);
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("err_no", EC.OK);
+        Song s = songService.getSongById(id);
+        if (s == null) {
+            result.put("err_no", EC.EC_UNKNOWM);
+        } else {
+            result.put("song", s);
+            s.setStreamUrl(Util.genPcsUrl("GET", "fmstore", s.getPcsFilename(), 0));
+            result.put("song", s);
+            if (user != null) {
+                List<SongListItem> songlist = songListService.thumbInfo(s.getId(), user.getId());
+                // 歌曲所在的歌单id
+                List<Integer> listIds = new ArrayList<Integer>();
+                int thumbStatus = Const.THUMB_NO;
+                if (songlist != null && songlist.size() > 0) {
+                    for (SongListItem sl : songlist) {
+                        if (sl.getType() == Const.SONG_LIST_TYPE_THUMBDOWN) {
+                            thumbStatus = Const.THUMB_DOWN;
+                        } else if (sl.getType() == Const.SONG_LIST_TYPE_THUMBUP) {
+                            thumbStatus = Const.THUMB_UP;
+                        } else {
+                            listIds.add(sl.getListId());
+                        }
+                    }
+                }
+                result.put("thumb", thumbStatus);
+                result.put("playList", listIds);
+            } else
+                result.put("thumb", Const.THUMB_NO);
+        }
+        return result;
     }
 
     /**

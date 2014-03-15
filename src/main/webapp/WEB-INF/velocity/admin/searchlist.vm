@@ -25,17 +25,22 @@
         <div class="span12">
             <div class="row-fluid">
                 <div class="span3">
-                    <form class="form-horizontal" action="/admin/search">
+                    <b>使用方法:</b><br />
+					1、输入歌名，歌手，点击查询<br />
+					2、猛击正确的歌曲的 歌名链接<br />
+					3、上传歌曲，选择需要上传的mp3<br />
+					4、点击“抓取并上传”按钮, 然后等。。。看你网速了<br />
+                    <form class="" action="/admin/search">
                         <div class="control-group">
                              <label class="control-label" for="inputEmail">歌名</label>
                             <div class="controls">
-                                <input id="songName" name="songName" type="text" />
+                                <input id="songName" name="songName" type="text" value="$!{songName}"/>
                             </div>
                         </div>
                         <div class="control-group">
                              <label class="control-label" for="inputPassword">歌手</label>
                             <div class="controls">
-                                <input id="artist" name="artist" type="text" />
+                                <input id="artist" name="artist" type="text" value="$!{artist}"/>
                             </div>
                         </div>
                         <div class="control-group">
@@ -45,11 +50,11 @@
                         </div>
                     </form>
                 </div>
-                <div class="span6">
+                <div class="span4">
                      $!{searchResult}
                 </div>
                 <div class="span3">
-                    <form class="form-horizontal" action="/admin/catch" method="POST" enctype="multipart/form-data">
+                    <form class="" action="/admin/catch" method="POST" enctype="multipart/form-data">
                         <div class="control-group">
                              <label class="control-label" for="artist">选择歌曲上传</label>
                             <div class="controls">

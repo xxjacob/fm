@@ -158,6 +158,11 @@
 			<artifactId>mp3agic</artifactId>
 			<version>0.8.2</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.flexjson</groupId>
+			<artifactId>flexjson</artifactId>
+			<version>3.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>360fm</finalName>
@@ -259,7 +264,7 @@
 				<app.jdbc.url>jdbc\:mysql\://127.0.0.1\:8306/test3?useUnicode\=true&amp;characterEncoding\=UTF8</app.jdbc.url>
 				<app.jdbc.username>root</app.jdbc.username>
 				<app.jdbc.password></app.jdbc.password>
-				<mp3.upload.path>/home/data/360fm/mp3</mp3.upload.path>
+				<mp3.upload.path>/home/data/360fm/mp3/</mp3.upload.path>
 			</properties>
 		</profile>
 	</profiles>
