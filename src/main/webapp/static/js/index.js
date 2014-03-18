@@ -259,6 +259,15 @@ var construct = function() {
 	}
 
 	var __refreshShareInfo = function(json) {
+
+		var url = window.location.href;
+		var i = url.indexOf('#');
+		if (i > 0) {
+			var uri = url.substr(0, i);
+			window.location.href = uri + '#' + json.song.id;
+		}else{
+			window.location.href = url + '#' + json.song.id;
+		}
 		window._bd_share_config.common.bdText = "我正在360.fm听《" + json.song.name
 				+ "》";
 		window._bd_share_config.common.bdDesc = "最好听的音乐在这里等你。";

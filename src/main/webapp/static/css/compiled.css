@@ -3251,7 +3251,7 @@ a.btn_bg{
 }
 
 #cd_menu_dd ul li a.new_station{
-	background-image:url("/img/menu-arrow-down.png");
+	background-image:url("/s/img/menu-arrow-down.png");
 	background-repeat:no-repeat;
 	background-position:83px center
 }
@@ -13133,3 +13133,52 @@ select.styled{
 .ico__qq{background-position:0 -128px;}
 .ico__weixin{background-position:-32px -128px;}
 .ico__yixin{background-position:-64px -128px;}
+
+#playerBar .middlecolumn .buttons{width:250px;}
+#playerBar .tiredButton{
+	margin:6px 3px 0 3px;
+	float:left;
+	background:url(/s/img/btn_tired.png)
+}
+
+#playerBar .tiredButton a:link,#playerBar .tiredButton a:visited{
+	display:block;
+	width:36px;
+	height:35px;
+	background:url(/s/img/btn_tired.png)
+}
+
+#playerBar .tiredButton a:hover{
+	background:url(/s/img/btn_tired_hover.png)
+}
+
+#playerBar .tiredButton a:active{
+	outline:0;
+	background:url(/s/img/btn_tired_press.png)
+}
+
+#playerBar .tiredButton.indicator{
+	background:url(/s/img/btn_tired_indicator.png)
+}
+
+#playerBar .tiredButton.indicator a:link,#playerBar .tiredButton.indicator a:visited{
+	background:url(/s/img/btn_tired_indicator.png)
+}
+
+#playerBar .tiredButton.indicator a:hover{
+	background:url(/s/img/btn_tired_indicator_hover.png)
+}
+
+#playerBar .tiredButton.indicator a:active{
+	background:url(/s/img/btn_tired_indicator_press.png)
+}
+
+#playerBar .tiredButton.nothumb a:hover{
+	background:url(/s/img/btn_tired.png)
+}
+
+#playerBar .tiredButton.nothumb a:active{
+	outline:0;
+	background:url(/s/img/btn_tired.png)
+}
+
