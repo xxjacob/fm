@@ -1,18 +1,18 @@
 package com.ideax.fm360.dao;
 
+import java.sql.SQLException;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.stereotype.Repository;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ideax.fm360.pojo.SongList;
-import java.util.Collections;
 import com.ideax.fm360.common.Result;
+import com.ideax.fm360.pojo.SongList;
 import com.ideax.fm360.query.SongListQuery;
 /**
  * @author xxjacob

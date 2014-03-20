@@ -1,5 +1,6 @@
 package com.ideax.fm360.service;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,13 @@ public class LocalPassportService implements IPassportService {
 
 	@Override
 	public User getLoginUser(HttpServletRequest request) {
+		// try {
+		// return userDao.getUserbyKey(14);
+		// } catch (SQLException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// return null;
 		Cookie cs[] = request.getCookies();
 		if (cs != null) {
 			for (Cookie c : cs) {
