@@ -13181,4 +13181,8 @@ select.styled{
 	outline:0;
 	background:url(/s/img/btn_tired.png)
 }
+.ssC,.ssC .inputC,.ssC .btn_ss{float:left;font-size:12px;height:20px;line-height:20px;overflow:hidden;}
+.ssC{position:absolute;right:0;z-index:10000;width:280px;margin:4px 95px 0 0; background:#fff;border:1px solid #fff;border-radius:5px;}
+.ssC .inputC{width:246px;height:14px;line-height:14px;padding:3px 5px;background:none;border:none;outline:none;}
+.ssC .btn_ss{float:right;display:block;text-indent:-9999px;width:20px;height:20px;background:url(/s/img/bg_ss.png) 100% 0 no-repeat;}
 
