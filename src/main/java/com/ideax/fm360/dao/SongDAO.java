@@ -89,6 +89,11 @@ public class SongDAO {
     public List<Song> getSongList(SongQuery songQuery) throws SQLException{
 		return (List<Song>)this.sqlMapClientTemplate.queryForList("Song.getSongList", songQuery);
 	}
+    
+    @SuppressWarnings("unchecked")
+    public List<Song> getBasicSongAll() throws SQLException{
+		return (List<Song>)this.sqlMapClientTemplate.queryForList("Song.getBasicAll");
+	}
 	
 	@SuppressWarnings("unchecked")
     public List<Song> getSongListWithText(SongQuery songQuery) throws SQLException{

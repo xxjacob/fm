@@ -6,6 +6,11 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
     <!-- Alias Map Defined -->
     <typeAlias alias="SongQuery" type="com.ideax.fm360.query.SongQuery" />
     <typeAlias alias="Song" type="com.ideax.fm360.pojo.Song" />
+    <resultMap id="songbasic" class="Song">
+                    <result property="id" column="id" />
+                                <result property="name" column="name" />
+                                <result property="artist" column="artist" />
+                        </resultMap>
     <resultMap id="song" class="Song">
                     <result property="id" column="id" />
                                 <result property="name" column="name" />
@@ -83,6 +88,9 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
             </isGreaterThan>
         </dynamic>
     </sql>
+    <select id="Song.getBasicAll" resultMap="songbasic">
+            SELECT id,name,artist,listen_num FROM song
+        </select>
             <select id="Song.getSong" resultMap="songall">
             <include refid="song.selectorall" />
             WHERE id=#id#

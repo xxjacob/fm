@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.search.spell.TermFreqPayloadIterator;
 import org.apache.lucene.search.suggest.Lookup.LookupResult;
 import org.apache.lucene.search.suggest.analyzing.AnalyzingSuggester;
@@ -16,72 +17,72 @@ import com.ideax.fm360.pojo.Song;
 
 public class SongSearch {
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    List<Song> songs = null;
+	List<Song> songs = null;
 
-    AnalyzingSuggester suggester;
+	AnalyzingSuggester suggester;
 
-    final String[] dummy = new String[0];
+	final String[] dummy = new String[0];
 
-    public void build(List<Song> list) {
-        this.songs = list;
-        // Directory scdir;
-        try {
-            // scdir = new RAMDirectory();
-            FmAnalyzer analyzer = new FmAnalyzer(Version.LUCENE_43);
-            suggester = new AnalyzingSuggester(analyzer);
-            suggester.build(new SongNameIterator());
-        } catch (IOException e) {
-            logger.error("", e);
-        }
-    }
+	public void build(List<Song> list) {
+		this.songs = list;
+		// Directory scdir;
+		try {
+			// scdir = new RAMDirectory();
+			FmAnalyzer analyzer = new FmAnalyzer(Version.LUCENE_43);
+			suggester = new AnalyzingSuggester(analyzer);
+			suggester.build(new SongNameIterator());
+		} catch (IOException e) {
+			logger.error("", e);
+		}
+	}
 
-    public String[] suggest(String key) {
-        List<LookupResult> list = suggester.lookup(key, false, 10);
-        if (list != null && list.size() > 0) {
-            String[] docs = new String[list.size()];
-            for (int i = 0; i < list.size(); i++) {
-                LookupResult res = list.get(i);
-                docs[i] = res.key.toString() + "###" + ((res.payload == null) ? "" : res.payload.utf8ToString());
-            }
-            return docs;
-        }
-        return dummy;
-    }
+	public String[] suggest(String key) {
+		List<LookupResult> list = suggester.lookup(key, false, 10);
+		if (list != null && list.size() > 0) {
+			String[] docs = new String[list.size()];
+			for (int i = 0; i < list.size(); i++) {
+				LookupResult res = list.get(i);
+				docs[i] = res.key.toString() + "###" + ((res.payload == null) ? "" : res.payload.utf8ToString());
+			}
+			return docs;
+		}
+		return dummy;
+	}
 
-    final class SongNameIterator implements TermFreqPayloadIterator {
-        private final BytesRef spare = new BytesRef();
-        private final BytesRef payload = new BytesRef();
-        int index = 0;
-        Song c = null;
+	final class SongNameIterator implements TermFreqPayloadIterator {
+		private final BytesRef spare = new BytesRef();
+		private final BytesRef payload = new BytesRef();
+		int index = 0;
+		Song c = null;
 
-        public BytesRef next() throws IOException {
-            if (index >= songs.size())
-                return null;
-            c = songs.get(index);
-            spare.copyChars(c.getName());
-            index++;
-            return spare;
-        }
+		public BytesRef next() throws IOException {
+			if (index >= songs.size())
+				return null;
+			c = songs.get(index);
+			spare.copyChars(c.getName() + (StringUtils.isNotBlank(c.getArtist()) ? " - " + c.getArtist() : ""));
+			index++;
+			return spare;
+		}
 
-        public Comparator<BytesRef> getComparator() {
-            return null;
-        }
+		public Comparator<BytesRef> getComparator() {
+			return null;
+		}
 
-        @Override
-        public long weight() {
-            return 0;
-        }
+		@Override
+		public long weight() {
+			return c.getListenNum() == null ? 0 : c.getListenNum();
+		}
 
-        @Override
-        public BytesRef payload() {
-            if (c != null) {
-                payload.copyChars(c.getId() + "###" + c.getArtist());
-                return payload;
-            }
-            return null;
-        }
-    }
+		@Override
+		public BytesRef payload() {
+			if (c != null) {
+				payload.copyChars(String.valueOf(c.getId()));
+				return payload;
+			}
+			return null;
+		}
+	}
 
 }
