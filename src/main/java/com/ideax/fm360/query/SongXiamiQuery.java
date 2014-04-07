@@ -392,6 +392,44 @@ public class SongXiamiQuery extends BaseQuery {
     	this.xiamiLyricist = xiamiLyricist;
     	return this;
     }
+	/** xiami_lyric_url **/
+    private String xiamiLyricUrl;
+	/**
+    * 获取属性:xiamiLyricUrl
+    * xiami_lyric_url
+    * @return xiamiLyricUrl
+    */
+	public String getXiamiLyricUrl () {
+    	return xiamiLyricUrl;
+   	}
+   	/**
+     * 设置属性:xiamiLyricUrl
+     * xiami_lyric_url
+     * @param xiamiLyricUrl
+     */
+    public SongXiamiQuery setXiamiLyricUrl(String xiamiLyricUrl) {
+    	this.xiamiLyricUrl = xiamiLyricUrl;
+    	return this;
+    }
+	/** xiami_download_url **/
+    private String xiamiDownloadUrl;
+	/**
+    * 获取属性:xiamiDownloadUrl
+    * xiami_download_url
+    * @return xiamiDownloadUrl
+    */
+	public String getXiamiDownloadUrl () {
+    	return xiamiDownloadUrl;
+   	}
+   	/**
+     * 设置属性:xiamiDownloadUrl
+     * xiami_download_url
+     * @param xiamiDownloadUrl
+     */
+    public SongXiamiQuery setXiamiDownloadUrl(String xiamiDownloadUrl) {
+    	this.xiamiDownloadUrl = xiamiDownloadUrl;
+    	return this;
+    }
 	/** listen_num **/
     private Integer listenNum;
 	/**
@@ -825,6 +863,22 @@ public class SongXiamiQuery extends BaseQuery {
 	 */	
 	public SongXiamiQuery orderbyXiamiLyricist(boolean isAsc){
 		orderFields.add(new OrderField("xiami_lyricist",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：xiami_lyric_url
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongXiamiQuery orderbyXiamiLyricUrl(boolean isAsc){
+		orderFields.add(new OrderField("xiami_lyric_url",isAsc?"ASC":"DESC"));
+		return this;
+	}
+	/**
+	 * 设置排序按属性：xiami_download_url
+	 * @param isAsc 是否升序，否则为降序
+	 */	
+	public SongXiamiQuery orderbyXiamiDownloadUrl(boolean isAsc){
+		orderFields.add(new OrderField("xiami_download_url",isAsc?"ASC":"DESC"));
 		return this;
 	}
 	/**

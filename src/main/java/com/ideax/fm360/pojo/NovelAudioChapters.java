@@ -24,24 +24,13 @@ public class NovelAudioChapters implements Serializable{
     private String ktStreamUrl;
 	/** local_file_path **/
     private String localFilePath;
-    
+	/** kt_name **/
     private String ktName;
+	/** kt_duration **/
     private String ktDuration;
 
 	
-   public String getKtDuration() {
-		return ktDuration;
-	}
-	public void setKtDuration(String ktDuration) {
-		this.ktDuration = ktDuration;
-	}
-public String getKtName() {
-		return ktName;
-	}
-	public void setKtName(String ktName) {
-		this.ktName = ktName;
-	}
-/**
+   /**
     * 获取属性:id
     * id
     * @return id
@@ -141,6 +130,40 @@ public String getKtName() {
     */
    public void setLocalFilePath(String localFilePath) {
        this.localFilePath = localFilePath;
+   }
+	
+   /**
+    * 获取属性:ktName
+    * kt_name
+    * @return ktName
+    */
+   public String getKtName() {
+       return ktName;
+   }
+   /**
+    * 设置属性:ktName
+    * kt_name
+    * @param ktName
+    */
+   public void setKtName(String ktName) {
+       this.ktName = ktName;
+   }
+	
+   /**
+    * 获取属性:ktDuration
+    * kt_duration
+    * @return ktDuration
+    */
+   public String getKtDuration() {
+       return ktDuration;
+   }
+   /**
+    * 设置属性:ktDuration
+    * kt_duration
+    * @param ktDuration
+    */
+   public void setKtDuration(String ktDuration) {
+       this.ktDuration = ktDuration;
    }
 
 	/**

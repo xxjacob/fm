@@ -9,15 +9,6 @@ import java.io.Serializable;
  */
 public class NovelAudioKting implements Serializable{
 
-	@Override
-	public String toString() {
-		return "NovelAudioKting [id=" + id + ", ktId=" + ktId + ", name=" + name + ", playedNum=" + playedNum
-				+ ", catId=" + catId + ", catIdSub=" + catIdSub + ", coverImg=" + coverImg + ", chapterNum="
-				+ chapterNum + ", totalTime=" + totalTime + ", author=" + author + ", authorLink=" + authorLink
-				+ ", reader=" + reader + ", readerLink=" + readerLink + ", addDate=" + addDate + ", updateDate="
-				+ updateDate + ", tags=" + tags + ", description=" + description + ", keys=" + keys + "]";
-	}
-
 	/** 序列化ID */
 	private static final long serialVersionUID = 1L;
 

@@ -52,6 +52,10 @@ public class SongXiami implements Serializable{
     private String xiamiComposer;
 	/** xiami_lyricist **/
     private String xiamiLyricist;
+	/** xiami_lyric_url **/
+    private String xiamiLyricUrl;
+	/** xiami_download_url **/
+    private String xiamiDownloadUrl;
 	/** listen_num **/
     private Integer listenNum;
 	/** share_num **/
@@ -418,6 +422,40 @@ public class SongXiami implements Serializable{
     */
    public void setXiamiLyricist(String xiamiLyricist) {
        this.xiamiLyricist = xiamiLyricist;
+   }
+	
+   /**
+    * 获取属性:xiamiLyricUrl
+    * xiami_lyric_url
+    * @return xiamiLyricUrl
+    */
+   public String getXiamiLyricUrl() {
+       return xiamiLyricUrl;
+   }
+   /**
+    * 设置属性:xiamiLyricUrl
+    * xiami_lyric_url
+    * @param xiamiLyricUrl
+    */
+   public void setXiamiLyricUrl(String xiamiLyricUrl) {
+       this.xiamiLyricUrl = xiamiLyricUrl;
+   }
+	
+   /**
+    * 获取属性:xiamiDownloadUrl
+    * xiami_download_url
+    * @return xiamiDownloadUrl
+    */
+   public String getXiamiDownloadUrl() {
+       return xiamiDownloadUrl;
+   }
+   /**
+    * 设置属性:xiamiDownloadUrl
+    * xiami_download_url
+    * @param xiamiDownloadUrl
+    */
+   public void setXiamiDownloadUrl(String xiamiDownloadUrl) {
+       this.xiamiDownloadUrl = xiamiDownloadUrl;
    }
 	
    /**
