@@ -259,13 +259,12 @@ var construct = function() {
     }
 
     var __refreshShareInfo = function(json) {
-	window._bd_share_config.common = {
-	    bdUrl : "http://en.360.fm/#" + json.song.id,
-	    bdPic : (json.song.coverImg || ""),
-	    bdText : "我正在360.fm听《" + json.song.name + "》",
-	    bdDesc : "最好听的欧美音乐在这里等你。",
-	    bdStyle : "2"
-	}
+	if (!window._bd_share_config.share[0])
+		return;
+	window._bd_share_config.share[0].bdUrl = "http://en.360.fm/#" + json.song.id;
+	window._bd_share_config.share[0].bdPic = (json.song.coverImg || "");
+	window._bd_share_config.share[0].bdText = "我正在360.fm听《" + json.song.name + "》";
+	window._bd_share_config.share[0].bdDesc = "最好听的欧美音乐在这里等你。";
     }
 
     /**
