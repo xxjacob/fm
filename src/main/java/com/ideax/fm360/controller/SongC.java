@@ -56,7 +56,8 @@ public class SongC implements InitializingBean {
 
 	@RequestMapping("predict")
 	@ResponseBody
-	public Object predict(HttpServletRequest req, HttpServletResponse resp, @RequestParam(defaultValue = "0") int sid) {
+	public Object predict(HttpServletRequest req, HttpServletResponse resp,
+			@RequestParam(defaultValue = "0") int sid) {
 		User user = passportService.getLoginUser(req);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("err_no", EC.OK);
@@ -67,12 +68,15 @@ public class SongC implements InitializingBean {
 			} else {
 				int plid = 0;
 				if (user != null) {
-					int[] plids = ParamUtils.getValue(req.getParameterValues("plid[]"), int[].class, 0, EC.EC_PARAM);
+					int[] plids = ParamUtils.getValue(
+							req.getParameterValues("plid[]"), int[].class, 0,
+							EC.EC_PARAM);
 					if (plids != null && plids.length > 0) {
 						plid = plids[RandomUtils.nextInt(plids.length)];
 					}
 				}
-				s = songService.nextSong(user == null ? 0 : user.getId(), plid, null);
+				s = songService.nextSong(user == null ? 0 : user.getId(), plid,
+						null);
 			}
 
 			if (s == null) {
@@ -82,7 +86,8 @@ public class SongC implements InitializingBean {
 			decorateSong(s);
 			result.put("song", s);
 			if (user != null) {
-				List<SongListItem> songlist = songListService.thumbInfo(s.getId(), user.getId());
+				List<SongListItem> songlist = songListService.thumbInfo(
+						s.getId(), user.getId());
 				// 歌曲所在的歌单id
 				List<Integer> listIds = new ArrayList<Integer>();
 				int thumbStatus = Const.THUMB_NO;
@@ -115,8 +120,14 @@ public class SongC implements InitializingBean {
 		s.setStreamUrl(Util.genPcsUrl("GET", "fmstore", s.getPcsFilename(), 0));
 		try {
 			String ci = s.getCoverImg();
-			s.setCoverImg(ci.substring(0, ci.lastIndexOf("_")) + "_4.jpg");
+			int i = ci.lastIndexOf('_');
+			if (i > 0) {
+				char[] ss = ci.toCharArray();
+				ss[i + 1] = '4';
+				s.setCoverImg(new String(ss));
+			}
 		} catch (Exception e) {
+			// simply ignore
 		}
 
 		String lrc = s.getLyric();
@@ -137,8 +148,10 @@ public class SongC implements InitializingBean {
 	public String thumbup(HttpServletRequest req, @RequestParam int sid) {
 		User user = passportService.getLoginUser(req);
 		try {
-			int[] ret = songListService.action(sid, user.getId(), Const.SONG_LIST_TYPE_THUMBUP);
-			return "{\"err_no\":0,\"thumb\":" + ret[0] + ", \"thumbup_num\":" + ret[1] + ",\"thumbdown_num\":" + ret[2]
+			int[] ret = songListService.action(sid, user.getId(),
+					Const.SONG_LIST_TYPE_THUMBUP);
+			return "{\"err_no\":0,\"thumb\":" + ret[0] + ", \"thumbup_num\":"
+					+ ret[1] + ",\"thumbdown_num\":" + ret[2]
 					+ ",\"tired_num\":" + ret[3] + "}";
 		} catch (IllegalException ie) {
 			return "{\"err_no\":1}";
@@ -150,8 +163,10 @@ public class SongC implements InitializingBean {
 	public String thumbdown(HttpServletRequest req, @RequestParam int sid) {
 		User user = passportService.getLoginUser(req);
 		try {
-			int[] ret = songListService.action(sid, user.getId(), Const.SONG_LIST_TYPE_THUMBDOWN);
-			return "{\"err_no\":0,\"thumb\":" + ret[0] + ", \"thumbup_num\":" + ret[1] + ",\"thumbdown_num\":" + ret[2]
+			int[] ret = songListService.action(sid, user.getId(),
+					Const.SONG_LIST_TYPE_THUMBDOWN);
+			return "{\"err_no\":0,\"thumb\":" + ret[0] + ", \"thumbup_num\":"
+					+ ret[1] + ",\"thumbdown_num\":" + ret[2]
 					+ ",\"tired_num\":" + ret[3] + "}";
 		} catch (IllegalException ie) {
 			return "{\"err_no\":1}";
@@ -163,8 +178,10 @@ public class SongC implements InitializingBean {
 	public String tired(HttpServletRequest req, @RequestParam int sid) {
 		User user = passportService.getLoginUser(req);
 		try {
-			int[] ret = songListService.action(sid, user.getId(), Const.SONG_LIST_TYPE_TIRED);
-			return "{\"err_no\":0,\"thumb\":" + ret[0] + ", \"thumbup_num\":" + ret[1] + ",\"thumbdown_num\":" + ret[2]
+			int[] ret = songListService.action(sid, user.getId(),
+					Const.SONG_LIST_TYPE_TIRED);
+			return "{\"err_no\":0,\"thumb\":" + ret[0] + ", \"thumbup_num\":"
+					+ ret[1] + ",\"thumbdown_num\":" + ret[2]
 					+ ",\"tired_num\":" + ret[3] + "}";
 		} catch (IllegalException ie) {
 			return "{\"err_no\":1}";
