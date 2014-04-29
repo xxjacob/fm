@@ -515,7 +515,7 @@ var construct = function() {
 		}
 	    var str = url.substr(i+1,end-i-1);
 	    var pint = parseInt(str);
-	    if (String(pint) === str)
+	    if (String(pint) === str) // if really a number
 	    	assignSongId = parseInt(str);
 	}
     }
