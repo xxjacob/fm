@@ -509,8 +509,14 @@ var construct = function() {
 	var url = window.location.href;
 	var i;
 	if ((i = url.indexOf("#")) != -1 && i < url.length - 1) {
-	    var str = url.substr(i + 1);
-	    assignSongId = parseInt(str);
+		var end;
+		if ((end = url.indexOf("#",i+1)) < 0){
+			end = url.length;
+		}
+	    var str = url.substr(i+1,end-i-1);
+	    var pint = parseInt(str);
+	    if (String(pint) === str)
+	    	assignSongId = parseInt(str);
 	}
     }
 
